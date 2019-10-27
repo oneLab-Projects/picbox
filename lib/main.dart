@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:picbox/common/design/clear_behavior.dart';
 import 'package:picbox/tabs/five_tab.dart';
 import 'package:picbox/tabs/four_tab.dart';
 import 'package:picbox/tabs/one_tab.dart';
@@ -12,6 +13,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: (context, child) {
+        return ScrollConfiguration(
+          behavior: ClearBehavior(),
+          child: child,
+        );
+      },
       title: 'Picbox',
       debugShowCheckedModeBanner: false,
       home: MainPage(),
