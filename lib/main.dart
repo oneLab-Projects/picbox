@@ -34,7 +34,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   TabController tabController;
 
-  final List<Widget> tabs = <Widget>[
+  final List<Widget> tabs = [
     OneTab(),
     TwoTab(),
     ThreeTab(),
@@ -65,21 +65,19 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   }
 
   navBar() {
-    return Material(
+    return Container(
+      height: 50,
       color: Colors.grey[900],
-      child: Container(
-        height: 50,
-        child: TabBar(
-          controller: tabController,
-          indicatorWeight: 0.01,
-          tabs: [
-            Tab(child: Icon(MdiIcons.homeVariantOutline)),
-            Tab(child: Icon(Icons.search)),
-            Tab(child: Icon(MdiIcons.cardsOutline)),
-            Tab(child: Icon(MdiIcons.bellOutline)),
-            Tab(child: Icon(MdiIcons.accountCircleOutline)),
-          ],
-        ),
+      child: TabBar(
+        controller: tabController,
+        indicatorWeight: 0.01,
+        tabs: [
+          Tab(child: Icon(MdiIcons.homeVariantOutline)),
+          Tab(child: Icon(Icons.search)),
+          Tab(child: Icon(MdiIcons.cardsOutline)),
+          Tab(child: Icon(MdiIcons.bellOutline)),
+          Tab(child: Icon(MdiIcons.accountCircleOutline)),
+        ],
       ),
     );
   }
