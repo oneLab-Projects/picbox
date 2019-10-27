@@ -62,9 +62,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
       color: Colors.grey[900],
       child: Container(
         height: 50,
-        padding: EdgeInsets.only(top: 2),
         child: TabBar(
           controller: tabController,
+          indicatorWeight: 0.01,
           tabs: [
             Tab(child: Icon(MdiIcons.homeVariantOutline)),
             Tab(child: Icon(Icons.search)),
