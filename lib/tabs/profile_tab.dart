@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class OneTab extends StatelessWidget {
+class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Tab number one"));
+    return Center(child: Text("Profile"));
   }
 }

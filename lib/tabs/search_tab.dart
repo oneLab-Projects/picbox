@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class FiveTab extends StatelessWidget {
+class SearchTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Tab number five"));
+    return Center(child: Text("Search"));
   }
 }

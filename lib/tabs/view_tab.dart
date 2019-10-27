@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class TwoTab extends StatelessWidget {
+class ViewTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("Tab number two"));
+    return Center(child: Text("View"));
   }
 }

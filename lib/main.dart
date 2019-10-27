@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:picbox/common/design/clear_behavior.dart';
-import 'package:picbox/tabs/five_tab.dart';
-import 'package:picbox/tabs/four_tab.dart';
-import 'package:picbox/tabs/one_tab.dart';
-import 'package:picbox/tabs/three_tab.dart';
-import 'package:picbox/tabs/two_tab.dart';
+import 'package:picbox/tabs/home_tab.dart';
+import 'package:picbox/tabs/notifications_tab.dart';
+import 'package:picbox/tabs/profile_tab.dart';
+import 'package:picbox/tabs/search_tab.dart';
+import 'package:picbox/tabs/view_tab.dart';
 
 void main() => runApp(App());
 
@@ -35,11 +35,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   TabController tabController;
 
   final List<Widget> tabs = [
-    OneTab(),
-    TwoTab(),
-    ThreeTab(),
-    FourTab(),
-    FiveTab(),
+    HomeTab(),
+    SearchTab(),
+    ViewTab(),
+    NotificationsTab(),
+    ProfileTab(),
   ];
 
   @override
