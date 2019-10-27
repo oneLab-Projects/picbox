@@ -59,7 +59,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
   navBar() {
     return Material(
-      color: Colors.red,
+      color: Colors.grey[900],
       child: Container(
         height: 50,
         padding: EdgeInsets.only(top: 2),
@@ -68,9 +68,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           tabs: [
             Tab(child: Icon(MdiIcons.homeVariantOutline)),
             Tab(child: Icon(Icons.search)),
-            Tab(child: Icon(MdiIcons.cards)),
-            Tab(child: Icon(Icons.notifications)),
-            Tab(child: Icon(Icons.account_circle)),
+            Tab(child: Icon(MdiIcons.cardsOutline)),
+            Tab(child: Icon(MdiIcons.bellOutline)),
+            Tab(child: Icon(MdiIcons.accountCircleOutline)),
           ],
         ),
       ),
