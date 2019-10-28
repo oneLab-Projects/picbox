@@ -57,27 +57,34 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: TabBarView(children: tabs, controller: tabController),
+      body: Stack(
+        children: <Widget>[
+          TabBarView(children: tabs, controller: tabController),
+          navBar(),
+        ],
       ),
-      bottomSheet: navBar(),
     );
   }
 
   navBar() {
-    return Container(
-      height: 50,
-      color: Colors.grey[900],
-      child: TabBar(
-        controller: tabController,
-        indicatorWeight: 0.01,
-        tabs: [
-          Tab(child: Icon(MdiIcons.homeVariantOutline)),
-          Tab(child: Icon(Icons.search)),
-          Tab(child: Icon(MdiIcons.cardsOutline)),
-          Tab(child: Icon(MdiIcons.bellOutline)),
-          Tab(child: Icon(MdiIcons.accountCircleOutline)),
-        ],
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Material(
+        type: MaterialType.transparency,
+        child: Container(
+          height: 50,
+          child: TabBar(
+            controller: tabController,
+            indicatorWeight: 0.01,
+            tabs: [
+              Tab(child: Icon(MdiIcons.homeVariantOutline)),
+              Tab(child: Icon(Icons.search)),
+              Tab(child: Icon(MdiIcons.cardsOutline)),
+              Tab(child: Icon(MdiIcons.bellOutline)),
+              Tab(child: Icon(MdiIcons.accountCircleOutline)),
+            ],
+          ),
+        ),
       ),
     );
   }
