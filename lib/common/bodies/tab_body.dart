@@ -7,23 +7,25 @@ class TabBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Material(
-          color: Colors.grey[900],
-          elevation: 5,
-          child: SizedBox(
-            height: 25,
-            width: double.infinity,
+    return SafeArea(
+      child: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  titleBar(context),
+                  child,
+                ],
+              ),
+            ),
           ),
-        ),
-        titleBar(context),
-        Expanded(child: child),
-        Container(
-          height: 50,
-          color: Colors.grey[900],
-        ),
-      ],
+          Container(
+            height: 50 + MediaQuery.of(context).viewInsets.bottom,
+            color: Colors.grey[900],
+          ),
+        ],
+      ),
     );
   }
 
@@ -34,7 +36,7 @@ class TabBody extends StatelessWidget {
         children: <Widget>[
           Text(
             title,
-            style: Theme.of(context).textTheme.title,
+            style: Theme.of(context).textTheme.title.copyWith(fontSize: 26),
           ),
         ],
       ),
