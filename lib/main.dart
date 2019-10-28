@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:picbox/common/design/clear_behavior.dart';
 import 'package:picbox/tabs/home_tab.dart';
@@ -12,6 +13,18 @@ void main() => runApp(App());
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarDividerColor: Colors.transparent,
+      ),
+    );
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
+
     return MaterialApp(
       builder: (context, child) {
         return ScrollConfiguration(
@@ -57,6 +70,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: Stack(
         children: <Widget>[
           TabBarView(children: tabs, controller: tabController),
@@ -73,11 +87,13 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         type: MaterialType.transparency,
         child: Container(
           height: 50,
+          margin:
+              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           child: TabBar(
             controller: tabController,
             indicatorWeight: 0.01,
             tabs: [
-              Tab(child: Icon(MdiIcons.homeVariantOutline)),
+              Tab(child: Icon(MdiIcons.compassOutline)),
               Tab(child: Icon(Icons.search)),
               Tab(child: Icon(MdiIcons.cardsOutline)),
               Tab(child: Icon(MdiIcons.bellOutline)),
