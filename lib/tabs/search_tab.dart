@@ -5,7 +5,6 @@ class SearchTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBody(
-      title: "Search",
       child: Center(child: Text("Search")),
     );
   }

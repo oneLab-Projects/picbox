@@ -14,7 +14,7 @@ class TabBody extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  titleBar(context),
+                  if (title != null) titleBar(context),
                   child,
                 ],
               ),
