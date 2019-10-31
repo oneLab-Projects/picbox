@@ -6,6 +6,7 @@ class ThemeChanger with ChangeNotifier {
   ThemeChanger(this._isNight);
 
   bool _isNight;
+
   bool get isNight => _isNight;
 
   getTheme() => _isNight ? themeNight() : themeDay();
