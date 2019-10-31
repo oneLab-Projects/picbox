@@ -91,7 +91,7 @@ class _TabBodyState extends State<TabBody> {
               style: Theme.of(context)
                   .textTheme
                   .title
-                  .copyWith(fontSize: 24 - -_scrollPosition * 3),
+                  .copyWith(fontSize: 23 - -_scrollPosition * 3),
             ),
           ],
         ),
