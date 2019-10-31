@@ -58,16 +58,20 @@ class _TabBodyState extends State<TabBody> {
                     _scrollController.animateTo(70,
                         duration: Duration(milliseconds: 300),
                         curve: Curves.ease));
+            } else if (scrollState is ScrollEndNotification &&
+                (70 - scrollState.metrics.pixels) < 0) {
+              setState(() {
+                _scrollPosition = 0;
+              });
             }
+
             return false;
           },
           child: SingleChildScrollView(
             controller: _scrollController,
             child: Padding(
               padding: EdgeInsets.fromLTRB(20, 90, 20, 20),
-              child: Container(
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  child: widget.child),
+              child: widget.child,
             ),
           ),
         ),
