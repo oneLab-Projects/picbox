@@ -9,7 +9,6 @@ class HomeTab extends StatelessWidget {
       child: Column(
         children: <Widget>[
           GridView.count(
-            padding: EdgeInsets.all(20),
             crossAxisSpacing: 12,
             shrinkWrap: true,
             physics: BouncingScrollPhysics(),
