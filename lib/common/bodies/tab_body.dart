@@ -44,7 +44,10 @@ class _TabBodyState extends State<TabBody> {
                 _scrollPosition =
                     (70 - scrollState.metrics.pixels) * 100 / 70 / 100;
               });
-            }
+            } else if (scrollState is ScrollUpdateNotification &&
+                (70 - scrollState.metrics.pixels) < 0)
+              setState(() => _scrollPosition = 0);
+
             if (scrollState is ScrollEndNotification &&
                 (70 - scrollState.metrics.pixels) >= 0) {
               if (_scrollPosition < 1 && _scrollPosition > 0.6)
@@ -58,11 +61,6 @@ class _TabBodyState extends State<TabBody> {
                     _scrollController.animateTo(70,
                         duration: Duration(milliseconds: 300),
                         curve: Curves.ease));
-            } else if (scrollState is ScrollEndNotification &&
-                (70 - scrollState.metrics.pixels) < 0) {
-              setState(() {
-                _scrollPosition = 0;
-              });
             }
 
             return false;
