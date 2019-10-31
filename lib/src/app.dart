@@ -21,7 +21,7 @@ class App extends StatelessWidget {
     //SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
 
     return ChangeNotifierProvider<ThemeChanger>(
-      builder: (_) => ThemeChanger(ThemeData.dark()),
+      builder: (_) => ThemeChanger(false),
       child: new MaterialAppWithTheme(),
     );
   }

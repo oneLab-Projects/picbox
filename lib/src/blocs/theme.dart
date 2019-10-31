@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:picbox/src/common/design/themes/day.dart';
+import 'package:picbox/src/common/design/themes/night.dart';
 
 class ThemeChanger with ChangeNotifier {
-  ThemeData _themeData;
+  ThemeChanger(this._isNight);
 
-  ThemeChanger(this._themeData);
+  bool _isNight;
+  bool get isNight => _isNight;
 
-  getTheme() => _themeData;
-  setTheme(ThemeData theme) {
-    _themeData = theme;
+  getTheme() => _isNight ? themeNight() : themeDay();
 
+  switchToNight(bool value) {
+    _isNight = value;
     notifyListeners();
   }
 }

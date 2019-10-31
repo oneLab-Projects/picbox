@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:picbox/src/blocs/theme.dart';
 import 'package:picbox/src/common/bodies/tab.dart';
 import 'package:provider/provider.dart';
@@ -12,12 +13,12 @@ class ProfileTab extends StatelessWidget {
       title: "Profile",
       child: Column(
         children: <Widget>[
-          FlatButton(
-              child: Text('Dark Theme'),
-              onPressed: () => _themeChanger.setTheme(ThemeData.dark())),
-          FlatButton(
-              child: Text('Light Theme'),
-              onPressed: () => _themeChanger.setTheme(ThemeData.light())),
+          SwitchListTile(
+            title: Text('Night Theme'),
+            value: _themeChanger.isNight,
+            onChanged: (bool value) => _themeChanger.switchToNight(value),
+            secondary: Icon(MdiIcons.weatherNight),
+          ),
         ],
       ),
     );
