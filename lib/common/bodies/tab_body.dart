@@ -49,7 +49,7 @@ class _TabBodyState extends State<TabBody> {
               setState(() => _scrollPosition = 0);
 
             if (scrollState is ScrollEndNotification &&
-                (70 - scrollState.metrics.pixels) >= 0) {
+                (70 - scrollState.metrics.pixels) > 0) {
               double step = 0;
               if (_scrollPosition > 0 && _scrollPosition < 0.6) step = 70;
 
