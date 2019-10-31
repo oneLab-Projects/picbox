@@ -25,7 +25,7 @@ class _TabBodyState extends State<TabBody> {
           ),
           Container(
             height: 50 + MediaQuery.of(context).viewInsets.bottom,
-            color: Colors.grey[900],
+            color: Colors.grey[850],
           ),
         ],
       ),

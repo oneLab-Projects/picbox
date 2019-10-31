@@ -20,7 +20,7 @@ class ThemeChanger with ChangeNotifier {
         systemNavigationBarIconBrightness: Brightness.light,
         statusBarBrightness: Brightness.dark,
         statusBarIconBrightness: _isNight ? Brightness.light : Brightness.dark,
-        systemNavigationBarColor: Colors.grey[900],
+        systemNavigationBarColor: Colors.grey[850],
         systemNavigationBarDividerColor: Colors.transparent,
       ),
     );
