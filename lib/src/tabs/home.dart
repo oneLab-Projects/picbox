@@ -16,7 +16,7 @@ class HomeTab extends StatelessWidget {
           for (var i = 0; i < 13; i++)
             Container(
               decoration: BoxDecoration(
-                color: Colors.grey[100],
+                color: Theme.of(context).highlightColor,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
             ),
