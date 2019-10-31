@@ -6,24 +6,20 @@ class HomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabBody(
       title: "Home",
-      child: Column(
+      child: GridView.count(
+        crossAxisSpacing: 12,
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        mainAxisSpacing: 12,
+        crossAxisCount: 2,
         children: <Widget>[
-          GridView.count(
-            crossAxisSpacing: 12,
-            shrinkWrap: true,
-            physics: BouncingScrollPhysics(),
-            mainAxisSpacing: 12,
-            crossAxisCount: 2,
-            children: <Widget>[
-              for (var i = 0; i < 13; i++)
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                  ),
-                ),
-            ],
-          ),
+          for (var i = 0; i < 13; i++)
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[100],
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+              ),
+            ),
         ],
       ),
     );

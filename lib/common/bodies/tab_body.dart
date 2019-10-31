@@ -50,17 +50,13 @@ class _TabBodyState extends State<TabBody> {
 
             if (scrollState is ScrollEndNotification &&
                 (70 - scrollState.metrics.pixels) >= 0) {
-              if (_scrollPosition < 1 && _scrollPosition > 0.6)
-                Future.delayed(Duration(milliseconds: 1), () {}).then((s) =>
-                    _scrollController.animateTo(0,
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.ease));
+              double step = 0;
+              if (_scrollPosition > 0 && _scrollPosition < 0.6) step = 70;
 
-              if (_scrollPosition > 0 && _scrollPosition < 0.6)
-                Future.delayed(Duration(milliseconds: 1), () {}).then((s) =>
-                    _scrollController.animateTo(70,
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.ease));
+              Future.delayed(Duration(milliseconds: 1), () {}).then((s) =>
+                  _scrollController.animateTo(step,
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.ease));
             }
 
             return false;
