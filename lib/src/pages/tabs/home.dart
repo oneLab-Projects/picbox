@@ -5,7 +5,7 @@ class HomeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBody(
-      title: "Home",
+      title: "For You",
       child: GridView.count(
         crossAxisSpacing: 12,
         shrinkWrap: true,

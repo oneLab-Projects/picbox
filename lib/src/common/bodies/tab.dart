@@ -1,4 +1,7 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
+import 'package:picbox/src/common/design/colors.dart';
 
 class TabBody extends StatefulWidget {
   final String title;
@@ -10,6 +13,8 @@ class TabBody extends StatefulWidget {
 }
 
 class _TabBodyState extends State<TabBody> {
+  static const double _animationHeight = 60;
+
   ScrollController _scrollController = ScrollController();
   double _scrollPosition = 1;
 
@@ -25,7 +30,7 @@ class _TabBodyState extends State<TabBody> {
           ),
           Container(
             height: 50 + MediaQuery.of(context).viewInsets.bottom,
-            color: Colors.grey[850],
+            color: ColorPalette.bottomNavigation,
           ),
         ],
       ),
@@ -36,36 +41,51 @@ class _TabBodyState extends State<TabBody> {
     return Stack(
       children: <Widget>[
         titleBar(context),
-        NotificationListener<ScrollNotification>(
-          onNotification: (scrollState) {
-            if (scrollState is ScrollUpdateNotification &&
-                (70 - scrollState.metrics.pixels) >= 0) {
-              setState(() {
-                _scrollPosition =
-                    (70 - scrollState.metrics.pixels) * 100 / 70 / 100;
-              });
-            } else if (scrollState is ScrollUpdateNotification &&
-                (70 - scrollState.metrics.pixels) < 0)
-              setState(() => _scrollPosition = 0);
+        BackdropFilter(
+          filter: ui.ImageFilter.blur(
+            sigmaX: _scrollPosition > 0
+                ? -_scrollPosition * 8 + 8
+                : _scrollPosition,
+            sigmaY: _scrollPosition > 0
+                ? -_scrollPosition * 8 + 8
+                : _scrollPosition,
+          ),
+          child: NotificationListener<ScrollNotification>(
+            onNotification: (scrollState) {
+              if (scrollState is ScrollUpdateNotification &&
+                  (_animationHeight - scrollState.metrics.pixels) >= 0) {
+                setState(() {
+                  _scrollPosition =
+                      (_animationHeight - scrollState.metrics.pixels) *
+                          100 /
+                          _animationHeight /
+                          100;
+                });
+              } else if (scrollState is ScrollUpdateNotification &&
+                  (_animationHeight - scrollState.metrics.pixels) < 0)
+                setState(() => _scrollPosition = 0);
 
-            if (scrollState is ScrollEndNotification &&
-                (70 - scrollState.metrics.pixels) > 0) {
-              double step = 0;
-              if (_scrollPosition > 0 && _scrollPosition < 0.6) step = 70;
+              if (scrollState is ScrollEndNotification &&
+                  (_animationHeight - scrollState.metrics.pixels) > 0) {
+                double step = 0;
+                if (_scrollPosition > 0 && _scrollPosition < 0.6)
+                  step = _animationHeight;
 
-              Future.delayed(Duration(milliseconds: 1), () {}).then((s) =>
-                  _scrollController.animateTo(step,
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.ease));
-            }
+                Future.delayed(Duration(milliseconds: 1), () {}).then((s) =>
+                    _scrollController.animateTo(step,
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.ease));
+              }
 
-            return false;
-          },
-          child: SingleChildScrollView(
-            controller: _scrollController,
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(20, 90, 20, 20),
-              child: widget.child,
+              return false;
+            },
+            child: SingleChildScrollView(
+              controller: _scrollController,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(14 + (2 * _scrollPosition), 80,
+                    14 + (2 * _scrollPosition), 23),
+                child: widget.child,
+              ),
             ),
           ),
         ),
@@ -83,15 +103,15 @@ class _TabBodyState extends State<TabBody> {
     return Opacity(
       opacity: _scrollPosition,
       child: Padding(
-        padding: EdgeInsets.fromLTRB(25 - (_scrollPosition * 5), 20, 20, 20),
+        padding: EdgeInsets.all(25),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
               widget.title,
-              style: Theme.of(context)
-                  .textTheme
-                  .title
-                  .copyWith(fontSize: 23 - -_scrollPosition * 3),
+              style: Theme.of(context).textTheme.title.copyWith(
+                  fontSize: 15 - -_scrollPosition * 5,
+                  fontWeight: FontWeight.w500),
             ),
           ],
         ),

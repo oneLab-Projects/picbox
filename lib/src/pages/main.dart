@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:picbox/src/tabs/home.dart';
-import 'package:picbox/src/tabs/notifications.dart';
-import 'package:picbox/src/tabs/profile.dart';
-import 'package:picbox/src/tabs/search.dart';
-import 'package:picbox/src/tabs/view.dart';
+import 'package:picbox/src/pages/tabs.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -19,6 +15,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     ViewTab(),
     NotificationsTab(),
     ProfileTab(),
+    DebugTab(),
   ];
 
   @override
@@ -52,6 +49,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
               Tab(child: Icon(MdiIcons.cardsOutline)),
               Tab(child: Icon(MdiIcons.bellOutline)),
               Tab(child: Icon(MdiIcons.accountCircleOutline)),
+              Tab(child: Icon(MdiIcons.bugOutline)),
             ],
           ),
         ),
@@ -68,7 +66,6 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
           TabBarView(
             children: tabs,
             controller: tabController,
-            physics: NeverScrollableScrollPhysics(),
           ),
           navBar(),
         ],
