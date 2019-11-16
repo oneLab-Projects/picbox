@@ -11,7 +11,8 @@ class HomeTab extends StatelessWidget {
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
         mainAxisSpacing: 12,
-        crossAxisCount: 2,
+        crossAxisCount:
+            MediaQuery.of(context).orientation == Orientation.landscape ? 3 : 2,
         children: <Widget>[
           for (var i = 0; i < 13; i++)
             Container(
