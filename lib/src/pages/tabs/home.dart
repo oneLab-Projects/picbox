@@ -9,7 +9,7 @@ class HomeTab extends StatelessWidget {
       child: GridView.count(
         crossAxisSpacing: 12,
         shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
+        physics: NeverScrollableScrollPhysics(),
         mainAxisSpacing: 12,
         crossAxisCount:
             MediaQuery.of(context).orientation == Orientation.landscape ? 3 : 2,
