@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:picbox/src/common/components/navigation_bar.dart';
+import 'package:picbox/src/common/design/colors.dart';
 import 'package:picbox/src/pages/tabs.dart';
 
 class MainPage extends StatefulWidget {
@@ -12,11 +14,12 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   final List<Widget> tabs = [
     HomeTab(),
     SearchTab(),
-    ViewTab(),
     NotificationsTab(),
     ProfileTab(),
     DebugTab(),
   ];
+
+  Widget _currentTab = HomeTab();
 
   @override
   void dispose() {
@@ -30,44 +33,43 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     super.initState();
   }
 
-  navBar() {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: Material(
-        type: MaterialType.transparency,
-        child: Container(
-          height: 50,
-          margin: EdgeInsets.only(
-            bottom: MediaQuery.of(context).viewInsets.bottom,
-          ),
-          child: TabBar(
-            controller: tabController,
-            indicatorWeight: 0.01,
-            tabs: [
-              Tab(child: Icon(MdiIcons.compassOutline)),
-              Tab(child: Icon(Icons.search)),
-              Tab(child: Icon(MdiIcons.cardsOutline)),
-              Tab(child: Icon(MdiIcons.bellOutline)),
-              Tab(child: Icon(MdiIcons.accountCircleOutline)),
-              Tab(child: Icon(MdiIcons.bugOutline)),
-            ],
-          ),
-        ),
-      ),
-    );
+  void _selectedTab(int index) {
+    setState(() {
+      _currentTab = tabs[index];
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       body: Stack(
         children: <Widget>[
-          TabBarView(
-            children: tabs,
-            controller: tabController,
+          _currentTab,
+          NavigationBar(
+            onTabSelected: _selectedTab,
+            backgroundColor: ColorPalette.bottomNavigation,
+            color: Colors.white54,
+            selectedColor: Colors.white,
+            items: [
+              NavigationBarItem(
+                iconData: MdiIcons.compassOutline,
+                selectedIconData: MdiIcons.compass,
+              ),
+              NavigationBarItem(iconData: Icons.search),
+              NavigationBarItem(
+                iconData: Icons.notifications_none,
+                selectedIconData: Icons.notifications,
+              ),
+              NavigationBarItem(
+                iconData: MdiIcons.accountCircleOutline,
+                selectedIconData: MdiIcons.accountCircle,
+              ),
+              NavigationBarItem(
+                iconData: MdiIcons.bugOutline,
+                selectedIconData: MdiIcons.bug,
+              ),
+            ],
           ),
-          navBar(),
         ],
       ),
     );
