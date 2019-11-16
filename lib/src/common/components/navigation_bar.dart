@@ -53,15 +53,12 @@ class _NavigationBarState extends State<NavigationBar> {
     return NativeDeviceOrientationReader(builder: (context) {
       NativeDeviceOrientation orientation =
           NativeDeviceOrientationReader.orientation(context);
-
       double height = getAlignment(orientation) == Alignment.bottomCenter
           ? NavigationBar.heightNavigationBarVertical
           : double.infinity;
-
       double width = getAlignment(orientation) == Alignment.bottomCenter
           ? double.infinity
           : NavigationBar.weightNavigationBarHorisontal;
-
       Axis direction = getAlignment(orientation) == Alignment.bottomCenter
           ? Axis.horizontal
           : Axis.vertical;
