@@ -2,6 +2,6 @@ import 'package:flutter/material.dart';
 
 ThemeData themeNight() => ThemeData(
       brightness: Brightness.dark,
-      highlightColor: Colors.grey[800],
-      scaffoldBackgroundColor: Colors.grey[900],
+      highlightColor: Color(0xFF252525),
+      scaffoldBackgroundColor: Color(0xFF1E1E1E),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
 class ColorPalette {
-  static final bottomNavigation = Colors.grey[900];
+  static final bottomNavigation = Color(0xFF2E2E2E);
 }
