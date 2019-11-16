@@ -108,9 +108,7 @@ class _NavigationBarState extends State<NavigationBar> {
         ? item.selectedIconData
         : item.iconData;
     return Expanded(
-      child: SizedBox(
-        height: double.infinity,
-        width: double.infinity,
+      child: SizedBox.expand(
         child: InkWell(
           onTap: () => onPressed(index),
           child: Icon(iconData, color: color, size: widget.iconSize),
