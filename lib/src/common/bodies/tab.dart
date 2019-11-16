@@ -19,28 +19,11 @@ class _TabBodyState extends State<TabBody> {
 
   @override
   Widget build(BuildContext context) {
-    return NativeDeviceOrientationReader(builder: (context) {
-      NativeDeviceOrientation orientation =
-          NativeDeviceOrientationReader.orientation(context);
-      return Padding(
-        padding: getPadding(orientation),
-        child: SafeArea(
-          child: widget.title == null
-              ? content(context)
-              : contentWithTitleBar(context),
-        ),
-      );
-    });
-  }
-
-  EdgeInsets getPadding(NativeDeviceOrientation orientation) {
-    if (orientation == NativeDeviceOrientation.landscapeLeft)
-      return EdgeInsets.only(
-          right: NavigationBar.weightNavigationBarHorisontal);
-    else if (orientation == NativeDeviceOrientation.landscapeRight)
-      return EdgeInsets.only(left: NavigationBar.weightNavigationBarHorisontal);
-    else
-      return EdgeInsets.zero;
+    return SafeArea(
+      child: widget.title == null
+          ? content(context)
+          : contentWithTitleBar(context),
+    );
   }
 
   contentWithTitleBar(context) {

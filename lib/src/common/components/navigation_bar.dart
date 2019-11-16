@@ -9,6 +9,7 @@ class NavigationBarItem {
 
 class NavigationBar extends StatefulWidget {
   NavigationBar({
+    this.body,
     this.items,
     this.iconSize: 24,
     this.backgroundColor,
@@ -17,6 +18,7 @@ class NavigationBar extends StatefulWidget {
     this.onTabSelected,
   });
 
+  final Widget body;
   final List<NavigationBarItem> items;
   final double iconSize;
   final Color backgroundColor;
@@ -53,46 +55,69 @@ class _NavigationBarState extends State<NavigationBar> {
     return NativeDeviceOrientationReader(builder: (context) {
       NativeDeviceOrientation orientation =
           NativeDeviceOrientationReader.orientation(context);
-      double height = getAlignment(orientation) == Alignment.bottomCenter
-          ? NavigationBar.heightNavigationBarVertical
-          : double.infinity;
-      double width = getAlignment(orientation) == Alignment.bottomCenter
-          ? double.infinity
-          : NavigationBar.weightNavigationBarHorisontal;
-      Axis direction = getAlignment(orientation) == Alignment.bottomCenter
-          ? Axis.horizontal
-          : Axis.vertical;
-
-      return Align(
-        alignment: getAlignment(orientation),
-        child: Material(
-          color: widget.backgroundColor,
-          child: Container(
-            height: height,
-            width: width,
-            margin: EdgeInsets.only(
-              top: getAlignment(orientation) == Alignment.bottomCenter
-                  ? 0
-                  : MediaQuery.of(context).padding.top,
-            ),
-            child: Flex(
-              direction: direction,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: items,
-            ),
+      return Stack(
+        children: <Widget>[
+          Padding(
+            padding: getPadding(orientation),
+            child: widget.body,
           ),
-        ),
+          _buildNavigationBar(items, orientation),
+        ],
       );
     });
+  }
+
+  EdgeInsets getPadding(NativeDeviceOrientation orientation) {
+    if (orientation == NativeDeviceOrientation.landscapeLeft)
+      return EdgeInsets.only(
+          right: NavigationBar.weightNavigationBarHorisontal);
+    else
+      return (orientation == NativeDeviceOrientation.landscapeRight)
+          ? EdgeInsets.only(left: NavigationBar.weightNavigationBarHorisontal)
+          : EdgeInsets.only(bottom: NavigationBar.heightNavigationBarVertical);
+  }
+
+  Widget _buildNavigationBar(items, orientation) {
+    double height = getAlignment(orientation) == Alignment.bottomCenter
+        ? NavigationBar.heightNavigationBarVertical
+        : double.infinity;
+    double width = getAlignment(orientation) == Alignment.bottomCenter
+        ? double.infinity
+        : NavigationBar.weightNavigationBarHorisontal;
+    Axis direction = getAlignment(orientation) == Alignment.bottomCenter
+        ? Axis.horizontal
+        : Axis.vertical;
+    double marginTop = getAlignment(orientation) == Alignment.bottomCenter
+        ? 0
+        : MediaQuery.of(context).padding.top;
+
+    return Align(
+      alignment: getAlignment(orientation),
+      child: Material(
+        color: widget.backgroundColor,
+        child: Container(
+          height: height,
+          width: width,
+          margin: EdgeInsets.only(
+            top: marginTop,
+          ),
+          child: Flex(
+            direction: direction,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: items,
+          ),
+        ),
+      ),
+    );
   }
 
   Alignment getAlignment(NativeDeviceOrientation orientation) {
     if (orientation == NativeDeviceOrientation.landscapeLeft)
       return Alignment.centerRight;
-    else if (orientation == NativeDeviceOrientation.landscapeRight)
-      return Alignment.centerLeft;
     else
-      return Alignment.bottomCenter;
+      return (orientation == NativeDeviceOrientation.landscapeRight)
+          ? Alignment.centerLeft
+          : Alignment.bottomCenter;
   }
 
   Widget _buildTabItem({

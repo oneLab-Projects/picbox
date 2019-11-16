@@ -44,30 +44,26 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          _currentTab,
           NavigationBar(
+            body: _currentTab,
             onTabSelected: _selectedTab,
             backgroundColor: ColorPalette.bottomNavigation,
             color: Colors.white54,
             selectedColor: Colors.white,
             items: [
               NavigationBarItem(
-                iconData: MdiIcons.compassOutline,
-                selectedIconData: MdiIcons.compass,
-              ),
+                  iconData: MdiIcons.compassOutline,
+                  selectedIconData: MdiIcons.compass),
               NavigationBarItem(iconData: Icons.search),
               NavigationBarItem(
-                iconData: Icons.notifications_none,
-                selectedIconData: Icons.notifications,
-              ),
+                  iconData: Icons.notifications_none,
+                  selectedIconData: Icons.notifications),
               NavigationBarItem(
-                iconData: MdiIcons.accountCircleOutline,
-                selectedIconData: MdiIcons.accountCircle,
-              ),
+                  iconData: MdiIcons.accountCircleOutline,
+                  selectedIconData: MdiIcons.accountCircle),
               NavigationBarItem(
-                iconData: MdiIcons.bugOutline,
-                selectedIconData: MdiIcons.bug,
-              ),
+                  iconData: MdiIcons.bugOutline,
+                  selectedIconData: MdiIcons.bug),
             ],
           ),
         ],
