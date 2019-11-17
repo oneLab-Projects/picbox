@@ -147,24 +147,21 @@ class _NavigationBarState extends State<NavigationBar> {
   }
 
   Widget _buildTagbar(context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: 21),
-      child: ListView(
-        physics: BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 15),
-        children: <Widget>[
-          for (var i = 0; i < 6; i++)
-            Container(
-              width: 90,
-              margin: EdgeInsets.only(right: 15),
-              decoration: BoxDecoration(
-                color: Colors.white10,
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-              ),
+    return ListView(
+      physics: BouncingScrollPhysics(),
+      scrollDirection: Axis.horizontal,
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 21),
+      children: <Widget>[
+        for (var i = 0; i < 6; i++)
+          Container(
+            width: 90,
+            margin: EdgeInsets.only(right: 15),
+            decoration: BoxDecoration(
+              color: Colors.white10,
+              borderRadius: BorderRadius.all(Radius.circular(15)),
             ),
-        ],
-      ),
+          ),
+      ],
     );
   }
 
