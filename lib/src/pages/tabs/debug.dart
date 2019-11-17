@@ -12,16 +12,20 @@ class DebugTab extends StatelessWidget {
       title: 'Debug',
       child: Column(
         children: <Widget>[
-          BlocBuilder<ThemeBloc, ThemeData>(
-            builder: (context, theme) => SwitchListTile(
-              title: Text('Night Theme'),
-              value: theme == themeNight(),
-              onChanged: (bool value) =>
-                  BlocProvider.of<ThemeBloc>(context).add(ThemeEvent.toggle),
-              secondary: Icon(MdiIcons.weatherNight),
-            ),
-          ),
+          _themeSwitchBuilder(),
         ],
+      ),
+    );
+  }
+
+  _themeSwitchBuilder() {
+    return BlocBuilder<ThemeBloc, ThemeData>(
+      builder: (context, theme) => SwitchListTile(
+        title: Text('Night Theme'),
+        value: theme == themeNight(),
+        onChanged: (bool value) =>
+            BlocProvider.of<ThemeBloc>(context).add(ThemeEvent.toggle),
+        secondary: Icon(MdiIcons.weatherNight),
       ),
     );
   }
