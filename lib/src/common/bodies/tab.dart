@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:native_device_orientation/native_device_orientation.dart';
-import 'package:picbox/src/common/components/navigation_bar.dart';
 
 class TabBody extends StatefulWidget {
   final String title;
