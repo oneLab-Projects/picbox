@@ -106,31 +106,33 @@ class _NavigationBarState extends State<NavigationBar> {
         ? 0
         : MediaQuery.of(context).padding.top;
 
-    double animationButtons = state.target == NavbarTarget.search ? 80 : 0;
-    double animationTagbar = state.target == NavbarTarget.search ? 1 : 0;
+    double animationButtons = state.target == NavbarTarget.search ? 50 : 0;
 
     return Align(
       alignment: getAlignment(orientation),
       child: Material(
         color: widget.backgroundColor,
-        child: AnimatedContainer(
-          height: height + (animationButtons / 5),
-          width: width,
+        child: Container(
+          constraints: BoxConstraints.expand(height: height, width: width),
           margin: EdgeInsets.only(
             top: marginTop,
           ),
-          curve: Curves.ease,
-          duration: Duration(milliseconds: 200),
           child: Stack(
             children: <Widget>[
-              AnimatedOpacity(
-                opacity: animationTagbar,
+              AnimatedPositioned(
+                top: -(50 - animationButtons),
+                bottom: 50 - animationButtons,
+                left: 0,
+                right: 0,
                 curve: Curves.ease,
                 duration: Duration(milliseconds: 200),
                 child: _buildTagbar(context),
               ),
-              AnimatedPadding(
-                padding: EdgeInsets.only(top: animationButtons),
+              AnimatedPositioned(
+                top: animationButtons,
+                bottom: 0,
+                left: 0,
+                right: 0,
                 curve: Curves.ease,
                 duration: Duration(milliseconds: 200),
                 child: Flex(
@@ -150,7 +152,7 @@ class _NavigationBarState extends State<NavigationBar> {
     return ListView(
       physics: BouncingScrollPhysics(),
       scrollDirection: Axis.horizontal,
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 21),
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 14),
       children: <Widget>[
         for (var i = 0; i < 6; i++)
           Container(
