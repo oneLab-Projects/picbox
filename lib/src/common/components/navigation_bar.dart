@@ -1,5 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:native_device_orientation/native_device_orientation.dart';
+import 'package:picbox/src/blocs/navbar/navbar_bloc.dart';
+import 'package:picbox/src/blocs/navbar/navbar_state.dart';
+import 'package:picbox/src/blocs/navbar/navbar_target.dart';
 
 class NavigationBarItem {
   NavigationBarItem({this.iconData, this.selectedIconData});
@@ -52,19 +58,28 @@ class _NavigationBarState extends State<NavigationBar> {
       );
     });
 
-    return NativeDeviceOrientationReader(builder: (context) {
-      NativeDeviceOrientation orientation =
-          NativeDeviceOrientationReader.orientation(context);
-      return Stack(
-        children: <Widget>[
-          Padding(
-            padding: getPadding(orientation),
-            child: widget.body,
-          ),
-          _buildNavigationBar(items, orientation),
-        ],
-      );
-    });
+    return BlocBuilder<NavbarBloc, NavbarState>(
+      builder: (context, state) => NativeDeviceOrientationReader(
+        builder: (context) {
+          NativeDeviceOrientation orientation;
+          if (state is Showed) {
+            orientation = NativeDeviceOrientation.portraitUp;
+          } else {
+            orientation = NativeDeviceOrientationReader.orientation(context);
+          }
+
+          return Stack(
+            children: <Widget>[
+              Padding(
+                padding: getPadding(orientation),
+                child: widget.body,
+              ),
+              _buildNavigationBar(items, orientation, state),
+            ],
+          );
+        },
+      ),
+    );
   }
 
   EdgeInsets getPadding(NativeDeviceOrientation orientation) {
@@ -77,7 +92,7 @@ class _NavigationBarState extends State<NavigationBar> {
           : EdgeInsets.only(bottom: NavigationBar.heightNavigationBarVertical);
   }
 
-  Widget _buildNavigationBar(items, orientation) {
+  Widget _buildNavigationBar(items, orientation, NavbarState state) {
     double height = getAlignment(orientation) == Alignment.bottomCenter
         ? NavigationBar.heightNavigationBarVertical
         : double.infinity;
@@ -91,22 +106,64 @@ class _NavigationBarState extends State<NavigationBar> {
         ? 0
         : MediaQuery.of(context).padding.top;
 
+    double animationButtons = state.target == NavbarTarget.search ? 80 : 0;
+    double animationTagbar = state.target == NavbarTarget.search ? 1 : 0;
+
     return Align(
       alignment: getAlignment(orientation),
       child: Material(
         color: widget.backgroundColor,
-        child: Container(
-          height: height,
+        child: AnimatedContainer(
+          height: height + (animationButtons / 5),
           width: width,
           margin: EdgeInsets.only(
             top: marginTop,
           ),
-          child: Flex(
-            direction: direction,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: items,
+          curve: Curves.ease,
+          duration: Duration(milliseconds: 200),
+          child: Stack(
+            children: <Widget>[
+              AnimatedOpacity(
+                opacity: animationTagbar,
+                curve: Curves.ease,
+                duration: Duration(milliseconds: 200),
+                child: _buildTagbar(context),
+              ),
+              AnimatedPadding(
+                padding: EdgeInsets.only(top: animationButtons),
+                curve: Curves.ease,
+                duration: Duration(milliseconds: 200),
+                child: Flex(
+                  direction: direction,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: items,
+                ),
+              ),
+            ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildTagbar(context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 21),
+      child: ListView(
+        physics: BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        children: <Widget>[
+          for (var i = 0; i < 6; i++)
+            Container(
+              width: 90,
+              margin: EdgeInsets.only(right: 15),
+              decoration: BoxDecoration(
+                color: Colors.white10,
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+              ),
+            ),
+        ],
       ),
     );
   }
