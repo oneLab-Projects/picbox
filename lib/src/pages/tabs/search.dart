@@ -45,6 +45,7 @@ class SearchTab extends StatelessWidget {
   }
 
   Widget _buildTagBar(context) {
+    final random = Random();
     return Container(
       margin: EdgeInsets.symmetric(vertical: 15),
       height: 40,
@@ -52,7 +53,7 @@ class SearchTab extends StatelessWidget {
         children: <Widget>[
           for (var i = 0; i < 3; i++)
             Container(
-              width: 80 + Random().nextInt(30).toDouble(),
+              width: 80 + random.nextInt(30).toDouble(),
               margin: EdgeInsets.only(right: 10),
               decoration: BoxDecoration(
                 color: Theme.of(context).highlightColor,
