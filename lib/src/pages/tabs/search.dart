@@ -28,9 +28,9 @@ class SearchTab extends StatelessWidget {
       autocorrect: false,
       decoration: InputDecoration(
         hintText: 'Search',
-        contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 18),
+        contentPadding: EdgeInsets.symmetric(horizontal: 18),
         filled: true,
-        hintStyle: TextStyle(fontSize: 17, height: 1.33),
+        hintStyle: TextStyle(fontSize: 17, height: 1.4),
         fillColor: Theme.of(context).disabledColor,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(50)),
