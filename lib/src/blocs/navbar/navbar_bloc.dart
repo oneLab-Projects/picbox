@@ -15,7 +15,7 @@ class NavbarBloc extends Bloc<NavbarEvent, NavbarState> {
   @override
   Stream<NavbarState> mapEventToState(NavbarEvent event) async* {
     if (event is Show) {
-      yield Showed(target: event.target);
+      yield Showed(event.target);
     } else if (event is Reset) {
       yield Normal();
     }

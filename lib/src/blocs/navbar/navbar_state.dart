@@ -1,21 +1,22 @@
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 import 'package:picbox/src/blocs/navbar/navbar_target.dart';
 
 abstract class NavbarState extends Equatable {
-  const NavbarState();
+  const NavbarState(this.target);
+
+  final NavbarTarget target;
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [target];
 }
 
 class Showed extends NavbarState {
-  const Showed({@required this.target});
-
-  final NavbarTarget target;
+  const Showed(NavbarTarget target) : super(target);
 
   @override
   String toString() => "Showed { target: $target }";
 }
 
-class Normal extends NavbarState {}
+class Normal extends NavbarState {
+  const Normal() : super(null);
+}
