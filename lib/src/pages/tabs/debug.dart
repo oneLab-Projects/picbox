@@ -9,7 +9,7 @@ class DebugTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBody(
-      title: "Debug",
+      title: 'Debug',
       child: Column(
         children: <Widget>[
           BlocBuilder<ThemeBloc, ThemeData>(
