@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:picbox/src/blocs/navbar/navbar_bloc.dart';
 import 'package:picbox/src/blocs/theme.dart';
 import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/common/design/clear_behavior.dart';
@@ -10,14 +11,21 @@ import 'package:picbox/src/pages/main.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ThemeBloc>(
-      builder: (_) => ThemeBloc(),
-      child: MaterialAppWithTheme(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ThemeBloc>(
+          builder: (BuildContext context) => ThemeBloc(),
+        ),
+        BlocProvider<NavbarBloc>(
+          builder: (BuildContext context) => NavbarBloc(),
+        ),
+      ],
+      child: MaterialAppWithBlocs(),
     );
   }
 }
 
-class MaterialAppWithTheme extends StatelessWidget {
+class MaterialAppWithBlocs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, ThemeData>(builder: (context, theme) {
