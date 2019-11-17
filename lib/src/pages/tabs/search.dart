@@ -13,7 +13,7 @@ class SearchTab extends StatelessWidget {
           _buildTagBar(context),
           Container(
             decoration: BoxDecoration(
-              color: Theme.of(context).highlightColor,
+              color: Theme.of(context).disabledColor,
               borderRadius: BorderRadius.all(Radius.circular(15)),
             ),
             height: 185,
@@ -31,7 +31,7 @@ class SearchTab extends StatelessWidget {
         contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 18),
         filled: true,
         hintStyle: TextStyle(fontSize: 17, height: 1.33),
-        fillColor: Theme.of(context).highlightColor,
+        fillColor: Theme.of(context).disabledColor,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(50)),
           borderSide: BorderSide(style: BorderStyle.none),
@@ -56,7 +56,7 @@ class SearchTab extends StatelessWidget {
               width: 80 + random.nextInt(30).toDouble(),
               margin: EdgeInsets.only(right: 10),
               decoration: BoxDecoration(
-                color: Theme.of(context).highlightColor,
+                color: Theme.of(context).disabledColor,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
             ),
