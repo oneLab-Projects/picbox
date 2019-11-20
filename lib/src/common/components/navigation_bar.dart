@@ -1,11 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:native_device_orientation/native_device_orientation.dart';
-import 'package:picbox/src/blocs/navbar/navbar_bloc.dart';
-import 'package:picbox/src/blocs/navbar/navbar_state.dart';
-import 'package:picbox/src/blocs/navbar/navbar_target.dart';
+import 'package:picbox/src/blocs/navbar.dart';
 
 class NavigationBarItem {
   NavigationBarItem({this.iconData, this.selectedIconData});

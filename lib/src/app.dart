@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:picbox/src/blocs/navbar/navbar_bloc.dart';
+import 'package:picbox/src/blocs/navbar.dart';
 import 'package:picbox/src/blocs/theme.dart';
 import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/common/design/clear_behavior.dart';

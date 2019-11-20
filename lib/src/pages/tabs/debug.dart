@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:picbox/src/blocs/navbar/navbar_bloc.dart';
-import 'package:picbox/src/blocs/navbar/navbar_event.dart';
-import 'package:picbox/src/blocs/navbar/navbar_state.dart';
-import 'package:picbox/src/blocs/navbar/navbar_target.dart';
+import 'package:picbox/src/blocs/navbar.dart';
 import 'package:picbox/src/blocs/theme.dart';
 import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/common/bodies/tab.dart';
