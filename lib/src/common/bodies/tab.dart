@@ -18,9 +18,11 @@ class _TabBodyState extends State<TabBody> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: widget.title == null
-          ? content(context)
-          : contentWithTitleBar(context),
+      child: SizedBox.expand(
+        child: widget.title == null
+            ? content(context)
+            : contentWithTitleBar(context),
+      ),
     );
   }
 
