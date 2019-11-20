@@ -5,8 +5,83 @@ class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBody(
-      title: 'Profile',
-      child: Center(child: Text('Profile')),
+      child: Column(
+        children: <Widget>[
+          _buildHead(context),
+          Divider(height: 50),
+          _buildTabsBar(context),
+          _buildBody(context),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTabsBar(context) {
+    return Container(
+      height: 30,
+      margin: EdgeInsets.only(bottom: 25),
+      child: ListView(
+        physics: BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+        children: <Widget>[
+          for (var i = 0; i < 6; i++)
+            Container(
+              width: 90,
+              margin: EdgeInsets.only(right: 15),
+              decoration: BoxDecoration(
+                color: Theme.of(context).disabledColor,
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  GridView _buildBody(BuildContext context) {
+    return GridView.count(
+      crossAxisSpacing: 12,
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      mainAxisSpacing: 12,
+      crossAxisCount:
+          MediaQuery.of(context).orientation == Orientation.landscape ? 3 : 2,
+      children: <Widget>[
+        for (var i = 0; i < 13; i++)
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).disabledColor,
+              borderRadius: BorderRadius.all(Radius.circular(15)),
+            ),
+          ),
+      ],
+    );
+  }
+
+  Column _buildHead(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).disabledColor,
+            borderRadius: BorderRadius.all(Radius.circular(50)),
+          ),
+          height: 70,
+          width: 70,
+          margin: EdgeInsets.symmetric(vertical: 15),
+        ),
+        Column(
+          children: <Widget>[
+            Text("Oleg Tinkoff", style: Theme.of(context).textTheme.title),
+            Padding(
+              padding: EdgeInsets.all(4),
+              child: Text("@tinkoffoleg",
+                  style: Theme.of(context).textTheme.body2),
+            )
+          ],
+        ),
+      ],
     );
   }
 }
