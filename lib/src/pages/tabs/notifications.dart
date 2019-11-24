@@ -6,19 +6,26 @@ class NotificationsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabBody(
       title: 'Notifications',
-      child: Column(
-        children: <Widget>[
-          for (var i = 0; i < 13; i++)
-            Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).disabledColor,
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-              ),
-              height: 85,
-              margin: EdgeInsets.only(bottom: 15),
-            ),
-        ],
+      child: Padding(
+        padding: EdgeInsets.all(15).copyWith(bottom: 5),
+        child: _buildNotifications(context),
       ),
+    );
+  }
+
+  Column _buildNotifications(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        for (var i = 0; i < 13; i++)
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).disabledColor,
+              borderRadius: BorderRadius.all(Radius.circular(15)),
+            ),
+            height: 85,
+            margin: EdgeInsets.only(bottom: 15),
+          ),
+      ],
     );
   }
 }

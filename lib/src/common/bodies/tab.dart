@@ -62,8 +62,7 @@ class _TabBodyState extends State<TabBody> {
           child: SingleChildScrollView(
             controller: _scrollController,
             child: Padding(
-              padding: EdgeInsets.fromLTRB(14 + (2 * _scrollPosition), 80,
-                  14 + (2 * _scrollPosition), 23),
+              padding: EdgeInsets.only(top: 60),
               child: widget.child,
             ),
           ),
@@ -74,7 +73,7 @@ class _TabBodyState extends State<TabBody> {
 
   content(context) {
     return SingleChildScrollView(
-      child: Padding(padding: EdgeInsets.all(20), child: widget.child),
+      child: widget.child,
     );
   }
 

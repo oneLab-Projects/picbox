@@ -19,11 +19,11 @@ class ProfileTab extends StatelessWidget {
   Widget _buildTabsBar(context) {
     return Container(
       height: 30,
-      margin: EdgeInsets.only(bottom: 25),
+      margin: EdgeInsets.only(bottom: 10),
       child: ListView(
         physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
         children: <Widget>[
           for (var i = 0; i < 6; i++)
             Container(
@@ -41,6 +41,7 @@ class ProfileTab extends StatelessWidget {
 
   GridView _buildBody(BuildContext context) {
     return GridView.count(
+      padding: EdgeInsets.all(15),
       crossAxisSpacing: 12,
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
@@ -59,29 +60,32 @@ class ProfileTab extends StatelessWidget {
     );
   }
 
-  Column _buildHead(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).disabledColor,
-            borderRadius: BorderRadius.all(Radius.circular(50)),
+  Padding _buildHead(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: 10),
+      child: Column(
+        children: <Widget>[
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).disabledColor,
+              borderRadius: BorderRadius.all(Radius.circular(50)),
+            ),
+            height: 70,
+            width: 70,
+            margin: EdgeInsets.symmetric(vertical: 15),
           ),
-          height: 70,
-          width: 70,
-          margin: EdgeInsets.symmetric(vertical: 15),
-        ),
-        Column(
-          children: <Widget>[
-            Text("Oleg Tinkoff", style: Theme.of(context).textTheme.title),
-            Padding(
-              padding: EdgeInsets.all(4),
-              child: Text("@tinkoffoleg",
-                  style: Theme.of(context).textTheme.body2),
-            )
-          ],
-        ),
-      ],
+          Column(
+            children: <Widget>[
+              Text("Oleg Tinkoff", style: Theme.of(context).textTheme.title),
+              Padding(
+                padding: EdgeInsets.all(4),
+                child: Text("@tinkoffoleg",
+                    style: Theme.of(context).textTheme.body2),
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
