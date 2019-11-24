@@ -15,6 +15,11 @@ class DebugTab extends StatelessWidget {
         children: <Widget>[
           _themeSwitchBuilder(),
           _navigationBarTestBuilder(),
+          RaisedButton(
+            child: Text('SignInPage'),
+            onPressed: () =>
+                Navigator.of(context).pushReplacementNamed('/signin'),
+          )
         ],
       ),
     );

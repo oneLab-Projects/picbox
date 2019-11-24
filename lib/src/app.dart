@@ -44,6 +44,8 @@ class MaterialAppWithBlocs extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => MainPage(),
+          '/signin': (context) => SignInPage(),
+          '/signup': (context) => SignUpPage(),
         },
       );
     });
