@@ -122,7 +122,7 @@ class _NavigationBarState extends State<NavigationBar> {
                 right: 0,
                 curve: Curves.ease,
                 duration: Duration(milliseconds: 200),
-                child: _buildTagbar(context),
+                child: Container(),
               ),
               AnimatedPositioned(
                 top: animationButtons,
