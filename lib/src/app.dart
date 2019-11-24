@@ -6,6 +6,7 @@ import 'package:picbox/src/blocs/theme.dart';
 import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/common/design/clear_behavior.dart';
 import 'package:picbox/src/common/design/colors.dart';
+import 'package:picbox/src/pages/landing.dart';
 import 'package:picbox/src/pages/main.dart';
 
 class App extends StatelessWidget {
@@ -40,7 +41,10 @@ class MaterialAppWithBlocs extends StatelessWidget {
         title: 'Picbox',
         debugShowCheckedModeBanner: false,
         theme: theme,
-        home: MainPage(),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => MainPage(),
+        },
       );
     });
   }
