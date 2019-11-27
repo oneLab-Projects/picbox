@@ -29,7 +29,7 @@ class DebugTab extends StatelessWidget {
     return BlocBuilder<ThemeBloc, ThemeData>(
       builder: (context, theme) => SwitchListTile(
         title: Text('Night Theme'),
-        value: theme == themeNight(),
+        value: theme == themeNight,
         onChanged: (bool value) =>
             BlocProvider.of<ThemeBloc>(context).add(ThemeEvent.toggle),
         secondary: Icon(MdiIcons.weatherNight),

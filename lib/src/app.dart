@@ -55,7 +55,7 @@ class MaterialAppWithBlocs extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         statusBarIconBrightness:
-            theme == themeNight() ? Brightness.light : Brightness.dark,
+            theme == themeNight ? Brightness.light : Brightness.dark,
         systemNavigationBarColor: ColorPalette.bottomNavigation,
         statusBarColor: Colors.transparent,
         statusBarBrightness: Brightness.dark,
