@@ -9,5 +9,5 @@ final ThemeData themeDay = ThemeData(
   cursorColor: Colors.grey[800],
   disabledColor: Colors.grey[200],
   splashColor: Colors.black12,
-  highlightColor: Colors.black38,
+  highlightColor: Colors.black12,
 );

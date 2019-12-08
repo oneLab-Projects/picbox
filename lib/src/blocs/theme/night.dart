@@ -9,5 +9,5 @@ final ThemeData themeNight = ThemeData(
   cursorColor: Colors.grey[500],
   disabledColor: Color(0xFF252525),
   splashColor: Colors.black12,
-  highlightColor: Colors.black26,
+  highlightColor: Colors.black12,
 );
