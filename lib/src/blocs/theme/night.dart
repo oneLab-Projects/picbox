@@ -3,8 +3,11 @@ import 'package:picbox/src/common/design/style.dart';
 
 final ThemeData themeNight = ThemeData(
   brightness: Brightness.dark,
+  textTheme: Style.textTheme,
+  primaryColor: Colors.grey[100],
   scaffoldBackgroundColor: Color(0xFF1E1E1E),
   cursorColor: Colors.grey[500],
   disabledColor: Color(0xFF252525),
-  textTheme: Style.textTheme,
+  splashColor: Colors.black12,
+  highlightColor: Colors.black26,
 );

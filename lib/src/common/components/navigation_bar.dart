@@ -184,6 +184,7 @@ class _NavigationBarState extends State<NavigationBar> {
     return Expanded(
       child: SizedBox.expand(
         child: InkWell(
+          borderRadius: BorderRadius.all(Radius.circular(5)),
           onTap: () => onPressed(index),
           child: Icon(iconData, color: color, size: widget.iconSize),
         ),

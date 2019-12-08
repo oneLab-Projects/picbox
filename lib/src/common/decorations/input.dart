@@ -10,7 +10,10 @@ class RoundInputDesign extends InputDecoration {
           prefixText: prefixText,
           contentPadding: EdgeInsets.symmetric(horizontal: 18),
           filled: true,
-          hintStyle: TextStyle(fontSize: 17, height: 1.4),
+          hintStyle: Theme.of(context).textTheme.subhead.copyWith(
+                fontSize: 17,
+                color: Theme.of(context).textTheme.caption.color,
+              ),
           fillColor: Theme.of(context).disabledColor,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(50)),

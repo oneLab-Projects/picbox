@@ -79,8 +79,13 @@ class ProfileTab extends StatelessWidget {
               Text("Oleg Tinkoff", style: Theme.of(context).textTheme.title),
               Padding(
                 padding: EdgeInsets.all(4),
-                child: Text("@tinkoffoleg",
-                    style: Theme.of(context).textTheme.body2),
+                child: Text(
+                  "@tinkoffoleg",
+                  style: Theme.of(context)
+                      .textTheme
+                      .subhead
+                      .copyWith(color: Theme.of(context).hintColor),
+                ),
               )
             ],
           ),
