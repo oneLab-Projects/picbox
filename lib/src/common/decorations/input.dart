@@ -7,16 +7,12 @@ class InputDesign extends InputDecoration {
     String prefixText,
   }) : super(
           labelText: hintText,
-          labelStyle: Theme.of(context)
-              .textTheme
-              .subhead
-              .copyWith(color: Theme.of(context).textTheme.caption.color),
-          prefixStyle: Theme.of(context)
-              .textTheme
-              .subhead
-              .copyWith(color: Theme.of(context).textTheme.caption.color),
+          labelStyle: Theme.of(context).textTheme.subhead.copyWith(
+              height: 1.4, color: Theme.of(context).textTheme.caption.color),
+          prefixStyle: Theme.of(context).textTheme.subhead.copyWith(
+              height: 1.4, color: Theme.of(context).textTheme.caption.color),
           prefixText: prefixText,
-          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          contentPadding: EdgeInsets.symmetric(horizontal: 16),
           filled: true,
           fillColor: Theme.of(context).disabledColor,
           enabledBorder: OutlineInputBorder(
