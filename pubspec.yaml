@@ -12,6 +12,7 @@ dependencies:
   flutter_bloc: ^2.0.0
   native_device_orientation: ^0.3.0
   equatable: ^0.6.1
+  ubuntu_font_flutter: ^0.0.1
 
 dev_dependencies:
   flutter_test:
@@ -19,3 +20,37 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: Ubuntu
+      fonts:
+        - asset: packages/ubuntu_font_flutter/Ubuntu-R.ttf
+        - asset: packages/ubuntu_font_flutter/Ubuntu-RI.ttf
+          style: italic
+        - asset: packages/ubuntu_font_flutter/Ubuntu-B.ttf
+          weight: 700
+        - asset: packages/ubuntu_font_flutter/Ubuntu-BI.ttf
+          weight: 700
+          style: italic
+        - asset: packages/ubuntu_font_flutter/Ubuntu-L.ttf
+          weight: 300
+        - asset: packages/ubuntu_font_flutter/Ubuntu-LI.ttf
+          weight: 300
+          style: italic
+        - asset: packages/ubuntu_font_flutter/Ubuntu-M.ttf
+          weight: 500
+        - asset: packages/ubuntu_font_flutter/Ubuntu-MI.ttf
+          weight: 500
+          style: italic
+    - family: Ubuntu Mono
+      fonts:
+        - asset: packages/ubuntu_font_flutter/UbuntuMono-R.ttf
+        - asset: packages/ubuntu_font_flutter/UbuntuMono-RI.ttf
+          style: italic
+        - asset: packages/ubuntu_font_flutter/UbuntuMono-B.ttf
+          weight: 700
+        - asset: packages/ubuntu_font_flutter/UbuntuMono-BI.ttf
+          weight: 700
+          style: italic
+    - family: Ubuntu Condensed
+      fonts:
+        - asset: packages/ubuntu_font_flutter/Ubuntu-C.ttf
