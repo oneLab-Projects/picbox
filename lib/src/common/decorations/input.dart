@@ -1,5 +1,41 @@
 import 'package:flutter/material.dart';
 
+class InputDesign extends InputDecoration {
+  InputDesign(
+    BuildContext context, {
+    String hintText,
+    String prefixText,
+  }) : super(
+          labelText: hintText,
+          labelStyle: Theme.of(context)
+              .textTheme
+              .subhead
+              .copyWith(color: Theme.of(context).textTheme.caption.color),
+          prefixStyle: Theme.of(context)
+              .textTheme
+              .subhead
+              .copyWith(color: Theme.of(context).textTheme.caption.color),
+          prefixText: prefixText,
+          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          filled: true,
+          fillColor: Theme.of(context).disabledColor,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            borderSide: BorderSide(
+              width: 1,
+              color: Theme.of(context).dividerColor,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+            borderSide: BorderSide(
+              width: 2,
+              color: Theme.of(context).hintColor,
+            ),
+          ),
+        );
+}
+
 class RoundInputDesign extends InputDecoration {
   RoundInputDesign(
     BuildContext context, {
