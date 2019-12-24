@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -10,7 +11,7 @@ class DebugTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBody(
-      title: 'Debug',
+      title: AppLocalizations.of(context).tr('debug.title'),
       child: Column(
         children: <Widget>[
           _themeSwitchBuilder(),

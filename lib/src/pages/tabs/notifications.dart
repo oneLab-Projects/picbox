@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:picbox/src/common/bodies/tab.dart';
 
@@ -5,7 +6,7 @@ class NotificationsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBody(
-      title: 'Notifications',
+      title: AppLocalizations.of(context).tr('notifications.title'),
       child: Padding(
         padding: EdgeInsets.all(15).copyWith(bottom: 5),
         child: _buildNotifications(context),

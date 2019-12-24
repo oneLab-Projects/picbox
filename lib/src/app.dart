@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,26 +31,41 @@ class App extends StatelessWidget {
 class MaterialAppWithBlocs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeBloc, ThemeData>(builder: (context, theme) {
-      paintUiOverlay(theme);
-      return MaterialApp(
-        builder: (context, child) {
-          return ScrollConfiguration(
-            behavior: ClearBehavior(),
-            child: child,
-          );
-        },
-        title: 'Picbox',
-        debugShowCheckedModeBanner: false,
-        theme: theme,
-        initialRoute: '/',
-        routes: {
-          '/': (context) => MainPage(),
-          '/signin': (context) => SignInPage(),
-          '/signup': (context) => SignUpPage(),
-        },
-      );
-    });
+    var data = EasyLocalizationProvider.of(context).data;
+
+    return EasyLocalizationProvider(
+      data: data,
+      child: BlocBuilder<ThemeBloc, ThemeData>(builder: (context, theme) {
+        paintUiOverlay(theme);
+        return MaterialApp(
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            EasylocaLizationDelegate(
+              locale: data.locale,
+              path: 'resources/langs',
+              useOnlyLangCode: true,
+            ),
+          ],
+          supportedLocales: [Locale('en'), Locale('ru')],
+          locale: data.savedLocale,
+          builder: (context, child) {
+            return ScrollConfiguration(
+              behavior: ClearBehavior(),
+              child: child,
+            );
+          },
+          title: 'Picbox',
+          debugShowCheckedModeBanner: false,
+          theme: theme,
+          initialRoute: '/',
+          routes: {
+            '/': (context) => MainPage(),
+            '/signin': (context) => SignInPage(),
+          },
+        );
+      }),
+    );
   }
 
   void paintUiOverlay(ThemeData theme) {
