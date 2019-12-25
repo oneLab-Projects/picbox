@@ -47,12 +47,12 @@ class DebugTab extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           RaisedButton(
-            child: Text('English' + (data.locale.languageCode == 'en' ? ' {set}' : '')),
+            child: Text('English' + (Localizations.localeOf(context).languageCode == 'en' ? ' {set}' : '')),
             onPressed: () =>
                 data.changeLocale(Locale("en")),
           ),
           RaisedButton(
-            child: Text('Русский' + (data.locale.languageCode == 'ru' ? ' {set}' : '')),
+            child: Text('Русский' + (Localizations.localeOf(context).languageCode == 'ru' ? ' {set}' : '')),
             onPressed: () => data.changeLocale(Locale("ru")),
           ),
         ],
