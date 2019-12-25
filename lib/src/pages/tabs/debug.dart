@@ -15,6 +15,7 @@ class DebugTab extends StatelessWidget {
       child: Column(
         children: <Widget>[
           _themeSwitchBuilder(),
+          _languageSwitchBuilder(context),
           _navigationBarTestBuilder(),
           RaisedButton(
             child: Text('SignInPage'),
@@ -34,6 +35,27 @@ class DebugTab extends StatelessWidget {
         onChanged: (bool value) =>
             BlocProvider.of<ThemeBloc>(context).add(ThemeEvent.toggle),
         secondary: Icon(MdiIcons.weatherNight),
+      ),
+    );
+  }
+
+  _languageSwitchBuilder(BuildContext context) {
+    var data = EasyLocalizationProvider.of(context).data;
+    return EasyLocalizationProvider(
+      data: data,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          RaisedButton(
+            child: Text('English' + (data.locale.languageCode == 'en' ? ' {set}' : '')),
+            onPressed: () =>
+                data.changeLocale(Locale("en")),
+          ),
+          RaisedButton(
+            child: Text('Русский' + (data.locale.languageCode == 'ru' ? ' {set}' : '')),
+            onPressed: () => data.changeLocale(Locale("ru")),
+          ),
+        ],
       ),
     );
   }
@@ -62,6 +84,6 @@ class DebugTab extends StatelessWidget {
                   child: Text(state.toString()),
                 ),
               ],
-            ));
+            ),);
   }
 }
