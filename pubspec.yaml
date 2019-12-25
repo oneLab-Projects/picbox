@@ -13,6 +13,7 @@ dependencies:
   native_device_orientation: ^0.3.0
   equatable: ^0.6.1
   ubuntu_font_flutter: ^0.0.1
+  flare_flutter: ^1.8.0
   easy_localization: ^1.3.1
 
 dev_dependencies:
