@@ -24,8 +24,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
-    - resources/langs/en.json
-    - resources/langs/ru.json
+    - resources/langs/
   fonts:
     - family: Ubuntu
       fonts:

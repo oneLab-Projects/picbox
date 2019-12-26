@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:picbox/src/blocs/navbar.dart';
 import 'package:picbox/src/blocs/theme.dart';
 import 'package:picbox/src/blocs/theme/night.dart';
+import 'package:picbox/src/common/constants.dart';
 import 'package:picbox/src/common/design/clear_behavior.dart';
 import 'package:picbox/src/common/design/colors.dart';
 import 'package:picbox/src/pages/landing.dart';
@@ -32,12 +33,13 @@ class MaterialAppWithBlocs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var data = EasyLocalizationProvider.of(context).data;
+    var supportedLanguages = Constants.supportedLanguages;
 
     return EasyLocalizationProvider(
       data: data,
       child: BlocBuilder<ThemeBloc, ThemeData>(builder: (context, theme) {
         paintUiOverlay(theme);
-        return MaterialApp(
+        return MaterialApp( 
           localizationsDelegates: [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
@@ -47,7 +49,7 @@ class MaterialAppWithBlocs extends StatelessWidget {
               useOnlyLangCode: true,
             ),
           ],
-          supportedLocales: [Locale('en'), Locale('ru')],
+          supportedLocales: List.generate(supportedLanguages.length, (int index) => Locale(supportedLanguages.keys.toList()[index])),
           locale: data.savedLocale,
           builder: (context, child) {
             return ScrollConfiguration(
