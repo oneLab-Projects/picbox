@@ -2,23 +2,20 @@
     "lang": {
         "name": "Отраженный"
     },
-
     "home": {
         "title": "Для Вас"
     },
-
     "search": {
         "title": "Поиск"
     },
-
     "notifications": {
         "title": "Уведомления"
     },
-
     "profile": {
-        "title": "Профиль"
+        "title": "Профиль",
+        "edit_profile": "Редактировать профиль",
+        "night_theme": "Ночная тема"
     },
-
     "debug": {
         "title": "Для разработчиков"
     }

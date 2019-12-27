@@ -2,23 +2,20 @@
     "lang": {
         "name": "English"
     },
-
     "home": {
         "title": "For You"
     },
-
     "search": {
         "title": "Search"
     },
-
     "notifications": {
         "title": "Notifications"
     },
-
     "profile": {
-        "title": "Profile"
+        "title": "Profile",
+        "edit_profile": "Edit profile",
+        "night_theme": "Night theme"
     },
-
     "debug": {
         "title": "For developers"
     }
