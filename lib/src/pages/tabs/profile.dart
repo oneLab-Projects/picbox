@@ -28,10 +28,20 @@ class ProfileTab extends StatelessWidget {
       children: <Widget>[
         ListButton(AppLocalizations.of(context).tr('profile.edit_profile'),
             iconData: MdiIcons.accountEdit),
+        _buildThemeSwitch(),
       ],
     );
   }
 
+  _buildThemeSwitch() {
+    return BlocBuilder<ThemeBloc, ThemeData>(
+      builder: (context, theme) => ListSwitch(
+        AppLocalizations.of(context).tr('profile.night_theme'),
+        iconData: MdiIcons.weatherNight,
+        value: theme == themeNight,
+        onChanged: (bool value) =>
+            BlocProvider.of<ThemeBloc>(context).add(ThemeEvent.toggle),
+      ),
     );
   }
 

@@ -15,7 +15,6 @@ class DebugTab extends StatelessWidget {
       title: AppLocalizations.of(context).tr('debug.title'),
       child: Column(
         children: <Widget>[
-          _themeSwitchBuilder(),
           _languageSwitchBuilder(context),
           _navigationBarTestBuilder(),
           RaisedButton(
@@ -24,18 +23,6 @@ class DebugTab extends StatelessWidget {
                 Navigator.of(context).pushReplacementNamed('/signin'),
           )
         ],
-      ),
-    );
-  }
-
-  _themeSwitchBuilder() {
-    return BlocBuilder<ThemeBloc, ThemeData>(
-      builder: (context, theme) => SwitchListTile(
-        title: Text('Night Theme'),
-        value: theme == themeNight,
-        onChanged: (bool value) =>
-            BlocProvider.of<ThemeBloc>(context).add(ThemeEvent.toggle),
-        secondary: Icon(MdiIcons.weatherNight),
       ),
     );
   }
