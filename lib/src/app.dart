@@ -9,8 +9,9 @@ import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/common/constants.dart';
 import 'package:picbox/src/common/design/clear_behavior.dart';
 import 'package:picbox/src/common/design/colors.dart';
-import 'package:picbox/src/pages/landing.dart';
+import 'package:picbox/src/pages/landing/signin.dart';
 import 'package:picbox/src/pages/main.dart';
+import 'package:picbox/src/pages/profile/debug.dart';
 
 class App extends StatelessWidget {
   @override
@@ -39,7 +40,7 @@ class MaterialAppWithBlocs extends StatelessWidget {
       data: data,
       child: BlocBuilder<ThemeBloc, ThemeData>(builder: (context, theme) {
         paintUiOverlay(theme);
-        return MaterialApp( 
+        return MaterialApp(
           localizationsDelegates: [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
@@ -49,7 +50,8 @@ class MaterialAppWithBlocs extends StatelessWidget {
               useOnlyLangCode: true,
             ),
           ],
-          supportedLocales: List.generate(supportedLanguages.length, (int index) => Locale(supportedLanguages.keys.toList()[index])),
+          supportedLocales: List.generate(supportedLanguages.length,
+              (int index) => Locale(supportedLanguages.keys.toList()[index])),
           locale: data.savedLocale,
           builder: (context, child) {
             return ScrollConfiguration(
@@ -64,6 +66,7 @@ class MaterialAppWithBlocs extends StatelessWidget {
           routes: {
             '/': (context) => MainPage(),
             '/signin': (context) => SignInPage(),
+            '/profile/debug': (context) => DebugPage(),
           },
         );
       }),

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:picbox/src/common/components/button.dart';
 import 'package:picbox/src/common/decorations/input.dart';
-import 'package:picbox/src/pages/landing.dart';
+import 'package:picbox/src/pages/landing/signup.dart';
 
 class SignInPage extends StatefulWidget {
   @override
