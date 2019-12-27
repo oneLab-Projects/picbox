@@ -14,5 +14,9 @@ class Style {
       fontFamily: 'Ubuntu',
       fontSize: 16,
     ),
+    caption: TextStyle(
+      fontFamily: 'Ubuntu',
+      fontSize: 13.4,
+    ),
   );
 }

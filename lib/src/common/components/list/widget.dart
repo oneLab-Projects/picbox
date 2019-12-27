@@ -83,14 +83,13 @@ class ListWidget extends StatelessWidget {
   _buildDescription(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: 4),
+          SizedBox(height: 6),
           Text(
             description,
             style: Theme.of(context).textTheme.caption.copyWith(
                   color: onTap == null && control != null
                       ? Theme.of(context).textTheme.button.color.withAlpha(110)
                       : Theme.of(context).textTheme.button.color.withAlpha(170),
-                  fontSize: 13.4,
                 ),
           ),
         ],
