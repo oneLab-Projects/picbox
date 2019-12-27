@@ -1,7 +1,11 @@
+import 'dart:math';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:picbox/src/common/components/button.dart';
 import 'package:picbox/src/common/decorations/input.dart';
+import 'package:picbox/src/pages/landing.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -10,19 +14,28 @@ class SignInPage extends StatefulWidget {
 
 class _SignInPageState extends State<SignInPage> {
   int _phoneNumber;
+  bool _loading = false;
+  String _logoSmile = "^_^";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _buildBody(
         [
-          Text("^_^",
-              style: TextStyle(
-                  fontFamily: 'Ubuntu',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 58,
-                  color: Theme.of(context).primaryColor)),
-          const SizedBox(height: 25.0),
+          GestureDetector(
+            onTap: () {
+              var smiles = ["^_^", "ТзТ", "U_U", "о-о", "о_о"];
+              setState(
+                  () => _logoSmile = smiles[Random().nextInt(smiles.length)]);
+            },
+            child: Text(_logoSmile,
+                style: TextStyle(
+                    fontFamily: 'Ubuntu',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 58,
+                    color: Theme.of(context).primaryColor)),
+          ),
+          SizedBox(height: 25.0),
           Text(
             "Authorize to oneLab",
             style: Theme.of(context)
@@ -30,12 +43,14 @@ class _SignInPageState extends State<SignInPage> {
                 .subhead
                 .copyWith(color: Theme.of(context).hintColor),
           ),
-          const SizedBox(height: 200.0),
+          SizedBox(height: 200.0),
           _buildPhoneNumberTextField(context),
-          const SizedBox(height: 10.0),
+          SizedBox(height: 10.0),
           Button(
-            text: 'Continue',
-            onTap: _phoneNumber.toString().length >= 11 ? () {} : null,
+            'Continue',
+            loading: _loading,
+            onTap:
+                _phoneNumber.toString().length >= 11 ? () => _continue() : null,
           ),
         ],
       ),
@@ -65,7 +80,7 @@ class _SignInPageState extends State<SignInPage> {
       keyboardType: TextInputType.phone,
       onChanged: (String value) {
         setState(() {
-          _phoneNumber = parsePhoneNumber(value);
+          _phoneNumber = _parsePhoneNumber(value);
         });
       },
       inputFormatters: <TextInputFormatter>[
@@ -75,7 +90,19 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  int parsePhoneNumber(String value) =>
+  void _continue() async {
+    setState(() => _loading = true);
+
+    await Future.delayed(Duration(seconds: 2));
+    setState(() => _loading = false);
+
+    Navigator.push(
+      context,
+      CupertinoPageRoute(builder: (context) => SignUpPage()),
+    );
+  }
+
+  int _parsePhoneNumber(String value) =>
       int.parse('7' + value.replaceAll(RegExp(r'[^+\d]'), ''));
 
   final _UsNumberTextInputFormatter _phoneNumberFormatter =
