@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
   Button(
-      {this.text,
-      this.iconData,
-      this.onTap,
-      this.onLongPress,
-      this.loading = false});
+      this.text,
+      { 
+        this.iconData,
+        this.onTap,
+        this.onLongPress,
+        this.loading = false
+      });
 
   final IconData iconData;
   final bool loading;
