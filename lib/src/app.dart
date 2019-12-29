@@ -10,7 +10,7 @@ import 'package:picbox/src/common/constants.dart';
 import 'package:picbox/src/common/design/clear_behavior.dart';
 import 'package:picbox/src/common/design/colors.dart';
 import 'package:picbox/src/pages/landing/signin.dart';
-import 'package:picbox/src/pages/main.dart';
+import 'package:picbox/src/pages/root.dart';
 import 'package:picbox/src/pages/profile/debug.dart';
 
 class App extends StatelessWidget {
@@ -64,7 +64,7 @@ class MaterialAppWithBlocs extends StatelessWidget {
           theme: theme,
           initialRoute: '/',
           routes: {
-            '/': (context) => MainPage(),
+            '/': (context) => RootPage(),
             '/signin': (context) => SignInPage(),
             '/profile/debug': (context) => DebugPage(),
           },

@@ -4,38 +4,37 @@ import 'package:picbox/src/common/components/navigation_bar.dart';
 import 'package:picbox/src/common/design/colors.dart';
 import 'package:picbox/src/pages/tabs.dart';
 
-class MainPage extends StatefulWidget {
+class RootPage extends StatefulWidget {
   @override
-  _MainPageState createState() => _MainPageState();
+  _RootPageState createState() => _RootPageState();
 }
 
-class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
-  TabController tabController;
-  final List<Widget> tabs = [
+class _RootPageState extends State<RootPage> with TickerProviderStateMixin {
+  TabController _tabController;
+  final List<Widget> _tabs = [
     HomeTab(),
     SearchTab(),
     NotificationsTab(),
     ProfileTab(),
-    DebugTab(),
   ];
 
-  Widget _currentTab = HomeTab();
+  int _currentIndex = 0;
 
   @override
   void dispose() {
-    tabController.dispose();
+    _tabController.dispose();
     super.dispose();
   }
 
   @override
   void initState() {
-    tabController = TabController(length: tabs.length, vsync: this);
+    _tabController = TabController(length: _tabs.length, vsync: this);
     super.initState();
   }
 
   void _selectedTab(int index) {
     setState(() {
-      _currentTab = tabs[index];
+      _currentIndex = index;
     });
   }
 
@@ -43,7 +42,10 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       body: NavigationBar(
-        body: _currentTab,
+        body: IndexedStack(
+          index: _currentIndex,
+          children: _tabs,
+        ),
         onTabSelected: _selectedTab,
         backgroundColor: ColorPalette.bottomNavigation,
         color: Colors.white54,
@@ -54,13 +56,12 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
               selectedIconData: MdiIcons.compass),
           NavigationBarItem(iconData: Icons.search),
           NavigationBarItem(
-              iconData: Icons.notifications_none,
-              selectedIconData: Icons.notifications),
+            iconData: Icons.notifications_none,
+            selectedIconData: Icons.notifications,
+          ),
           NavigationBarItem(
               iconData: MdiIcons.accountCircleOutline,
               selectedIconData: MdiIcons.accountCircle),
-          NavigationBarItem(
-              iconData: MdiIcons.bugOutline, selectedIconData: MdiIcons.bug),
         ],
       ),
     );
