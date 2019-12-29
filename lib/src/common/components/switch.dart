@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Switch extends StatefulWidget {
   Switch(this.value);
-  bool value;
+  final bool value;
 
   @override
   _SwitchState createState() => _SwitchState();

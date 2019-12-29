@@ -9,6 +9,7 @@ class SignUpPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           RaisedButton(
+            onPressed: () {},
             child: Text("Register"),
           ),
         ],

@@ -8,14 +8,14 @@ class ListSwitch extends StatefulWidget {
     this.description,
     this.iconData,
     this.onChanged,
-    this.value = false,
+    this.value,
   });
 
   final String caption;
   final String description;
   final IconData iconData;
   final Function(bool) onChanged;
-  bool value;
+  final bool value;
 
   @override
   _ListSwitchState createState() => _ListSwitchState();
@@ -30,10 +30,7 @@ class _ListSwitchState extends State<ListSwitch> {
       iconData: widget.iconData,
       onTap: widget.onChanged == null
           ? null
-          : () {
-              setState(() => widget.value = !widget.value);
-              widget.onChanged(widget.value);
-            },
+          : () => widget.onChanged(!widget.value),
       control: Opacity(
           opacity: widget.onChanged == null ? 0.5 : 1,
           child: c.Switch(widget.value)),
