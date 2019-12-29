@@ -2,14 +2,8 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
-  Button(
-      this.text,
-      { 
-        this.iconData,
-        this.onTap,
-        this.onLongPress,
-        this.loading = false
-      });
+  Button(this.text,
+      {this.iconData, this.onTap, this.onLongPress, this.loading = false});
 
   final IconData iconData;
   final bool loading;
@@ -31,8 +25,8 @@ class Button extends StatelessWidget {
     );
   }
 
-  Padding _buildContent(BuildContext context) => Padding(
-        padding: EdgeInsets.all(16),
+  Widget _buildContent(BuildContext context) => Padding(
+        padding: const EdgeInsets.all(16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -43,7 +37,7 @@ class Button extends StatelessWidget {
         ),
       );
 
-  Opacity _buildLoader(BuildContext context) => Opacity(
+  Widget _buildLoader(BuildContext context) => Opacity(
         opacity: loading ? 0.8 : 0,
         child: SizedBox(
           width: 18,
@@ -56,14 +50,14 @@ class Button extends StatelessWidget {
         ),
       );
 
-  Icon _buildIcon(BuildContext context) => Icon(
+  Widget _buildIcon(BuildContext context) => Icon(
         iconData,
         color: onTap == null
             ? Theme.of(context).disabledColor.withAlpha(150)
             : Theme.of(context).disabledColor,
       );
 
-  Padding _buildText(BuildContext context) => Padding(
+  Widget _buildText(BuildContext context) => Padding(
         padding: EdgeInsets.symmetric(horizontal: 12),
         child: Text(
           text,

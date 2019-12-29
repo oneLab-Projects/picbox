@@ -81,12 +81,14 @@ class _NavigationBarState extends State<NavigationBar> {
 
   EdgeInsets getPadding(NativeDeviceOrientation orientation) {
     if (orientation == NativeDeviceOrientation.landscapeLeft)
-      return EdgeInsets.only(
+      return const EdgeInsets.only(
           right: NavigationBar.weightNavigationBarHorisontal);
     else
       return (orientation == NativeDeviceOrientation.landscapeRight)
-          ? EdgeInsets.only(left: NavigationBar.weightNavigationBarHorisontal)
-          : EdgeInsets.only(bottom: NavigationBar.heightNavigationBarVertical);
+          ? const EdgeInsets.only(
+              left: NavigationBar.weightNavigationBarHorisontal)
+          : const EdgeInsets.only(
+              bottom: NavigationBar.heightNavigationBarVertical);
   }
 
   Widget _buildNavigationBar(items, orientation, NavbarState state) {
@@ -149,12 +151,12 @@ class _NavigationBarState extends State<NavigationBar> {
     return ListView(
       physics: BouncingScrollPhysics(),
       scrollDirection: Axis.horizontal,
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 14),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
       children: <Widget>[
         for (var i = 0; i < 6; i++)
           Container(
             width: 90,
-            margin: EdgeInsets.only(right: 15),
+            margin: const EdgeInsets.only(right: 15),
             decoration: BoxDecoration(
               color: Colors.white10,
               borderRadius: BorderRadius.all(Radius.circular(15)),

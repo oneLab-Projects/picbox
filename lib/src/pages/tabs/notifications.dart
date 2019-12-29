@@ -8,13 +8,13 @@ class NotificationsTab extends StatelessWidget {
     return TabBody(
       title: AppLocalizations.of(context).tr('notifications.title'),
       child: Padding(
-        padding: EdgeInsets.all(15).copyWith(bottom: 5),
+        padding: const EdgeInsets.all(15).copyWith(bottom: 5),
         child: _buildNotifications(context),
       ),
     );
   }
 
-  _buildNotifications(BuildContext context) {
+  Widget _buildNotifications(BuildContext context) {
     return Column(
       children: <Widget>[
         for (var i = 0; i < 13; i++)
@@ -24,7 +24,7 @@ class NotificationsTab extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(15)),
             ),
             height: 85,
-            margin: EdgeInsets.only(bottom: 15),
+            margin: const EdgeInsets.only(bottom: 15),
           ),
       ],
     );

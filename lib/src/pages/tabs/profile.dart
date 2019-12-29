@@ -15,7 +15,7 @@ class ProfileTab extends StatelessWidget {
       child: Column(
         children: <Widget>[
           _buildHead(context),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Divider(),
           _buildBody(context),
         ],
@@ -23,7 +23,7 @@ class ProfileTab extends StatelessWidget {
     );
   }
 
-  _buildBody(BuildContext context) {
+  Widget _buildBody(BuildContext context) {
     return Column(
       children: <Widget>[
         ListButton(AppLocalizations.of(context).tr('profile.edit_profile'),
@@ -33,7 +33,7 @@ class ProfileTab extends StatelessWidget {
     );
   }
 
-  _buildThemeSwitch() {
+  Widget _buildThemeSwitch() {
     return BlocBuilder<ThemeBloc, ThemeData>(
       builder: (context, theme) => ListSwitch(
         AppLocalizations.of(context).tr('profile.night_theme'),
@@ -45,10 +45,10 @@ class ProfileTab extends StatelessWidget {
     );
   }
 
-  _buildHead(BuildContext context) {
+  Widget _buildHead(BuildContext context) {
     return Column(
       children: <Widget>[
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         Container(
           decoration: BoxDecoration(
             color: Theme.of(context).disabledColor,
@@ -56,12 +56,12 @@ class ProfileTab extends StatelessWidget {
           ),
           height: 70,
           width: 70,
-          margin: EdgeInsets.symmetric(vertical: 15),
+          margin: const EdgeInsets.symmetric(vertical: 15),
         ),
         Column(
           children: <Widget>[
             Text("Oleg Tinkoff", style: Theme.of(context).textTheme.title),
-            SizedBox(height: 4),
+            const SizedBox(height: 4),
             Text(
               "@tinkoffoleg",
               style: Theme.of(context)

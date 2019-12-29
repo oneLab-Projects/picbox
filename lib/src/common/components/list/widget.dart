@@ -32,20 +32,20 @@ class ListWidget extends StatelessWidget {
     );
   }
 
-  _buildContent(BuildContext context) => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 22, vertical: 15),
+  Widget _buildContent(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             if (iconData != null) _buildIcon(context),
             if (caption != null) _buildText(context),
-            if (control != null) SizedBox(width: 20),
+            if (control != null) const SizedBox(width: 20),
             if (control != null) control,
           ],
         ),
       );
 
-  _buildIcon(BuildContext context) => Row(
+  Widget _buildIcon(BuildContext context) => Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Icon(
@@ -55,11 +55,11 @@ class ListWidget extends StatelessWidget {
                 ? Theme.of(context).textTheme.button.color.withAlpha(150)
                 : Theme.of(context).textTheme.button.color,
           ),
-          SizedBox(width: 18),
+          const SizedBox(width: 18),
         ],
       );
 
-  _buildText(BuildContext context) => Expanded(
+  Widget _buildText(BuildContext context) => Expanded(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -80,10 +80,10 @@ class ListWidget extends StatelessWidget {
         ),
       );
 
-  _buildDescription(BuildContext context) => Column(
+  Widget _buildDescription(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: 6),
+          const SizedBox(height: 6),
           Text(
             description,
             style: Theme.of(context).textTheme.caption.copyWith(

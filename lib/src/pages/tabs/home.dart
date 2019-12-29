@@ -11,9 +11,9 @@ class HomeTab extends StatelessWidget {
     );
   }
 
-  GridView _buildCardGrid(BuildContext context) {
+  Widget _buildCardGrid(BuildContext context) {
     return GridView.count(
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       crossAxisSpacing: 12,
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),

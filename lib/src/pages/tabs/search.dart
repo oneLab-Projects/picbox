@@ -7,7 +7,7 @@ class SearchTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabBody(
       child: Padding(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         child: Column(
           children: <Widget>[
             _buildSearchBar(context),
@@ -17,7 +17,7 @@ class SearchTab extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
               height: 185,
-              margin: EdgeInsets.only(top: 12),
+              margin: const EdgeInsets.only(top: 12),
             ),
           ],
         ),

@@ -12,7 +12,7 @@ class InputDesign extends InputDecoration {
           prefixStyle: Theme.of(context).textTheme.subhead.copyWith(
               height: 1.4, color: Theme.of(context).textTheme.caption.color),
           prefixText: prefixText,
-          contentPadding: EdgeInsets.symmetric(horizontal: 16),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16),
           filled: true,
           fillColor: Theme.of(context).disabledColor,
           enabledBorder: OutlineInputBorder(
@@ -40,7 +40,7 @@ class RoundInputDesign extends InputDecoration {
   }) : super(
           hintText: hintText,
           prefixText: prefixText,
-          contentPadding: EdgeInsets.symmetric(horizontal: 18),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 18),
           filled: true,
           hintStyle: Theme.of(context).textTheme.subhead.copyWith(
                 fontSize: 17,
