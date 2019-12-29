@@ -4,9 +4,10 @@ import 'package:native_device_orientation/native_device_orientation.dart';
 import 'package:picbox/src/blocs/navbar.dart';
 
 class NavigationBarItem {
-  NavigationBarItem({this.iconData, this.selectedIconData});
+  NavigationBarItem({this.iconData, this.selectedIconData, this.badge = false});
   IconData iconData;
   IconData selectedIconData;
+  bool badge;
 }
 
 class NavigationBar extends StatefulWidget {
@@ -186,7 +187,25 @@ class _NavigationBarState extends State<NavigationBar> {
         child: InkWell(
           borderRadius: BorderRadius.all(Radius.circular(5)),
           onTap: () => onPressed(index),
-          child: Icon(iconData, color: color, size: widget.iconSize),
+          child: Stack(
+            children: <Widget>[
+              Center(
+                  child: Icon(iconData, color: color, size: widget.iconSize)),
+              Positioned(
+                bottom: 33,
+                left: 59,
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.bounceOut,
+                  width: item.badge ? 8 : 0,
+                  height: item.badge ? 8 : 0,
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -58,6 +58,7 @@ class _RootPageState extends State<RootPage> with TickerProviderStateMixin {
           NavigationBarItem(
             iconData: Icons.notifications_none,
             selectedIconData: Icons.notifications,
+            badge: true,
           ),
           NavigationBarItem(
               iconData: MdiIcons.accountCircleOutline,
