@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TabBody extends StatefulWidget {
+  TabBody({this.title, this.child});
+
   final String title;
   final Widget child;
-  TabBody({this.title, this.child});
 
   @override
   _TabBodyState createState() => _TabBodyState();
@@ -18,10 +19,17 @@ class _TabBodyState extends State<TabBody> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      top: false,
       child: SizedBox.expand(
-        child: widget.title == null
-            ? content(context)
-            : contentWithTitleBar(context),
+        child: Stack(children: [
+          widget.title == null
+              ? content(context)
+              : contentWithTitleBar(context),
+          Container(
+            color: Theme.of(context).scaffoldBackgroundColor.withAlpha(150),
+            height: MediaQuery.of(context).padding.top,
+          )
+        ]),
       ),
     );
   }
@@ -62,7 +70,8 @@ class _TabBodyState extends State<TabBody> {
           child: SingleChildScrollView(
             controller: _scrollController,
             child: Padding(
-              padding: EdgeInsets.only(top: 60),
+              padding:
+                  EdgeInsets.only(top: 60 + MediaQuery.of(context).padding.top),
               child: widget.child,
             ),
           ),
@@ -73,6 +82,7 @@ class _TabBodyState extends State<TabBody> {
 
   content(context) {
     return SingleChildScrollView(
+      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       child: widget.child,
     );
   }
@@ -81,7 +91,7 @@ class _TabBodyState extends State<TabBody> {
     return Opacity(
       opacity: _scrollPosition,
       child: Padding(
-        padding: EdgeInsets.all(25),
+        padding: EdgeInsets.only(top: 45),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
