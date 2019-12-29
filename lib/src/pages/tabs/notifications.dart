@@ -14,7 +14,7 @@ class NotificationsTab extends StatelessWidget {
     );
   }
 
-  Column _buildNotifications(BuildContext context) {
+  _buildNotifications(BuildContext context) {
     return Column(
       children: <Widget>[
         for (var i = 0; i < 13; i++)
