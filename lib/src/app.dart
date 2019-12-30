@@ -11,7 +11,6 @@ import 'package:picbox/src/common/design/clear_behavior.dart';
 import 'package:picbox/src/common/design/colors.dart';
 import 'package:picbox/src/pages/landing/signin.dart';
 import 'package:picbox/src/pages/root.dart';
-import 'package:picbox/src/pages/profile/debug.dart';
 
 class App extends StatelessWidget {
   @override
@@ -66,7 +65,6 @@ class MaterialAppWithBlocs extends StatelessWidget {
           routes: {
             '/': (context) => RootPage(),
             '/signin': (context) => SignInPage(),
-            '/profile/debug': (context) => DebugPage(),
           },
         );
       }),
