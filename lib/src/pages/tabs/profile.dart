@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -7,6 +8,7 @@ import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/common/bodies/tab.dart';
 import 'package:picbox/src/common/components/list/button.dart';
 import 'package:picbox/src/common/components/list/switch.dart';
+import 'package:picbox/src/pages/profile/debug.dart';
 
 class ProfileTab extends StatelessWidget {
   @override
@@ -29,6 +31,11 @@ class ProfileTab extends StatelessWidget {
         ListButton(AppLocalizations.of(context).tr('profile.edit_profile'),
             iconData: MdiIcons.accountEdit),
         _buildThemeSwitch(),
+        Divider(),
+        ListButton(AppLocalizations.of(context).tr('debug.title'),
+            iconData: MdiIcons.bug,
+            onTap: () => Navigator.push(context,
+                CupertinoPageRoute(builder: (context) => DebugPage()))),
       ],
     );
   }

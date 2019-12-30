@@ -1,28 +1,27 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:picbox/src/blocs/navbar.dart';
-import 'package:picbox/src/blocs/theme.dart';
-import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/common/bodies/tab.dart';
 import 'package:picbox/src/common/constants.dart';
 
-class DebugTab extends StatelessWidget {
+class DebugPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return TabBody(
-      title: AppLocalizations.of(context).tr('debug.title'),
-      child: Column(
-        children: <Widget>[
-          _languageSwitchBuilder(context),
-          _navigationBarTestBuilder(),
-          RaisedButton(
-            child: Text('SignInPage'),
-            onPressed: () =>
-                Navigator.of(context).pushReplacementNamed('/signin'),
-          )
-        ],
+    return Scaffold(
+      body: TabBody(
+        title: AppLocalizations.of(context).tr('debug.title'),
+        child: Column(
+          children: <Widget>[
+            _languageSwitchBuilder(context),
+            _navigationBarTestBuilder(),
+            RaisedButton(
+              child: Text('SignInPage'),
+              onPressed: () =>
+                  Navigator.of(context).pushReplacementNamed('/signin'),
+            )
+          ],
+        ),
       ),
     );
   }
