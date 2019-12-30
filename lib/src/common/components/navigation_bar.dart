@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:native_device_orientation/native_device_orientation.dart';
-import 'package:picbox/src/blocs/navbar.dart';
 
 class NavigationBarItem {
   NavigationBarItem({this.iconData, this.selectedIconData, this.badge = false});
@@ -55,27 +53,21 @@ class _NavigationBarState extends State<NavigationBar> {
       );
     });
 
-    return BlocBuilder<NavbarBloc, NavbarState>(
-      builder: (context, state) => NativeDeviceOrientationReader(
-        builder: (context) {
-          NativeDeviceOrientation orientation;
-          if (state is Showed) {
-            orientation = NativeDeviceOrientation.portraitUp;
-          } else {
-            orientation = NativeDeviceOrientationReader.orientation(context);
-          }
+    return NativeDeviceOrientationReader(
+      builder: (context) {
+        NativeDeviceOrientation orientation;
+        orientation = NativeDeviceOrientationReader.orientation(context);
 
-          return Stack(
-            children: <Widget>[
-              Padding(
-                padding: getPadding(orientation),
-                child: widget.body,
-              ),
-              _buildNavigationBar(items, orientation, state),
-            ],
-          );
-        },
-      ),
+        return Stack(
+          children: <Widget>[
+            Padding(
+              padding: getPadding(orientation),
+              child: widget.body,
+            ),
+            _buildNavigationBar(items, orientation),
+          ],
+        );
+      },
     );
   }
 
@@ -91,7 +83,7 @@ class _NavigationBarState extends State<NavigationBar> {
               bottom: NavigationBar.heightNavigationBarVertical);
   }
 
-  Widget _buildNavigationBar(items, orientation, NavbarState state) {
+  Widget _buildNavigationBar(items, orientation) {
     double height = getAlignment(orientation) == Alignment.bottomCenter
         ? NavigationBar.heightNavigationBarVertical
         : double.infinity;
@@ -105,7 +97,8 @@ class _NavigationBarState extends State<NavigationBar> {
         ? 0
         : MediaQuery.of(context).padding.top;
 
-    double animationButtons = state.target == NavbarTarget.search ? 50 : 0;
+    //double animationButtons = state.target == NavbarTarget.search ? 50 : 0;
+    double animationButtons = 0;
 
     return Align(
       alignment: getAlignment(orientation),
@@ -144,25 +137,6 @@ class _NavigationBarState extends State<NavigationBar> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildTagbar(context) {
-    return ListView(
-      physics: BouncingScrollPhysics(),
-      scrollDirection: Axis.horizontal,
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
-      children: <Widget>[
-        for (var i = 0; i < 6; i++)
-          Container(
-            width: 90,
-            margin: const EdgeInsets.only(right: 15),
-            decoration: BoxDecoration(
-              color: Colors.white10,
-              borderRadius: BorderRadius.all(Radius.circular(15)),
-            ),
-          ),
-      ],
     );
   }
 
