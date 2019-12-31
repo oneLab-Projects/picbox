@@ -8,6 +8,7 @@ import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/common/bodies/tab.dart';
 import 'package:picbox/src/common/components/list/button.dart';
 import 'package:picbox/src/common/components/list/switch.dart';
+import 'package:picbox/src/common/design/route.dart';
 import 'package:picbox/src/pages/profile/debug.dart';
 
 class ProfileTab extends StatelessWidget {
@@ -34,8 +35,8 @@ class ProfileTab extends StatelessWidget {
         Divider(),
         ListButton(AppLocalizations.of(context).tr('debug.title'),
             iconData: MdiIcons.bug,
-            onTap: () => Navigator.push(context,
-                CupertinoPageRoute(builder: (context) => DebugPage()))),
+            onTap: () => Navigator.push(
+                context, RouteDesign(builder: (context) => DebugPage()))),
       ],
     );
   }
