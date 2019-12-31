@@ -4,7 +4,7 @@ class Style {
   static const TextTheme textTheme = TextTheme(
     title: TextStyle(
       fontFamily: 'Ubuntu',
-      fontSize: 18,
+      fontSize: 19,
     ),
     subhead: TextStyle(
       fontFamily: 'Ubuntu',
