@@ -31,9 +31,7 @@ class _ListSwitchState extends State<ListSwitch> {
       onTap: widget.onChanged == null
           ? null
           : () => widget.onChanged(!widget.value),
-      control: Opacity(
-          opacity: widget.onChanged == null ? 0.5 : 1,
-          child: c.Switch(widget.value)),
+      control: c.Switch(widget.value),
     );
   }
 }

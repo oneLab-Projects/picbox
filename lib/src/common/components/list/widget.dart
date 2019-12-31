@@ -40,7 +40,11 @@ class ListWidget extends StatelessWidget {
             if (iconData != null) _buildIcon(context),
             if (caption != null) _buildText(context),
             if (control != null) const SizedBox(width: 20),
-            if (control != null) control,
+            if (control != null)
+              Opacity(
+                opacity: onTap == null ? 0.5 : 1,
+                child: control,
+              ),
           ],
         ),
       );

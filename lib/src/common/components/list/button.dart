@@ -27,9 +27,7 @@ class ListButton extends StatelessWidget {
       control: Icon(
         Icons.arrow_forward_ios,
         size: 15,
-        color: onTap == null
-            ? Theme.of(context).textTheme.button.color.withAlpha(150)
-            : Theme.of(context).textTheme.button.color,
+        color: Theme.of(context).textTheme.button.color,
       ),
     );
   }
