@@ -60,7 +60,7 @@ class ProfileTab extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             color: Theme.of(context).disabledColor,
-            borderRadius: BorderRadius.all(Radius.circular(50)),
+            borderRadius: const BorderRadius.all(Radius.circular(50)),
           ),
           height: 70,
           width: 70,
