@@ -1,25 +1,26 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:picbox/src/blocs/navbar.dart';
-import 'package:picbox/src/common/bodies/tab.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:picbox/src/common/bodies/page.dart';
+import 'package:picbox/src/common/components/list/select.dart';
 import 'package:picbox/src/common/constants.dart';
+import 'package:picbox/src/common/dialogs/select.dart';
 
 class DebugPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: TabBody(
+      body: PageBody(
         title: AppLocalizations.of(context).tr('debug.title'),
         child: Column(
           children: <Widget>[
             _languageSwitchBuilder(context),
-            _navigationBarTestBuilder(),
+            /*_navigationBarTestBuilder(),
             RaisedButton(
               child: Text('SignInPage'),
               onPressed: () =>
                   Navigator.of(context).pushReplacementNamed('/signin'),
-            )
+            )*/
           ],
         ),
       ),
@@ -32,51 +33,21 @@ class DebugPage extends StatelessWidget {
 
     return EasyLocalizationProvider(
       data: data,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: List.generate(
-          supportedLanguages.length,
-          (int index) {
-            String locale = supportedLanguages.keys.toList()[index];
-            String nameLanguage = supportedLanguages.values.toList()[index];
+      child: ListSelect(
+        AppLocalizations.of(context).tr('debug.language'),
+        onTap: () => showSelectionDialog(
+          context: context,
+          actions: List.generate(supportedLanguages.length,
+              (int index) => supportedLanguages.values.toList()[index]),
+        ).then((value) {
+          if (value == null) return;
 
-            return RaisedButton(
-              child: Text(nameLanguage +
-                  (Localizations.localeOf(context).languageCode == locale
-                      ? ' {set}'
-                      : '')),
-              onPressed: () => data.changeLocale(Locale(locale)),
-            );
-          },
-        ),
-      ),
-    );
-  }
-
-  _navigationBarTestBuilder() {
-    return BlocBuilder<NavbarBloc, NavbarState>(
-      builder: (context, state) => Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              RaisedButton(
-                child: Text('ResetEvent'),
-                onPressed: () =>
-                    BlocProvider.of<NavbarBloc>(context).add(Reset()),
-              ),
-              RaisedButton(
-                child: Text('ShowEvent (search)'),
-                onPressed: () => BlocProvider.of<NavbarBloc>(context)
-                    .add(Show(target: NavbarTarget.search)),
-              ),
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 10),
-            child: Text(state.toString()),
-          ),
-        ],
+          String locale = supportedLanguages.keys
+              .firstWhere((key) => supportedLanguages[key] == value);
+          data.changeLocale(Locale(locale));
+        }),
+        value: AppLocalizations.of(context).tr('lang.name'),
+        iconData: MdiIcons.earth,
       ),
     );
   }
