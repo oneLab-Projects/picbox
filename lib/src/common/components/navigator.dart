@@ -74,18 +74,15 @@ class _MultiNavigatorBottomBarState extends State<MultiNavigatorBottomBar> {
         ),
       );
 
-  Widget _buildPageBody() => Stack(
-        children:
-            widget.tabs.map((tab) => _buildOffstageNavigator(tab)).toList(),
+  Widget _buildPageBody() => IndexedStack(
+        index: currentIndex,
+        children: widget.tabs.map((tab) => _buildNavigator(tab)).toList(),
       );
 
-  Widget _buildOffstageNavigator(BottomBarTab tab) => Offstage(
-        offstage: widget.tabs.indexOf(tab) != currentIndex,
-        child: TabPageNavigator(
-          navigatorKey: tab._navigatorKey,
-          initPageBuilder: tab.initPageBuilder,
-          pageRoute: widget.pageRoute,
-        ),
+  Widget _buildNavigator(BottomBarTab tab) => TabPageNavigator(
+        navigatorKey: tab._navigatorKey,
+        initPageBuilder: tab.initPageBuilder,
+        pageRoute: widget.pageRoute,
       );
 
   Widget _buildBottomBar(Widget body) => NavigationBar(
