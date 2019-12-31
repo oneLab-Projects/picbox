@@ -24,7 +24,6 @@ class _RootPageState extends State<RootPage> {
       initPageBuilder: (context) => NotificationsTab(),
       iconData: Icons.notifications_none,
       selectedIconData: Icons.notifications,
-      badge: true,
     ),
     BottomBarTab(
       initPageBuilder: (context) => ProfileTab(),
