@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:picbox/src/common/components/button.dart';
+import 'package:picbox/src/common/components/buttons/default.dart';
 import 'package:picbox/src/common/decorations/input.dart';
 import 'package:picbox/src/pages/landing/signup.dart';
 
