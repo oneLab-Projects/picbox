@@ -2,6 +2,14 @@
     "lang": {
         "name": "English"
     },
+    "default": {
+        "okay": "Okay",
+        "yes": "Yes",
+        "no": "No",
+        "continue": "Continue",
+        "cancel": "Cancel",
+        "not_selected": "Not selected"
+    },
     "home": {
         "title": "For You"
     },
@@ -17,6 +25,7 @@
         "night_theme": "Night theme"
     },
     "debug": {
-        "title": "For developers"
+        "title": "For developers",
+        "language": "Language"
     }
 }
