@@ -9,7 +9,6 @@ import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/common/constants.dart';
 import 'package:picbox/src/common/design/clear_behavior.dart';
 import 'package:picbox/src/common/design/colors.dart';
-import 'package:picbox/src/pages/landing/signin.dart';
 import 'package:picbox/src/pages/root.dart';
 
 class App extends StatelessWidget {
