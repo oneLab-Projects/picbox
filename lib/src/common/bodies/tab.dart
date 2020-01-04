@@ -91,7 +91,7 @@ class _TabBodyState extends State<TabBody> {
     return Opacity(
       opacity: _scrollPosition,
       child: Padding(
-        padding: const EdgeInsets.only(top: 45),
+        padding: EdgeInsets.only(top: 20 + MediaQuery.of(context).padding.top),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
