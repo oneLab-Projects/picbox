@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:picbox/src/blocs/theme.dart';
 import 'package:picbox/src/blocs/theme/night.dart';
-import 'package:picbox/src/common/bodies/tab.dart';
+import 'package:picbox/src/common/bodies/page.dart';
 import 'package:picbox/src/common/components/list/button.dart';
 import 'package:picbox/src/common/components/list/switch.dart';
 import 'package:picbox/src/common/design/route.dart';
@@ -14,7 +14,8 @@ import 'package:picbox/src/pages/profile/debug.dart';
 class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return TabBody(
+    return PageBody(
+      showBackButton: false,
       child: Column(
         children: <Widget>[
           _buildHead(context),

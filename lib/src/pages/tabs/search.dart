@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:picbox/src/common/bodies/tab.dart';
+import 'package:picbox/src/common/bodies/page.dart';
 import 'package:picbox/src/common/decorations/input.dart';
 
 class SearchTab extends StatelessWidget {
@@ -10,7 +10,8 @@ class SearchTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TabBody(
+    return PageBody(
+      showBackButton: false,
       child: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
