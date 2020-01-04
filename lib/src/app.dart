@@ -61,6 +61,10 @@ class MaterialAppWithBlocs extends StatelessWidget {
           title: 'Picbox',
           debugShowCheckedModeBanner: false,
           theme: theme,
+          initialRoute: '/',
+          routes: {
+            '/': (context) => RootPage(),
+          },
         );
       }),
     );
