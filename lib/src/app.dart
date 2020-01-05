@@ -3,7 +3,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:picbox/src/blocs/navbar.dart';
 import 'package:picbox/src/blocs/theme.dart';
 import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/common/constants.dart';
@@ -21,9 +20,6 @@ class App extends StatelessWidget {
         providers: [
           BlocProvider<ThemeBloc>(
             builder: (BuildContext context) => ThemeBloc(),
-          ),
-          BlocProvider<NavbarBloc>(
-            builder: (BuildContext context) => NavbarBloc(),
           ),
         ],
         child: AppWithBlocs(),

@@ -97,9 +97,6 @@ class _NavigationBarState extends State<NavigationBar> {
         ? 0
         : MediaQuery.of(context).padding.top;
 
-    //double animationButtons = state.target == NavbarTarget.search ? 50 : 0;
-    double animationButtons = 0;
-
     return Align(
       alignment: getAlignment(orientation),
       child: Material(
@@ -109,31 +106,10 @@ class _NavigationBarState extends State<NavigationBar> {
           margin: EdgeInsets.only(
             top: marginTop,
           ),
-          child: Stack(
-            children: <Widget>[
-              AnimatedPositioned(
-                top: -(50 - animationButtons),
-                bottom: 50 - animationButtons,
-                left: 0,
-                right: 0,
-                curve: Curves.ease,
-                duration: Duration(milliseconds: 200),
-                child: Container(),
-              ),
-              AnimatedPositioned(
-                top: animationButtons,
-                bottom: 0,
-                left: 0,
-                right: 0,
-                curve: Curves.ease,
-                duration: Duration(milliseconds: 200),
-                child: Flex(
-                  direction: direction,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: items,
-                ),
-              ),
-            ],
+          child: Flex(
+            direction: direction,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: items,
           ),
         ),
       ),
