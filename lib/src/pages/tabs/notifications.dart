@@ -18,7 +18,7 @@ class NotificationsTab extends StatelessWidget {
   Widget _buildNotifications(BuildContext context) {
     return Column(
       children: <Widget>[
-        for (var i = 0; i < 13; i++)
+        for (int i = 0; i < 13; i++)
           Container(
             decoration: BoxDecoration(
               color: Theme.of(context).disabledColor,

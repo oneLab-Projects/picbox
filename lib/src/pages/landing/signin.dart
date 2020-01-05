@@ -24,7 +24,7 @@ class _SignInPageState extends State<SignInPage> {
         [
           GestureDetector(
             onTap: () {
-              var smiles = ["^_^", "ТзТ", "U_U", "о-о", "о_о"];
+              List<String> smiles = ["^_^", "ТзТ", "U_U", "о-о", "о_о"];
               setState(
                   () => _logoSmile = smiles[Random().nextInt(smiles.length)]);
             },

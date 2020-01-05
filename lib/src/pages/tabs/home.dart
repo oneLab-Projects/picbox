@@ -22,7 +22,7 @@ class HomeTab extends StatelessWidget {
       crossAxisCount:
           MediaQuery.of(context).orientation == Orientation.landscape ? 3 : 2,
       children: <Widget>[
-        for (var i = 0; i < 13; i++)
+        for (int i = 0; i < 13; i++)
           Container(
             decoration: BoxDecoration(
               color: Theme.of(context).disabledColor,
