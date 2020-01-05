@@ -11,34 +11,41 @@ import 'package:picbox/src/common/design/clear_behavior.dart';
 import 'package:picbox/src/common/design/colors.dart';
 import 'package:picbox/src/pages/root.dart';
 
+/// [App] является основным виджетом приложения. Его цель состоит в том, чтобы
+/// присоединить к приложению BLoC-провайдеры.
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<ThemeBloc>(
-          builder: (BuildContext context) => ThemeBloc(),
-        ),
-        BlocProvider<NavbarBloc>(
-          builder: (BuildContext context) => NavbarBloc(),
-        ),
-      ],
-      child: MaterialAppWithBlocs(),
+    return new EasyLocalization(
+      child: new MultiBlocProvider(
+        providers: [
+          new BlocProvider<ThemeBloc>(
+            builder: (BuildContext context) => new ThemeBloc(),
+          ),
+          new BlocProvider<NavbarBloc>(
+            builder: (BuildContext context) => new NavbarBloc(),
+          ),
+        ],
+        child: new AppWithBlocs(),
+      ),
     );
   }
 }
 
-class MaterialAppWithBlocs extends StatelessWidget {
+/// [App] является вспомогательным виджетом приложения. Его цель состоит в том, чтобы
+/// отобразить интерфейс приложения, предварительно сделав стилизацию [SystemChrome],
+/// а также подключив поддержку мультиязычности и смены темы.
+class AppWithBlocs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var data = EasyLocalizationProvider.of(context).data;
     var supportedLanguages = Constants.supportedLanguages;
 
-    return EasyLocalizationProvider(
+    return new EasyLocalizationProvider(
       data: data,
-      child: BlocBuilder<ThemeBloc, ThemeData>(builder: (context, theme) {
+      child: new BlocBuilder<ThemeBloc, ThemeData>(builder: (context, theme) {
         paintUiOverlay(theme);
-        return MaterialApp(
+        return new MaterialApp(
           localizationsDelegates: [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
@@ -48,12 +55,14 @@ class MaterialAppWithBlocs extends StatelessWidget {
               useOnlyLangCode: true,
             ),
           ],
-          supportedLocales: List.generate(supportedLanguages.length,
-              (int index) => Locale(supportedLanguages.keys.toList()[index])),
+          supportedLocales: new List.generate(
+              supportedLanguages.length,
+              (int index) =>
+                  new Locale(supportedLanguages.keys.toList()[index])),
           locale: data.savedLocale,
           builder: (context, child) {
-            return ScrollConfiguration(
-              behavior: ClearBehavior(),
+            return new ScrollConfiguration(
+              behavior: new ClearBehavior(),
               child: child,
             );
           },
@@ -62,16 +71,17 @@ class MaterialAppWithBlocs extends StatelessWidget {
           theme: theme,
           initialRoute: '/',
           routes: {
-            '/': (context) => RootPage(),
+            '/': (context) => new RootPage(),
           },
         );
       }),
     );
   }
 
+  /// Стилизация StatusBar и SystemNavigationBar с помощью [SystemChrome]
   void paintUiOverlay(ThemeData theme) {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      new SystemUiOverlayStyle(
         statusBarIconBrightness:
             theme == themeNight ? Brightness.light : Brightness.dark,
         systemNavigationBarColor: ColorPalette.bottomNavigation,
