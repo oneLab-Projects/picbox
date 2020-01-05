@@ -77,6 +77,7 @@ class AppWithBlocs extends StatelessWidget {
   }
 
   /// Стилизация StatusBar и SystemNavigationBar с помощью [SystemChrome]
+  /// Принимает `theme` для того, чтобы определить, какого типа (`day`, `night`) в данный момент активна тема приложения.
   void paintUiOverlay(ThemeData theme) {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
