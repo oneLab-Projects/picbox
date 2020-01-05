@@ -3,59 +3,56 @@ import 'package:flutter/material.dart';
 
 import 'navigation_bar.dart';
 
-class BottomBarTab {
-  final WidgetBuilder routePageBuilder;
+/// Реализация вкладки для [NestedNavigator].
+class NestedTab {
   final WidgetBuilder initPageBuilder;
   final IconData iconData;
   final IconData selectedIconData;
   final bool badge;
   final GlobalKey<NavigatorState> _navigatorKey;
 
-  BottomBarTab({
+  NestedTab({
     @required this.initPageBuilder,
     @required this.iconData,
     this.selectedIconData,
     this.badge = false,
-    this.routePageBuilder,
     GlobalKey<NavigatorState> navigatorKey,
   }) : _navigatorKey = navigatorKey ?? GlobalKey<NavigatorState>();
 }
 
-class MultiNavigatorBottomBar extends StatefulWidget {
+/// Используется для реализации мультиоконности.
+class NestedNavigator extends StatefulWidget {
   final int initTabIndex;
-  final List<BottomBarTab> tabs;
+  final List<NestedTab> tabs;
   final PageRoute pageRoute;
   final ValueChanged<int> onTap;
-  final Widget Function(Widget) pageWidgetDecorator;
   final ValueGetter shouldHandlePop;
 
   final Color backgroundColor;
   final Color color;
   final Color selectedColor;
 
-  MultiNavigatorBottomBar({
-    @required this.initTabIndex,
+  NestedNavigator({
     @required this.tabs,
+    this.initTabIndex = 0,
     this.onTap,
     this.backgroundColor,
     this.color,
     this.selectedColor,
     this.pageRoute,
-    this.pageWidgetDecorator,
     this.shouldHandlePop = _defaultShouldHandlePop,
   });
 
   static bool _defaultShouldHandlePop() => true;
 
   @override
-  State<StatefulWidget> createState() =>
-      _MultiNavigatorBottomBarState(initTabIndex);
+  State<StatefulWidget> createState() => _NestedNavigatorState(initTabIndex);
 }
 
-class _MultiNavigatorBottomBarState extends State<MultiNavigatorBottomBar> {
+class _NestedNavigatorState extends State<NestedNavigator> {
   int currentIndex;
 
-  _MultiNavigatorBottomBarState(this.currentIndex);
+  _NestedNavigatorState(this.currentIndex);
 
   @override
   Widget build(BuildContext context) => WillPopScope(
@@ -66,11 +63,7 @@ class _MultiNavigatorBottomBarState extends State<MultiNavigatorBottomBar> {
               : false;
         },
         child: Scaffold(
-          body: _buildBottomBar(
-            widget.pageWidgetDecorator == null
-                ? _buildPageBody()
-                : widget.pageWidgetDecorator(_buildPageBody()),
-          ),
+          body: _buildBottomBar(_buildPageBody()),
         ),
       );
 
@@ -79,7 +72,7 @@ class _MultiNavigatorBottomBarState extends State<MultiNavigatorBottomBar> {
         children: widget.tabs.map((tab) => _buildNavigator(tab)).toList(),
       );
 
-  Widget _buildNavigator(BottomBarTab tab) => TabPageNavigator(
+  Widget _buildNavigator(NestedTab tab) => TabPageNavigator(
         navigatorKey: tab._navigatorKey,
         initPageBuilder: tab.initPageBuilder,
         pageRoute: widget.pageRoute,

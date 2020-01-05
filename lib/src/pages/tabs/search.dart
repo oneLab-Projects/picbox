@@ -4,10 +4,6 @@ import 'package:picbox/src/common/bodies/page.dart';
 import 'package:picbox/src/common/decorations/input.dart';
 
 class SearchTab extends StatelessWidget {
-  final int value;
-
-  SearchTab({this.value = 0});
-
   @override
   Widget build(BuildContext context) {
     return PageBody(

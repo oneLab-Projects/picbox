@@ -22,7 +22,7 @@ class NotificationsTab extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               color: Theme.of(context).disabledColor,
-              borderRadius: BorderRadius.all(Radius.circular(15)),
+              borderRadius: const BorderRadius.all(Radius.circular(15)),
             ),
             height: 85,
             margin: const EdgeInsets.only(bottom: 15),

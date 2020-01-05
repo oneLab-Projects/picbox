@@ -16,17 +16,17 @@ import 'package:picbox/src/pages/root.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new EasyLocalization(
-      child: new MultiBlocProvider(
+    return EasyLocalization(
+      child: MultiBlocProvider(
         providers: [
-          new BlocProvider<ThemeBloc>(
-            builder: (BuildContext context) => new ThemeBloc(),
+          BlocProvider<ThemeBloc>(
+            builder: (BuildContext context) => ThemeBloc(),
           ),
-          new BlocProvider<NavbarBloc>(
-            builder: (BuildContext context) => new NavbarBloc(),
+          BlocProvider<NavbarBloc>(
+            builder: (BuildContext context) => NavbarBloc(),
           ),
         ],
-        child: new AppWithBlocs(),
+        child: AppWithBlocs(),
       ),
     );
   }
@@ -41,11 +41,11 @@ class AppWithBlocs extends StatelessWidget {
     var data = EasyLocalizationProvider.of(context).data;
     var supportedLanguages = Constants.supportedLanguages;
 
-    return new EasyLocalizationProvider(
+    return EasyLocalizationProvider(
       data: data,
-      child: new BlocBuilder<ThemeBloc, ThemeData>(builder: (context, theme) {
+      child: BlocBuilder<ThemeBloc, ThemeData>(builder: (context, theme) {
         paintUiOverlay(theme);
-        return new MaterialApp(
+        return MaterialApp(
           localizationsDelegates: [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
@@ -55,14 +55,12 @@ class AppWithBlocs extends StatelessWidget {
               useOnlyLangCode: true,
             ),
           ],
-          supportedLocales: new List.generate(
-              supportedLanguages.length,
-              (int index) =>
-                  new Locale(supportedLanguages.keys.toList()[index])),
+          supportedLocales: List.generate(supportedLanguages.length,
+              (int index) => Locale(supportedLanguages.keys.toList()[index])),
           locale: data.savedLocale,
           builder: (context, child) {
-            return new ScrollConfiguration(
-              behavior: new ClearBehavior(),
+            return ScrollConfiguration(
+              behavior: ClearBehavior(),
               child: child,
             );
           },
@@ -71,7 +69,7 @@ class AppWithBlocs extends StatelessWidget {
           theme: theme,
           initialRoute: '/',
           routes: {
-            '/': (context) => new RootPage(),
+            '/': (context) => RootPage(),
           },
         );
       }),
@@ -81,7 +79,7 @@ class AppWithBlocs extends StatelessWidget {
   /// Стилизация StatusBar и SystemNavigationBar с помощью [SystemChrome]
   void paintUiOverlay(ThemeData theme) {
     SystemChrome.setSystemUIOverlayStyle(
-      new SystemUiOverlayStyle(
+      SystemUiOverlayStyle(
         statusBarIconBrightness:
             theme == themeNight ? Brightness.light : Brightness.dark,
         systemNavigationBarColor: ColorPalette.bottomNavigation,
