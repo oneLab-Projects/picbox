@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:picbox/src/common/bodies/page.dart';
 import 'package:picbox/src/common/decorations/input.dart';
 
+/// Вкладка `Поиск`
 class SearchTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

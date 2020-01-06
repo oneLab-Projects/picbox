@@ -11,6 +11,7 @@ import 'package:picbox/src/common/components/list/switch.dart';
 import 'package:picbox/src/common/design/route.dart';
 import 'package:picbox/src/pages/profile/debug.dart';
 
+/// Вкладка `Профиль`
 class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
