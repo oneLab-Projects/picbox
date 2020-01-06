@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Страница `Регистрация`
 class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

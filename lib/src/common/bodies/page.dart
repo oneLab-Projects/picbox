@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:picbox/src/common/components/buttons/icon.dart' as c;
 
+/// Создаёт обёртку для страниц приложения.
 class PageBody extends StatefulWidget {
   PageBody({this.title, this.child, this.showBackButton = true});
 
   final String title;
+  @required
   final Widget child;
   final bool showBackButton;
 

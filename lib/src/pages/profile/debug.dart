@@ -6,6 +6,7 @@ import 'package:picbox/src/common/components/list/select.dart';
 import 'package:picbox/src/common/constants.dart';
 import 'package:picbox/src/common/dialogs/select.dart';
 
+/// Страница `Для разработчиков`
 class DebugPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class DebugPage extends StatelessWidget {
       child: ListSelect(
         AppLocalizations.of(context).tr('debug.language'),
         onTap: () => showSelectionDialog(
-          context: context,
+          context,
           actions: List.generate(supportedLanguages.length,
               (int index) => supportedLanguages.values.toList()[index]),
         ).then((value) {

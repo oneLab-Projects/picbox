@@ -7,7 +7,7 @@ import 'package:picbox/src/blocs/theme.dart';
 import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/common/constants.dart';
 import 'package:picbox/src/common/design/clear_behavior.dart';
-import 'package:picbox/src/common/design/colors.dart';
+import 'package:picbox/src/common/design/style.dart';
 import 'package:picbox/src/pages/root.dart';
 
 /// [App] является основным виджетом приложения. Его цель состоит в том, чтобы
@@ -72,14 +72,14 @@ class AppWithBlocs extends StatelessWidget {
     );
   }
 
-  /// Стилизация StatusBar и SystemNavigationBar с помощью [SystemChrome]
+  /// Стилизирует StatusBar и SystemNavigationBar с помощью [SystemChrome]
   /// Принимает `theme` для того, чтобы определить, какого типа (`day`, `night`) в данный момент активна тема приложения.
   void paintUiOverlay(ThemeData theme) {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         statusBarIconBrightness:
             theme == themeNight ? Brightness.light : Brightness.dark,
-        systemNavigationBarColor: ColorPalette.bottomNavigation,
+        systemNavigationBarColor: Style.bottomNavigationBarColor,
         statusBarColor: Colors.transparent,
         statusBarBrightness: Brightness.dark,
         systemNavigationBarIconBrightness: Brightness.light,

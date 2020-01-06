@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:picbox/src/common/components/list/widget.dart';
 
+/// Создаёт кнопку, предназначенную для отображения
+/// в списке.
 class ListButton extends StatelessWidget {
   ListButton(
     this.caption, {
@@ -10,6 +12,7 @@ class ListButton extends StatelessWidget {
     this.onLongPress,
   });
 
+  @required
   final String caption;
   final String description;
   final IconData iconData;

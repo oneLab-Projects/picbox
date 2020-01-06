@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Создаёт визуальный элемент переключателя.
 class Switch extends StatefulWidget {
   Switch(this.value);
   final bool value;

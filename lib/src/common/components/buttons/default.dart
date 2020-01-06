@@ -1,8 +1,9 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 
-class Button extends StatelessWidget {
-  Button(this.text,
+/// Создаёт приподнятую кнопку.
+class RaisedButton extends StatelessWidget {
+  RaisedButton(this.text,
       {this.iconData, this.onTap, this.onLongPress, this.loading = false});
 
   final IconData iconData;

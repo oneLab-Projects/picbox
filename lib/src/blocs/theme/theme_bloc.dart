@@ -4,8 +4,9 @@ import 'package:picbox/src/blocs/theme/day.dart';
 import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/blocs/theme/theme_event.dart';
 import 'package:bloc/bloc.dart';
-import 'package:picbox/src/common/design/colors.dart';
+import 'package:picbox/src/common/design/style.dart';
 
+/// Создаёт BLoC для реализации смены темы в приложении.
 class ThemeBloc extends Bloc<ThemeEvent, ThemeData> {
   @override
   ThemeData get initialState => themeDay;
@@ -18,7 +19,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeData> {
         statusBarIconBrightness: transition.nextState == themeNight
             ? Brightness.light
             : Brightness.dark,
-        systemNavigationBarColor: ColorPalette.bottomNavigation,
+        systemNavigationBarColor: Style.bottomNavigationBarColor,
         statusBarColor: Colors.transparent,
         statusBarBrightness: Brightness.dark,
         systemNavigationBarIconBrightness: Brightness.light,

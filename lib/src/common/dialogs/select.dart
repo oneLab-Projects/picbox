@@ -2,13 +2,23 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Future<String> showSelectionDialog<String>(
-    {@required BuildContext context, List<String> actions}) {
+/// Отображает диалог выбора.
+/// ```dart
+/// showSelectionDialog(
+///   context,
+///   actions: ['one', 'two', 'three'],
+/// ).then(
+///   (value) => print("$value tapped!"),
+/// )
+/// ```
+Future<String> showSelectionDialog<String>(BuildContext context,
+    {List<String> actions}) {
   return showCupertinoDialog<String>(
       context: context,
       builder: (BuildContext context) => SelectionDialog(actions: actions));
 }
 
+/// Диалог выбора. Вызывается методом `showSelectionDialog`
 class SelectionDialog extends StatelessWidget {
   final List<dynamic> actions;
   SelectionDialog({this.actions});

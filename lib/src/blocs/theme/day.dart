@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:picbox/src/common/design/style.dart';
 
+/// Хранит [ThemeData] в стиле дневной темы приложения.
 final ThemeData themeDay = ThemeData(
   brightness: Brightness.light,
   textTheme: Style.textTheme,

@@ -3,10 +3,11 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:picbox/src/common/components/buttons/default.dart';
+import 'package:picbox/src/common/components/buttons/default.dart' as c;
 import 'package:picbox/src/common/decorations/input.dart';
 import 'package:picbox/src/pages/landing/signup.dart';
 
+/// Страница `Авторизация`
 class SignInPage extends StatefulWidget {
   @override
   _SignInPageState createState() => _SignInPageState();
@@ -46,7 +47,7 @@ class _SignInPageState extends State<SignInPage> {
           const SizedBox(height: 200.0),
           _buildPhoneNumberTextField(context),
           const SizedBox(height: 10.0),
-          Button(
+          c.RaisedButton(
             'Continue',
             loading: _loading,
             onTap:

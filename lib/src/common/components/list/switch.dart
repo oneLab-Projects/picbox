@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:picbox/src/common/components/list/widget.dart';
 import 'package:picbox/src/common/components/switch.dart' as c;
 
+/// Создаёт переключатель, предназначенный для отображения
+/// в списке.
 class ListSwitch extends StatefulWidget {
   ListSwitch(
     this.caption, {
@@ -11,10 +13,12 @@ class ListSwitch extends StatefulWidget {
     this.value,
   });
 
+  @required
   final String caption;
   final String description;
   final IconData iconData;
   final Function(bool) onChanged;
+  @required
   final bool value;
 
   @override

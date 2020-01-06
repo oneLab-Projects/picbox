@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'navigation_bar.dart';
+import 'navigation_bar.dart' as c;
 
-/// Реализация вкладки для [NestedNavigator].
+/// Создаёт вкладку, работающую с [NestedNavigator].
 class NestedTab {
   final WidgetBuilder initPageBuilder;
   final IconData iconData;
@@ -20,7 +20,7 @@ class NestedTab {
   }) : _navigatorKey = navigatorKey ?? GlobalKey<NavigatorState>();
 }
 
-/// Используется для реализации мультиоконности.
+/// Создаёт реализацию мультиоконности.
 class NestedNavigator extends StatefulWidget {
   final int initTabIndex;
   final List<NestedTab> tabs;
@@ -78,7 +78,7 @@ class _NestedNavigatorState extends State<NestedNavigator> {
         pageRoute: widget.pageRoute,
       );
 
-  Widget _buildBottomBar(Widget body) => NavigationBar(
+  Widget _buildBottomBar(Widget body) => c.BottomNavigationBar(
         body: body,
         onTabSelected: (index) {
           if (widget.onTap != null) widget.onTap(index);
@@ -88,7 +88,7 @@ class _NestedNavigatorState extends State<NestedNavigator> {
         color: widget.color,
         selectedColor: widget.selectedColor,
         items: widget.tabs
-            .map((tab) => NavigationBarItem(
+            .map((tab) => c.BottomNavigationBarItem(
                   iconData: tab.iconData,
                   selectedIconData: tab.selectedIconData,
                   badge: tab.badge,

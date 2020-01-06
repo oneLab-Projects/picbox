@@ -8,7 +8,7 @@ import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/common/bodies/page.dart';
 import 'package:picbox/src/common/components/list/button.dart';
 import 'package:picbox/src/common/components/list/switch.dart';
-import 'package:picbox/src/common/design/route.dart';
+import 'package:picbox/src/common/design/route.dart' as c;
 import 'package:picbox/src/pages/profile/debug.dart';
 
 /// Вкладка `Профиль`
@@ -38,7 +38,7 @@ class ProfileTab extends StatelessWidget {
         ListButton(AppLocalizations.of(context).tr('debug.title'),
             iconData: MdiIcons.bug,
             onTap: () => Navigator.push(
-                context, RouteDesign(builder: (context) => DebugPage()))),
+                context, c.PageRoute(builder: (context) => DebugPage()))),
       ],
     );
   }

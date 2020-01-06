@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// [ClearBehavior] является определением [ScrollBehavior], отключающий
+/// [ClearBehavior] является наследованием от [ScrollBehavior], отключающий
 /// эффект столкновения при скроллинге.
 class ClearBehavior extends ScrollBehavior {
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Создаёт прозрачную круглую кнопку с иконкой.
 class IconButton extends StatelessWidget {
   @required
   final GestureTapCallback onTap;

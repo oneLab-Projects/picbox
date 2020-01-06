@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class RouteDesign<T> extends MaterialPageRoute<T> {
-  RouteDesign({WidgetBuilder builder, RouteSettings settings})
+/// Модальный маршрут для плавного перехода с одной страницы на другую.
+class PageRoute<T> extends MaterialPageRoute<T> {
+  PageRoute({WidgetBuilder builder, RouteSettings settings})
       : super(builder: builder, settings: settings);
 
   @override

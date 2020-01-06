@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:picbox/src/app.dart';
 
-/// Запуск приложения, инициализирование [App].
+/// Запускает приложение, инициализирует [App].
 void main() => runApp(App());

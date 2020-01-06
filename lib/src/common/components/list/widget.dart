@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// [ListWidget] является обёрткой для виджетов, отображаемых
+/// в списках.
 class ListWidget extends StatelessWidget {
   ListWidget(
     this.caption, {
@@ -10,6 +12,7 @@ class ListWidget extends StatelessWidget {
     this.control,
   });
 
+  @required
   final String caption;
   final String description;
   final IconData iconData;
