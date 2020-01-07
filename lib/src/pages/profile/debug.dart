@@ -47,7 +47,8 @@ class DebugPage extends StatelessWidget {
               .firstWhere((key) => supportedLanguages[key] == value);
           data.changeLocale(Locale(locale));
         }),
-        value: AppLocalizations.of(context).tr('lang.name'),
+        value: supportedLanguages[
+            AppLocalizations.of(context).locale.languageCode],
         iconData: MdiIcons.earth,
       ),
     );
