@@ -2,7 +2,7 @@ workflows:
   default-workflow:
     name: Default Workflow
     environment:
-      flutter: master
+      flutter: stable
     scripts:
       - |
         # set up debug keystore
