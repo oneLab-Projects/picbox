@@ -7,7 +7,12 @@ import 'package:picbox/src/pages/tabs.dart';
 /// [RootPage] является главной страницей приложения. Она содержит в себе элементы
 /// навигации приложения с помощью [NavigationBar], с использованием [NestedNavigator]
 /// для реализации мультиоконности.
-class RootPage extends StatelessWidget {
+class RootPage extends StatefulWidget {
+  @override
+  _RootPageState createState() => _RootPageState();
+}
+
+class _RootPageState extends State<RootPage> {
   /// Вкладки, отображаемые в BottomNavigationBar
   final List<NestedTab> _tabs = [
     NestedTab(
