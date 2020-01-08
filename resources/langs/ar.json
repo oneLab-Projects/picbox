@@ -5,8 +5,10 @@
         "no": "Нет",
         "continue": "Продолжить",
         "cancel": "Отменить",
-        "not_selected": "Не выбрано",
-        "system": "Системный"
+        "not_selected": "Не выбрано"
+    },
+    "settings": {
+        "system_settings": "Системные настройки"
     },
     "home": {
         "title": "Для Вас"

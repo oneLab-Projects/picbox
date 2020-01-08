@@ -5,8 +5,10 @@
         "no": "No",
         "continue": "Continue",
         "cancel": "Cancel",
-        "not_selected": "Not selected",
-        "system": "System"
+        "not_selected": "Not selected"
+    },
+    "settings": {
+        "system_settings": "System settings"
     },
     "home": {
         "title": "For You"
