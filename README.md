@@ -29,7 +29,7 @@ flutter build --debug
 flutter build --release
 ```
 
-### Лицензия
+## Лицензия
 
 Лицензировано под [GNU Affero General Public License v3.0](https://github.com/oneLab-Projects/picbox/blob/master/LICENSE).
 
