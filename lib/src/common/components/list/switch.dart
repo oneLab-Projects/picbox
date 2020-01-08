@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:picbox/src/common/components/list/widget.dart';
-import 'package:picbox/src/common/components/switch.dart' as c;
+import 'package:picbox/src/common/widgets.dart';
 
 /// Создаёт переключатель, предназначенный для отображения
 /// в списке.
-class ListSwitch extends StatefulWidget {
-  ListSwitch(
+class UListSwitch extends StatefulWidget {
+  UListSwitch(
     this.caption, {
     this.description,
     this.iconData,
@@ -22,20 +21,20 @@ class ListSwitch extends StatefulWidget {
   final bool value;
 
   @override
-  _ListSwitchState createState() => _ListSwitchState();
+  _UListSwitchState createState() => _UListSwitchState();
 }
 
-class _ListSwitchState extends State<ListSwitch> {
+class _UListSwitchState extends State<UListSwitch> {
   @override
   Widget build(BuildContext context) {
-    return ListWidget(
+    return UListWidget(
       widget.caption,
       description: widget.description,
       iconData: widget.iconData,
       onTap: widget.onChanged == null
           ? null
           : () => widget.onChanged(!widget.value),
-      control: c.Switch(widget.value),
+      control: USwitchVisual(widget.value),
     );
   }
 }

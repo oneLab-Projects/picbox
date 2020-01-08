@@ -1,11 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:picbox/src/common/components/list/widget.dart';
+import 'package:picbox/src/common/widgets.dart';
 
 /// Создаёт виджет выбора, предназначенный для отображения
 /// в списке.
-class ListSelect extends StatelessWidget {
-  ListSelect(
+class UListSelect extends StatelessWidget {
+  UListSelect(
     this.caption, {
     this.description,
     this.value,
@@ -22,7 +22,7 @@ class ListSelect extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListWidget(caption,
+    return UListWidget(caption,
         iconData: iconData,
         onTap: onTap,
         description: description,

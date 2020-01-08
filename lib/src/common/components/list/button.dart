@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:picbox/src/common/components/list/widget.dart';
+import 'package:picbox/src/common/widgets.dart';
 
 /// Создаёт кнопку, предназначенную для отображения
 /// в списке.
-class ListButton extends StatelessWidget {
-  ListButton(
+class UListButton extends StatelessWidget {
+  UListButton(
     this.caption, {
     this.description,
     this.iconData,
@@ -21,7 +21,7 @@ class ListButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListWidget(
+    return UListWidget(
       caption,
       iconData: iconData,
       onTap: onTap,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:picbox/src/common/components/buttons/icon.dart' as c;
+import 'package:picbox/src/common/widgets.dart';
 
-/// Создаёт обёртку для страниц приложения.
-class PageBody extends StatefulWidget {
-  PageBody({this.title, this.child, this.showBackButton = true});
+/// Создает визуальную основу для виджетов.
+class UScaffold extends StatefulWidget {
+  UScaffold({this.title, this.child, this.showBackButton = true});
 
   final String title;
   @required
@@ -11,10 +11,10 @@ class PageBody extends StatefulWidget {
   final bool showBackButton;
 
   @override
-  _PageBodyState createState() => _PageBodyState();
+  _UScaffoldState createState() => _UScaffoldState();
 }
 
-class _PageBodyState extends State<PageBody> {
+class _UScaffoldState extends State<UScaffold> {
   static const double _animationHeight = 60;
 
   ScrollController _scrollController;
@@ -141,7 +141,7 @@ class _PageBodyState extends State<PageBody> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          c.IconButton(
+          UIconButton(
             onTap: () => Navigator.pop(context),
             iconData: Icons.arrow_back,
           ),

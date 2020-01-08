@@ -5,17 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:picbox/src/blocs/theme.dart';
 import 'package:picbox/src/blocs/theme/night.dart';
-import 'package:picbox/src/common/bodies/page.dart';
-import 'package:picbox/src/common/components/list/button.dart';
-import 'package:picbox/src/common/components/list/switch.dart';
-import 'package:picbox/src/common/design/route.dart' as c;
+import 'package:picbox/src/common/widgets.dart';
 import 'package:picbox/src/pages/profile/debug.dart';
 
 /// Вкладка `Профиль`
 class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return PageBody(
+    return UScaffold(
       showBackButton: false,
       child: Column(
         children: <Widget>[
@@ -31,21 +28,21 @@ class ProfileTab extends StatelessWidget {
   Widget _buildBody(BuildContext context) {
     return Column(
       children: <Widget>[
-        ListButton(AppLocalizations.of(context).tr('profile.edit_profile'),
+        UListButton(AppLocalizations.of(context).tr('profile.edit_profile'),
             iconData: MdiIcons.accountEdit),
         _buildThemeSwitch(),
         Divider(),
-        ListButton(AppLocalizations.of(context).tr('debug.title'),
+        UListButton(AppLocalizations.of(context).tr('debug.title'),
             iconData: MdiIcons.bug,
             onTap: () => Navigator.push(
-                context, c.PageRoute(builder: (context) => DebugPage()))),
+                context, UPageRoute(builder: (context) => DebugPage()))),
       ],
     );
   }
 
   Widget _buildThemeSwitch() {
     return BlocBuilder<ThemeBloc, ThemeData>(
-      builder: (context, theme) => ListSwitch(
+      builder: (context, theme) => UListSwitch(
         AppLocalizations.of(context).tr('profile.night_theme'),
         iconData: MdiIcons.weatherNight,
         value: theme == themeNight,

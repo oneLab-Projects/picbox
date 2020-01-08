@@ -3,8 +3,8 @@ import 'package:native_device_orientation/native_device_orientation.dart';
 
 /// Создаёт элемент нижней панели навигации. Так же принимает
 /// `badge` для отображения статуса непрочитанной информации.
-class BottomNavigationBarItem {
-  BottomNavigationBarItem(
+class UBottomNavigationBarItem {
+  UBottomNavigationBarItem(
       {this.iconData, this.selectedIconData, this.badge = false});
   @required
   IconData iconData;
@@ -14,8 +14,8 @@ class BottomNavigationBarItem {
 
 /// Создаёт нижнюю панель навигации. Так же принимает `body` для
 /// правильной координации при изменении ориентации устройства.
-class BottomNavigationBar extends StatefulWidget {
-  BottomNavigationBar({
+class UBottomNavigationBar extends StatefulWidget {
+  UBottomNavigationBar({
     this.body,
     this.items,
     this.iconSize: 24,
@@ -28,7 +28,7 @@ class BottomNavigationBar extends StatefulWidget {
   @required
   final Widget body;
   @required
-  final List<BottomNavigationBarItem> items;
+  final List<UBottomNavigationBarItem> items;
   final double iconSize;
   @required
   final Color backgroundColor;
@@ -41,10 +41,10 @@ class BottomNavigationBar extends StatefulWidget {
   static const double heightNavigationBarVertical = 50;
   static const double weightNavigationBarHorisontal = 60;
 
-  _BottomNavigationBarState createState() => _BottomNavigationBarState();
+  _UBottomNavigationBarState createState() => _UBottomNavigationBarState();
 }
 
-class _BottomNavigationBarState extends State<BottomNavigationBar> {
+class _UBottomNavigationBarState extends State<UBottomNavigationBar> {
   int _selectedIndex = 0;
 
   _updateIndex(int index) {
@@ -85,22 +85,22 @@ class _BottomNavigationBarState extends State<BottomNavigationBar> {
   EdgeInsets getPadding(NativeDeviceOrientation orientation) {
     if (orientation == NativeDeviceOrientation.landscapeLeft)
       return const EdgeInsets.only(
-          right: BottomNavigationBar.weightNavigationBarHorisontal);
+          right: UBottomNavigationBar.weightNavigationBarHorisontal);
     else
       return (orientation == NativeDeviceOrientation.landscapeRight)
           ? const EdgeInsets.only(
-              left: BottomNavigationBar.weightNavigationBarHorisontal)
+              left: UBottomNavigationBar.weightNavigationBarHorisontal)
           : const EdgeInsets.only(
-              bottom: BottomNavigationBar.heightNavigationBarVertical);
+              bottom: UBottomNavigationBar.heightNavigationBarVertical);
   }
 
   Widget _buildNavigationBar(items, orientation) {
     double height = getAlignment(orientation) == Alignment.bottomCenter
-        ? BottomNavigationBar.heightNavigationBarVertical
+        ? UBottomNavigationBar.heightNavigationBarVertical
         : double.infinity;
     double width = getAlignment(orientation) == Alignment.bottomCenter
         ? double.infinity
-        : BottomNavigationBar.weightNavigationBarHorisontal;
+        : UBottomNavigationBar.weightNavigationBarHorisontal;
     Axis direction = getAlignment(orientation) == Alignment.bottomCenter
         ? Axis.horizontal
         : Axis.vertical;
@@ -137,7 +137,7 @@ class _BottomNavigationBarState extends State<BottomNavigationBar> {
   }
 
   Widget _buildTabItem({
-    BottomNavigationBarItem item,
+    UBottomNavigationBarItem item,
     int index,
     ValueChanged<int> onPressed,
   }) {

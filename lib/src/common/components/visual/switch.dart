@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 /// Создаёт визуальный элемент переключателя.
-class Switch extends StatefulWidget {
-  Switch(this.value);
+class USwitchVisual extends StatefulWidget {
+  USwitchVisual(this.value);
   final bool value;
 
   @override
-  _SwitchState createState() => _SwitchState();
+  _USwitchVisualState createState() => _USwitchVisualState();
 }
 
-class _SwitchState extends State<Switch> {
+class _USwitchVisualState extends State<USwitchVisual> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(

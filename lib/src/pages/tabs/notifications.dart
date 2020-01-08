@@ -1,12 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:picbox/src/common/bodies/page.dart';
+import 'package:picbox/src/common/widgets.dart';
 
 /// Вкладка `Уведомления`
 class NotificationsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return PageBody(
+    return UScaffold(
       showBackButton: false,
       title: AppLocalizations.of(context).tr('notifications.title'),
       child: Padding(

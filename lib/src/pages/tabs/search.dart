@@ -1,13 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:picbox/src/common/bodies/page.dart';
 import 'package:picbox/src/common/decorations/input.dart';
+import 'package:picbox/src/common/widgets.dart';
 
 /// Вкладка `Поиск`
 class SearchTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return PageBody(
+    return UScaffold(
       showBackButton: false,
       child: Padding(
         padding: const EdgeInsets.all(15),

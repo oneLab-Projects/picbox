@@ -1,8 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:picbox/src/common/bodies/page.dart';
-import 'package:picbox/src/common/components/list/select.dart';
+import 'package:picbox/src/common/widgets.dart';
 import 'package:picbox/src/common/constants.dart';
 import 'package:picbox/src/common/dialogs/select.dart';
 
@@ -10,20 +9,18 @@ import 'package:picbox/src/common/dialogs/select.dart';
 class DebugPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageBody(
-        title: AppLocalizations.of(context).tr('debug.title'),
-        child: Column(
-          children: <Widget>[
-            _languageSwitchBuilder(context),
-            /*_navigationBarTestBuilder(),
+    return UScaffold(
+      title: AppLocalizations.of(context).tr('debug.title'),
+      child: Column(
+        children: <Widget>[
+          _languageSwitchBuilder(context),
+          /*_navigationBarTestBuilder(),
             RaisedButton(
               child: Text('SignInPage'),
               onPressed: () =>
                   Navigator.of(context).pushReplacementNamed('/signin'),
             )*/
-          ],
-        ),
+        ],
       ),
     );
   }
@@ -34,7 +31,7 @@ class DebugPage extends StatelessWidget {
 
     return EasyLocalizationProvider(
       data: data,
-      child: ListSelect(
+      child: UListSelect(
         AppLocalizations.of(context).tr('debug.language'),
         onTap: () => showSelectionDialog(
           context,

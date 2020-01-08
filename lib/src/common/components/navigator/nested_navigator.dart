@@ -1,17 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:picbox/src/common/widgets.dart';
 
-import 'navigation_bar.dart' as c;
-
-/// Создаёт вкладку, работающую с [NestedNavigator].
-class NestedTab {
+/// Создаёт вкладку, работающую с [UNestedNavigator].
+class UNestedTab {
   final WidgetBuilder initPageBuilder;
   final IconData iconData;
   final IconData selectedIconData;
   final bool badge;
   final GlobalKey<NavigatorState> _navigatorKey;
 
-  NestedTab({
+  UNestedTab({
     @required this.initPageBuilder,
     @required this.iconData,
     this.selectedIconData,
@@ -21,9 +20,9 @@ class NestedTab {
 }
 
 /// Создаёт реализацию мультиоконности.
-class NestedNavigator extends StatefulWidget {
+class UNestedNavigator extends StatefulWidget {
   final int initTabIndex;
-  final List<NestedTab> tabs;
+  final List<UNestedTab> tabs;
   final PageRoute pageRoute;
   final ValueChanged<int> onTap;
   final ValueGetter shouldHandlePop;
@@ -32,7 +31,7 @@ class NestedNavigator extends StatefulWidget {
   final Color color;
   final Color selectedColor;
 
-  NestedNavigator({
+  UNestedNavigator({
     @required this.tabs,
     this.initTabIndex = 0,
     this.onTap,
@@ -46,13 +45,13 @@ class NestedNavigator extends StatefulWidget {
   static bool _defaultShouldHandlePop() => true;
 
   @override
-  State<StatefulWidget> createState() => _NestedNavigatorState(initTabIndex);
+  State<StatefulWidget> createState() => _UNestedNavigatorState(initTabIndex);
 }
 
-class _NestedNavigatorState extends State<NestedNavigator> {
+class _UNestedNavigatorState extends State<UNestedNavigator> {
   int currentIndex;
 
-  _NestedNavigatorState(this.currentIndex);
+  _UNestedNavigatorState(this.currentIndex);
 
   @override
   Widget build(BuildContext context) => WillPopScope(
@@ -72,13 +71,13 @@ class _NestedNavigatorState extends State<NestedNavigator> {
         children: widget.tabs.map((tab) => _buildNavigator(tab)).toList(),
       );
 
-  Widget _buildNavigator(NestedTab tab) => TabPageNavigator(
+  Widget _buildNavigator(UNestedTab tab) => TabPageNavigator(
         navigatorKey: tab._navigatorKey,
         initPageBuilder: tab.initPageBuilder,
         pageRoute: widget.pageRoute,
       );
 
-  Widget _buildBottomBar(Widget body) => c.BottomNavigationBar(
+  Widget _buildBottomBar(Widget body) => UBottomNavigationBar(
         body: body,
         onTabSelected: (index) {
           if (widget.onTap != null) widget.onTap(index);
@@ -88,7 +87,7 @@ class _NestedNavigatorState extends State<NestedNavigator> {
         color: widget.color,
         selectedColor: widget.selectedColor,
         items: widget.tabs
-            .map((tab) => c.BottomNavigationBarItem(
+            .map((tab) => UBottomNavigationBarItem(
                   iconData: tab.iconData,
                   selectedIconData: tab.selectedIconData,
                   badge: tab.badge,

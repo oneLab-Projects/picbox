@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-/// [ListWidget] является обёрткой для виджетов, отображаемых
+/// [UListWidget] является обёрткой для виджетов, отображаемых
 /// в списках.
-class ListWidget extends StatelessWidget {
-  ListWidget(
+class UListWidget extends StatelessWidget {
+  UListWidget(
     this.caption, {
     this.description,
     this.iconData,
