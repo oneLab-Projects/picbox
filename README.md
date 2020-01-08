@@ -28,3 +28,12 @@ flutter build --debug
 ```shell
 flutter build --release
 ```
+
+### Лицензия
+
+Лицензировано под [GNU Affero General Public License v3.0](https://github.com/oneLab-Projects/picbox/blob/master/LICENSE).
+
+**Дополнительные условия лицензии:**
+
+* Запрещается заменять или удалять из продуктов и компонентов Picbox оригинальный копирайт, логотип.
+* В документации модифицированных версиях исходного и объектного кода Программного продукта должны отображать соответствующие правовые уведомления (см. [раздел 5 лицензии GNU AGPL v3.0](https://github.com/oneLab-Projects/picbox/blob/master/LICENSE#L196)).
