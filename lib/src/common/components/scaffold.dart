@@ -34,20 +34,22 @@ class _UScaffoldState extends State<UScaffold> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      child: SizedBox.expand(
-        child: Stack(children: [
-          if (!widget.showBackButton)
-            widget.title == null
-                ? content(context)
-                : contentWithTitleBar(context),
-          if (widget.showBackButton) contentWithBackButton(context),
-          Container(
-            color: Theme.of(context).scaffoldBackgroundColor.withAlpha(150),
-            height: MediaQuery.of(context).padding.top,
-          )
-        ]),
+    return Scaffold(
+      body: SafeArea(
+        top: false,
+        child: SizedBox.expand(
+          child: Stack(children: [
+            if (!widget.showBackButton)
+              widget.title == null
+                  ? content(context)
+                  : contentWithTitleBar(context),
+            if (widget.showBackButton) contentWithBackButton(context),
+            Container(
+              color: Theme.of(context).scaffoldBackgroundColor.withAlpha(150),
+              height: MediaQuery.of(context).padding.top,
+            )
+          ]),
+        ),
       ),
     );
   }
