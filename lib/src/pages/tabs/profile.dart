@@ -14,7 +14,7 @@ class ProfileTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return UScaffold(
       showBackButton: false,
-      child: Column(
+      body: Column(
         children: <Widget>[
           _buildHead(context),
           const SizedBox(height: 20),

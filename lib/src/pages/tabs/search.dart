@@ -9,7 +9,7 @@ class SearchTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return UScaffold(
       showBackButton: false,
-      child: Padding(
+      body: Padding(
         padding: const EdgeInsets.all(15),
         child: Column(
           children: <Widget>[

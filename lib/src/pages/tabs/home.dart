@@ -9,7 +9,7 @@ class HomeTab extends StatelessWidget {
     return UScaffold(
       showBackButton: false,
       title: AppLocalizations.of(context).tr('home.title'),
-      child: _buildCardGrid(context),
+      body: _buildCardGrid(context),
     );
   }
 

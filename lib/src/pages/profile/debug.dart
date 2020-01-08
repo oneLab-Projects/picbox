@@ -11,7 +11,7 @@ class DebugPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return UScaffold(
       title: AppLocalizations.of(context).tr('debug.title'),
-      child: Column(
+      body: Column(
         children: <Widget>[
           _languageSwitchBuilder(context),
           /*_navigationBarTestBuilder(),

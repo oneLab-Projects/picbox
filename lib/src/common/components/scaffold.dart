@@ -3,11 +3,11 @@ import 'package:picbox/src/common/widgets.dart';
 
 /// Создает визуальную основу для виджетов.
 class UScaffold extends StatefulWidget {
-  UScaffold({this.title, this.child, this.showBackButton = true});
+  UScaffold({this.title, this.body, this.showBackButton = true});
 
   final String title;
   @required
-  final Widget child;
+  final Widget body;
   final bool showBackButton;
 
   @override
@@ -90,7 +90,7 @@ class _UScaffoldState extends State<UScaffold> {
             child: Padding(
               padding:
                   EdgeInsets.only(top: 60 + MediaQuery.of(context).padding.top),
-              child: widget.child,
+              child: widget.body,
             ),
           ),
         ),
@@ -101,7 +101,7 @@ class _UScaffoldState extends State<UScaffold> {
   content(context) {
     return SingleChildScrollView(
       padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-      child: widget.child,
+      child: widget.body,
     );
   }
 
@@ -130,7 +130,7 @@ class _UScaffoldState extends State<UScaffold> {
       children: <Widget>[
         SizedBox(height: MediaQuery.of(context).padding.top),
         titleBarWithBackButton(context),
-        SingleChildScrollView(child: widget.child),
+        SingleChildScrollView(child: widget.body),
       ],
     );
   }

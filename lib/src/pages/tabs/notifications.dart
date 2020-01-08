@@ -9,7 +9,7 @@ class NotificationsTab extends StatelessWidget {
     return UScaffold(
       showBackButton: false,
       title: AppLocalizations.of(context).tr('notifications.title'),
-      child: Padding(
+      body: Padding(
         padding: const EdgeInsets.all(15).copyWith(bottom: 5),
         child: _buildNotifications(context),
       ),
