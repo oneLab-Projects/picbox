@@ -5,13 +5,16 @@
 ### Разворачивание среды
 > Убедитесь, что в системе установлен Flutter.
 
+#### Обязательные плагины для VSCode
+- Dart
+- Flutter
+
 #### Рекомендуемые плагины для VSCode
-- Dart, Flutter (обязательно) 
-- Awesome Flutter Snippets (удобные сниппеты для Flutter)
-- Pubspec Assist (помощник для быстрой установки пакетов)
-- dart-import (исправление импортов)
-- VSCode Great Icons (иконки)
-- One Monokai Theme (тема)
+- Awesome Flutter Snippets
+- Pubspec Assist
+- dart-import
+- VSCode Great Icons
+- One Monokai Theme
 
 ### Сборка
 > Если консоль жалуется на команду flutter, попробуйте добавить путь к Flutter в Path.
