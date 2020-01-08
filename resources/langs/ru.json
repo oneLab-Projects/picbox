@@ -5,7 +5,8 @@
         "no": "Нет",
         "continue": "Продолжить",
         "cancel": "Отменить",
-        "not_selected": "Не выбрано"
+        "not_selected": "Не выбрано",
+        "system": "Системный"
     },
     "home": {
         "title": "Для Вас"
