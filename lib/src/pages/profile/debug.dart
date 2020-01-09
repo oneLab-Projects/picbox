@@ -4,6 +4,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:picbox/src/common/localization.dart';
 import 'package:picbox/src/common/widgets.dart';
 import 'package:picbox/src/common/dialogs/select.dart';
+import 'package:picbox/src/pages/landing/signin.dart';
 
 /// Страница `Для разработчиков`
 class DebugPage extends StatelessWidget {
@@ -14,12 +15,9 @@ class DebugPage extends StatelessWidget {
       body: Column(
         children: <Widget>[
           _languageSwitchBuilder(context),
-          /*_navigationBarTestBuilder(),
-            RaisedButton(
-              child: Text('SignInPage'),
-              onPressed: () =>
-                  Navigator.of(context).pushReplacementNamed('/signin'),
-            )*/
+          UListButton("Open SignIn page",
+              onPressed: () => Navigator.push(
+                  context, UPageRoute(builder: (context) => SignInPage()))),
         ],
       ),
     );
