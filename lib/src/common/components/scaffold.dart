@@ -144,7 +144,7 @@ class _UScaffoldState extends State<UScaffold> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           UIconButton(
-            onTap: () => Navigator.pop(context),
+            onPressed: () => Navigator.pop(context),
             iconData: Icons.arrow_back,
           ),
           const SizedBox(width: 8),

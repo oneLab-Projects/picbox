@@ -31,7 +31,7 @@ class _UListSwitchState extends State<UListSwitch> {
       widget.caption,
       description: widget.description,
       iconData: widget.iconData,
-      onTap: widget.onChanged == null
+      onPressed: widget.onChanged == null
           ? null
           : () => widget.onChanged(!widget.value),
       control: USwitchVisual(widget.value),

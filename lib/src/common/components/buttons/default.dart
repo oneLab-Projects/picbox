@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 /// Создаёт приподнятую кнопку.
 class URaisedButton extends StatelessWidget {
   URaisedButton(this.text,
-      {this.iconData, this.onTap, this.onLongPress, this.loading = false});
+      {this.iconData, this.onPressed, this.onLongPress, this.loading = false});
 
   final IconData iconData;
   final bool loading;
   final Function onLongPress;
-  final Function onTap;
+  final Function onPressed;
   final String text;
 
   @override
@@ -19,7 +19,7 @@ class URaisedButton extends StatelessWidget {
       color: Theme.of(context).primaryColor,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: InkWell(
-        onTap: loading ? null : onTap,
+        onTap: loading ? null : onPressed,
         onLongPress: loading ? null : onLongPress,
         child: _buildContent(context),
       ),
@@ -53,7 +53,7 @@ class URaisedButton extends StatelessWidget {
 
   Widget _buildIcon(BuildContext context) => Icon(
         iconData,
-        color: onTap == null
+        color: onPressed == null
             ? Theme.of(context).disabledColor.withAlpha(150)
             : Theme.of(context).disabledColor,
       );
@@ -64,7 +64,7 @@ class URaisedButton extends StatelessWidget {
           text,
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.button.copyWith(
-                color: onTap == null
+                color: onPressed == null
                     ? Theme.of(context).disabledColor.withAlpha(150)
                     : Theme.of(context).disabledColor,
               ),

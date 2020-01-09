@@ -50,7 +50,7 @@ class _SignInPageState extends State<SignInPage> {
           URaisedButton(
             'Continue',
             loading: _loading,
-            onTap:
+            onPressed:
                 _phoneNumber.toString().length >= 11 ? () => _continue() : null,
           ),
         ],

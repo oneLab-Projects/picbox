@@ -7,7 +7,7 @@ class UListWidget extends StatelessWidget {
     this.caption, {
     this.description,
     this.iconData,
-    this.onTap,
+    this.onPressed,
     this.onLongPress,
     this.control,
   });
@@ -17,7 +17,7 @@ class UListWidget extends StatelessWidget {
   final String description;
   final IconData iconData;
   final Function onLongPress;
-  final Function onTap;
+  final Function onPressed;
   final Widget control;
 
   @override
@@ -27,7 +27,7 @@ class UListWidget extends StatelessWidget {
       child: ConstrainedBox(
         constraints: BoxConstraints(minHeight: 70),
         child: InkWell(
-          onTap: onTap,
+          onTap: onPressed,
           onLongPress: onLongPress,
           child: _buildContent(context),
         ),
@@ -45,7 +45,7 @@ class UListWidget extends StatelessWidget {
             if (control != null) const SizedBox(width: 20),
             if (control != null)
               Opacity(
-                opacity: onTap == null ? 0.5 : 1,
+                opacity: onPressed == null ? 0.5 : 1,
                 child: control,
               ),
           ],
@@ -58,7 +58,7 @@ class UListWidget extends StatelessWidget {
           Icon(
             iconData,
             size: 20,
-            color: onTap == null && control != null
+            color: onPressed == null && control != null
                 ? Theme.of(context).textTheme.button.color.withAlpha(150)
                 : Theme.of(context).textTheme.button.color,
           ),
@@ -73,7 +73,7 @@ class UListWidget extends StatelessWidget {
             Text(
               caption,
               style: Theme.of(context).textTheme.button.copyWith(
-                    color: onTap == null && control != null
+                    color: onPressed == null && control != null
                         ? Theme.of(context)
                             .textTheme
                             .button
@@ -94,7 +94,7 @@ class UListWidget extends StatelessWidget {
           Text(
             description,
             style: Theme.of(context).textTheme.caption.copyWith(
-                  color: onTap == null && control != null
+                  color: onPressed == null && control != null
                       ? Theme.of(context).textTheme.button.color.withAlpha(110)
                       : Theme.of(context).textTheme.button.color.withAlpha(170),
                 ),

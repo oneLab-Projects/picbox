@@ -10,7 +10,7 @@ class UListSelect extends StatelessWidget {
     this.description,
     this.value,
     this.iconData,
-    this.onTap,
+    this.onPressed,
   });
 
   @required
@@ -18,13 +18,13 @@ class UListSelect extends StatelessWidget {
   final String description;
   final String value;
   final IconData iconData;
-  final Function onTap;
+  final Function onPressed;
 
   @override
   Widget build(BuildContext context) {
     return UListWidget(caption,
         iconData: iconData,
-        onTap: onTap,
+        onPressed: onPressed,
         description: description,
         control: Text(
             value ?? AppLocalizations.of(context).tr('default.not_selected')));

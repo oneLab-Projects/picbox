@@ -34,7 +34,7 @@ class ProfileTab extends StatelessWidget {
         Divider(),
         UListButton(AppLocalizations.of(context).tr('debug.title'),
             iconData: MdiIcons.bug,
-            onTap: () => Navigator.push(
+            onPressed: () => Navigator.push(
                 context, UPageRoute(builder: (context) => DebugPage()))),
       ],
     );
