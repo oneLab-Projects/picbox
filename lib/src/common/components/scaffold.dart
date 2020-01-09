@@ -148,10 +148,11 @@ class _UScaffoldState extends State<UScaffold> {
             iconData: Icons.arrow_back,
           ),
           const SizedBox(width: 8),
-          Text(
-            widget.title,
-            style: Theme.of(context).textTheme.title,
-          ),
+          if (widget.title != null)
+            Text(
+              widget.title,
+              style: Theme.of(context).textTheme.title,
+            ),
         ],
       ),
     );
