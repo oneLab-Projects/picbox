@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:picbox/src/common/localization.dart';
 import 'package:picbox/src/common/widgets.dart';
-import 'package:picbox/src/common/constants.dart';
 import 'package:picbox/src/common/dialogs/select.dart';
 
 /// Страница `Для разработчиков`
@@ -25,29 +25,63 @@ class DebugPage extends StatelessWidget {
     );
   }
 
-  _languageSwitchBuilder(BuildContext context) {
+  Widget _languageSwitchBuilder(BuildContext context) {
     var data = EasyLocalizationProvider.of(context).data;
-    var supportedLanguages = Constants.supportedLanguages;
+    var supportedLanguages = Localization.supportedLanguages;
 
     return EasyLocalizationProvider(
       data: data,
-      child: UListSelect(
-        AppLocalizations.of(context).tr('debug.language'),
-        onTap: () => showSelectionDialog(
-          context,
-          actions: List.generate(supportedLanguages.length,
-              (int index) => supportedLanguages.values.toList()[index]),
-        ).then((value) {
-          if (value == null) return;
-
-          String locale = supportedLanguages.keys
-              .firstWhere((key) => supportedLanguages[key] == value);
-          data.changeLocale(Locale(locale));
-        }),
-        value: supportedLanguages[
-            AppLocalizations.of(context).locale.languageCode],
-        iconData: MdiIcons.earth,
-      ),
+      child: FutureBuilder<String>(
+          future: Localization.recommendedLocale(),
+          builder: (context, recommendedLocale) => UListSelect(
+                AppLocalizations.of(context).tr('debug.language'),
+                onPressed:
+                    recommendedLocale.connectionState == ConnectionState.waiting
+                        ? null
+                        : () => _showLanguagesListDialog(context,
+                            supportedLanguages, recommendedLocale.data, data),
+                value: supportedLanguages[
+                    AppLocalizations.of(context).locale.languageCode],
+                iconData: MdiIcons.earth,
+              )),
     );
   }
+
+  Future _showLanguagesListDialog(
+    BuildContext context,
+    Map<String, String> supportedLanguages,
+    String recommendedLocale,
+    data,
+  ) {
+    String recommendLanguage =
+        _getRecommendedLanguage(context, supportedLanguages, recommendedLocale);
+    return showSelectionDialog(
+      context,
+      actions: [recommendLanguage] + _getNameLanguages(supportedLanguages),
+    ).then((value) {
+      if (value == null) return;
+      String locale;
+
+      if (value == recommendLanguage)
+        locale = recommendedLocale;
+      else
+        locale = supportedLanguages.keys
+            .firstWhere((key) => supportedLanguages[key] == value);
+      data.changeLocale(Locale(locale));
+    });
+  }
+
+  String _getRecommendedLanguage(
+    BuildContext context,
+    Map<String, String> supportedLanguages,
+    String locale,
+  ) =>
+      AppLocalizations.of(context).tr('settings.recommended') +
+      " (" +
+      supportedLanguages[locale] +
+      ")";
+
+  List<String> _getNameLanguages(Map<String, String> languages) =>
+      List.generate(
+          languages.length, (int index) => languages.values.toList()[index]);
 }
