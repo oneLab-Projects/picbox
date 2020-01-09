@@ -12,11 +12,7 @@ class Localization {
   /// Возвращает наиболее подходящий язык для пользователя,
   /// основываясь на локализации устройства.
   static Future<String> recommendedLocale() async {
-    List languages = await Devicelocale.preferredLanguages;
-    for (String language in languages) {
-      if (language.runes.length != 2) language = language.substring(0, 2);
-      if (supportedLanguages.containsKey(language)) return language;
-    }
-    return 'en';
+    String language = (await Devicelocale.currentLocale).substring(0, 2);
+    return supportedLanguages.containsKey(language) ? language : 'en';
   }
 }
