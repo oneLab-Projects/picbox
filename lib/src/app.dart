@@ -5,9 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:picbox/src/blocs/theme.dart';
 import 'package:picbox/src/blocs/theme/night.dart';
-import 'package:picbox/src/common/constants.dart';
 import 'package:picbox/src/common/design/clear_behavior.dart';
 import 'package:picbox/src/common/design/style.dart';
+import 'package:picbox/src/common/localization.dart';
 import 'package:picbox/src/pages/root.dart';
 
 /// [App] является основным виджетом приложения. Его цель состоит в том, чтобы
@@ -35,7 +35,7 @@ class AppWithBlocs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var data = EasyLocalizationProvider.of(context).data;
-    var supportedLanguages = Constants.supportedLanguages;
+    var supportedLanguages = Localization.supportedLanguages;
 
     return EasyLocalizationProvider(
       data: data,
