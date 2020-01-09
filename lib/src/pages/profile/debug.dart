@@ -33,13 +33,12 @@ class DebugPage extends StatelessWidget {
       data: data,
       child: FutureBuilder<String>(
           future: Localization.recommendedLocale(),
-          builder: (context, recommendedLocale) => UListSelect(
+          builder: (context, locale) => UListSelect(
                 AppLocalizations.of(context).tr('debug.language'),
-                onPressed:
-                    recommendedLocale.connectionState == ConnectionState.waiting
-                        ? null
-                        : () => _showLanguagesListDialog(context,
-                            supportedLanguages, recommendedLocale.data, data),
+                onPressed: locale.connectionState == ConnectionState.waiting
+                    ? null
+                    : () => _showLanguagesListDialog(
+                        context, supportedLanguages, locale.data, data),
                 value: supportedLanguages[
                     AppLocalizations.of(context).locale.languageCode],
                 iconData: MdiIcons.earth,
@@ -50,24 +49,24 @@ class DebugPage extends StatelessWidget {
   Future _showLanguagesListDialog(
     BuildContext context,
     Map<String, String> supportedLanguages,
-    String recommendedLocale,
+    String locale,
     data,
   ) {
     String recommendLanguage =
-        _getRecommendedLanguage(context, supportedLanguages, recommendedLocale);
+        _getRecommendedLanguage(context, supportedLanguages, locale);
     return showSelectionDialog(
       context,
       actions: [recommendLanguage] + _getNameLanguages(supportedLanguages),
     ).then((value) {
       if (value == null) return;
-      String locale;
+      String result;
 
       if (value == recommendLanguage)
-        locale = recommendedLocale;
+        result = locale;
       else
-        locale = supportedLanguages.keys
+        result = supportedLanguages.keys
             .firstWhere((key) => supportedLanguages[key] == value);
-      data.changeLocale(Locale(locale));
+      data.changeLocale(Locale(result));
     });
   }
 
