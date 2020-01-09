@@ -36,7 +36,7 @@ class _SignInPageState extends State<SignInPage> {
                     fontSize: 58,
                     color: Theme.of(context).primaryColor)),
           ),
-          const SizedBox(height: 25.0),
+          const SizedBox(height: 25),
           Text(
             "Authorize to oneLab",
             style: Theme.of(context)
@@ -44,9 +44,9 @@ class _SignInPageState extends State<SignInPage> {
                 .subhead
                 .copyWith(color: Theme.of(context).hintColor),
           ),
-          const SizedBox(height: 200.0),
+          const SizedBox(height: 100),
           _buildPhoneNumberTextField(context),
-          const SizedBox(height: 10.0),
+          const SizedBox(height: 10),
           URaisedButton(
             'Continue',
             loading: _loading,
