@@ -6,6 +6,7 @@ export 'components/buttons/default.dart';
 export 'components/buttons/icon.dart';
 
 export 'components/list/button.dart';
+export 'components/list/content.dart';
 export 'components/list/select.dart';
 export 'components/list/switch.dart';
 export 'components/list/widget.dart';
