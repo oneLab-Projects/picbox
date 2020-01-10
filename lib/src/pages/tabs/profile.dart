@@ -27,10 +27,12 @@ class ProfileTab extends StatelessWidget {
   Widget _buildBody(BuildContext context) {
     return Column(
       children: <Widget>[
-        UListButton(AppLocalizations.of(context).tr('profile.edit_profile'),
-            iconData: MdiIcons.accountEdit),
-        _buildThemeSwitch(),
+        _buildProfileViewButton(context),
         Divider(),
+        UListButton("Предпочтения", iconData: MdiIcons.heart),
+        UListButton("Статистика", iconData: MdiIcons.chartTimelineVariant),
+        Divider(),
+        _buildThemeSwitch(),
         UListButton(AppLocalizations.of(context).tr('debug.title'),
             iconData: MdiIcons.bug,
             onPressed: () => Navigator.push(
@@ -38,6 +40,31 @@ class ProfileTab extends StatelessWidget {
       ],
     );
   }
+
+  Widget _buildProfileViewButton(BuildContext context) => UListContent(
+        "Хранилище",
+        iconData: MdiIcons.archive,
+        onPressed: () {},
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            for (int i = 0;
+                i <
+                    (MediaQuery.of(context).orientation == Orientation.portrait
+                        ? 4
+                        : 8);
+                i++)
+              Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).cardColor,
+                  borderRadius: const BorderRadius.all(Radius.circular(15)),
+                ),
+                height: 85,
+                width: 85,
+              ),
+          ],
+        ),
+      );
 
   Widget _buildThemeSwitch() {
     return BlocBuilder<ThemeBloc, ThemeData>(
