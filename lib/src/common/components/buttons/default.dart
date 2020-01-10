@@ -14,25 +14,34 @@ class URaisedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      borderRadius: BorderRadius.all(Radius.circular(5)),
-      color: Theme.of(context).primaryColor,
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      child: InkWell(
-        onTap: loading ? null : onPressed,
-        onLongPress: loading ? null : onLongPress,
-        child: _buildContent(context),
+    return AnimatedOpacity(
+      opacity: onPressed != null ? 1 : 0.9,
+      duration: Duration(milliseconds: 150),
+      child: Material(
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+        color: Theme.of(context).primaryColor,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: InkWell(
+          onTap: loading ? null : onPressed,
+          onLongPress: loading ? null : onLongPress,
+          child: _buildContent(context),
+        ),
       ),
     );
   }
 
   Widget _buildContent(BuildContext context) => Padding(
         padding: const EdgeInsets.all(16),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Stack(
+          alignment: Alignment.center,
           children: <Widget>[
-            if (text != null && !loading) _buildText(context),
-            if (iconData != null && !loading) _buildIcon(context),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                if (text != null && !loading) _buildText(context),
+                if (iconData != null && !loading) _buildIcon(context),
+              ],
+            ),
             _buildLoader(context),
           ],
         ),
