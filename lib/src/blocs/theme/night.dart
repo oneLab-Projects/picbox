@@ -9,6 +9,7 @@ final ThemeData themeNight = ThemeData(
   scaffoldBackgroundColor: Color(0xFF1E1E1E),
   cursorColor: Colors.grey[500],
   disabledColor: Color(0xFF252525),
-  splashColor: Colors.black12,
-  highlightColor: Colors.black12,
+  cardColor: Color(0xFF272727),
+  splashColor: Colors.black.withAlpha(25),
+  highlightColor: Colors.black.withAlpha(25),
 );

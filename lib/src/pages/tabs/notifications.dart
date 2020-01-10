@@ -22,7 +22,7 @@ class NotificationsTab extends StatelessWidget {
         for (int i = 0; i < 13; i++)
           Container(
             decoration: BoxDecoration(
-              color: Theme.of(context).disabledColor,
+              color: Theme.of(context).cardColor,
               borderRadius: const BorderRadius.all(Radius.circular(15)),
             ),
             height: 85,

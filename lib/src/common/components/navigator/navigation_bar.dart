@@ -148,6 +148,8 @@ class _UBottomNavigationBarState extends State<UBottomNavigationBar> {
     return Expanded(
       child: SizedBox.expand(
         child: InkWell(
+          splashColor: Colors.black12,
+          highlightColor: Colors.black12,
           borderRadius: BorderRadius.all(Radius.circular(5)),
           onTap: () => onPressed(index),
           child: Stack(

@@ -16,7 +16,7 @@ class SearchTab extends StatelessWidget {
             _buildSearchBar(context),
             Container(
               decoration: BoxDecoration(
-                color: Theme.of(context).disabledColor,
+                color: Theme.of(context).cardColor,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
               height: 185,

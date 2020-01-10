@@ -9,6 +9,7 @@ final ThemeData themeDay = ThemeData(
   scaffoldBackgroundColor: Color(0xFFF8F8F8),
   cursorColor: Colors.grey[800],
   disabledColor: Colors.grey[200],
-  splashColor: Colors.black12,
-  highlightColor: Colors.black12,
+  cardColor: Color(0xFFECECEC),
+  splashColor: Colors.black.withAlpha(10),
+  highlightColor: Colors.black.withAlpha(10),
 );

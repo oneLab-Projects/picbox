@@ -15,7 +15,7 @@ class InputDesign extends InputDecoration {
           prefixText: prefixText,
           contentPadding: const EdgeInsets.symmetric(horizontal: 16),
           filled: true,
-          fillColor: Theme.of(context).disabledColor,
+          fillColor: Theme.of(context).cardColor,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(5)),
             borderSide: BorderSide(
@@ -48,7 +48,7 @@ class RoundInputDesign extends InputDecoration {
                 fontSize: 17,
                 color: Theme.of(context).textTheme.caption.color,
               ),
-          fillColor: Theme.of(context).disabledColor,
+          fillColor: Theme.of(context).cardColor,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(50)),
             borderSide: BorderSide(style: BorderStyle.none),
