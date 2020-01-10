@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:picbox/src/common/widgets.dart';
 import 'package:picbox/src/common/decorations/input.dart';
+import 'package:picbox/src/pages/landing/confirm.dart';
 import 'package:picbox/src/pages/landing/signup.dart';
 
 /// Страница `Авторизация`
@@ -20,7 +21,7 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return UScaffold(
       body: _buildBody(
         [
           GestureDetector(
@@ -52,6 +53,9 @@ class _SignInPageState extends State<SignInPage> {
             loading: _loading,
             onPressed:
                 _phoneNumber.toString().length >= 11 ? () => _continue() : null,
+            onLongPress: _phoneNumber.toString().length >= 11
+                ? () => _continueVariant()
+                : null,
           ),
         ],
       ),
@@ -61,7 +65,8 @@ class _SignInPageState extends State<SignInPage> {
   Widget _buildBody(List<Widget> children) {
     return Center(
       child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: 300),
+        constraints: BoxConstraints(
+            maxWidth: 300, minHeight: MediaQuery.of(context).size.height / 2),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: children,
@@ -94,13 +99,19 @@ class _SignInPageState extends State<SignInPage> {
   void _continue() async {
     setState(() => _loading = true);
 
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 1));
+    Navigator.push(context, UPageRoute(builder: (context) => SignUpPage()));
+    await Future.delayed(Duration(milliseconds: 300));
     setState(() => _loading = false);
+  }
 
-    Navigator.push(
-      context,
-      CupertinoPageRoute(builder: (context) => SignUpPage()),
-    );
+  void _continueVariant() async {
+    setState(() => _loading = true);
+
+    await Future.delayed(Duration(seconds: 1));
+    Navigator.push(context, UPageRoute(builder: (context) => ConfirmPage()));
+    await Future.delayed(Duration(milliseconds: 300));
+    setState(() => _loading = false);
   }
 
   int _parsePhoneNumber(String value) =>
