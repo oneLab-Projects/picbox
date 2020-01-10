@@ -20,14 +20,14 @@ class InputDesign extends InputDecoration {
             borderRadius: BorderRadius.all(Radius.circular(5)),
             borderSide: BorderSide(
               width: 1,
-              color: Theme.of(context).dividerColor,
+              color: Theme.of(context).cursorColor.withAlpha(20),
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(5)),
             borderSide: BorderSide(
               width: 2,
-              color: Theme.of(context).hintColor,
+              color: Theme.of(context).cursorColor.withAlpha(20),
             ),
           ),
         );
