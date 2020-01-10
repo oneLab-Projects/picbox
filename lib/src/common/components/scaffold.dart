@@ -132,7 +132,7 @@ class _UScaffoldState extends State<UScaffold> {
       children: <Widget>[
         SizedBox(height: MediaQuery.of(context).padding.top),
         titleBarWithBackButton(context),
-        SingleChildScrollView(child: widget.body),
+        Expanded(child: SingleChildScrollView(child: widget.body)),
       ],
     );
   }
