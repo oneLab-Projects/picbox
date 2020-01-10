@@ -1,6 +1,6 @@
 export 'components/scaffold.dart';
 
-export 'package:picbox/src/common/components/routes/default.dart';
+export 'components/routes/default.dart';
 
 export 'components/buttons/default.dart';
 export 'components/buttons/icon.dart';
