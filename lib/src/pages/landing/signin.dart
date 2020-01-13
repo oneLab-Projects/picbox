@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -40,7 +41,7 @@ class _SignInPageState extends State<SignInPage> {
           ),
           const SizedBox(height: 25),
           Text(
-            "Authorize to oneLab",
+            AppLocalizations.of(context).tr('signin.description'),
             style: Theme.of(context)
                 .textTheme
                 .subhead
@@ -50,7 +51,7 @@ class _SignInPageState extends State<SignInPage> {
           _buildPhoneNumberTextField(context),
           const SizedBox(height: 10),
           URaisedButton(
-            'Continue',
+            AppLocalizations.of(context).tr('default.continue'),
             loading: _loading,
             onPressed:
                 _phoneNumber.toString().length >= 11 ? () => _continue() : null,

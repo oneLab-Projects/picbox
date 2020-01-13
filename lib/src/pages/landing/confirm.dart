@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:picbox/src/common/widgets.dart';
+import 'package:picbox/src/pages/root.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
@@ -16,12 +18,12 @@ class _ConfirmPageState extends State<ConfirmPage> {
   @override
   Widget build(BuildContext context) {
     return UScaffold(
-      title: 'Confirm',
+      title: AppLocalizations.of(context).tr('confirm.title'),
       body: _buildBody(
         context,
         children: <Widget>[
           Text(
-            "Enter code from SMS",
+            AppLocalizations.of(context).tr('confirm.sms'),
             style: Theme.of(context)
                 .textTheme
                 .subhead
@@ -31,7 +33,7 @@ class _ConfirmPageState extends State<ConfirmPage> {
           _buildCodeFill(context),
           const SizedBox(height: 20),
           URaisedButton(
-            'Confirm',
+            AppLocalizations.of(context).tr('default.confirm'),
             loading: _loading,
             onPressed: null,
           ),
@@ -84,5 +86,11 @@ class _ConfirmPageState extends State<ConfirmPage> {
 
   void _checkCode(String code) async {
     setState(() => _loading = true);
+
+    await Future.delayed(Duration(seconds: 1));
+    Navigator.of(context, rootNavigator: true)
+        .pushReplacement(UPageRoute(builder: (context) => RootPage()));
+    await Future.delayed(Duration(milliseconds: 300));
+    setState(() => _loading = false);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:picbox/src/common/decorations/input.dart';
@@ -16,7 +17,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return UScaffold(
-      title: 'Sign Up',
+      title: AppLocalizations.of(context).tr('signup.title'),
       body: Column(
         children: <Widget>[
           _buildProfilePhotoSelect(context),
@@ -26,7 +27,7 @@ class _SignUpPageState extends State<SignUpPage> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: URaisedButton(
-              "Done",
+              AppLocalizations.of(context).tr('default.done'),
               onPressed: !_checkedRules
                   ? null
                   : () => Navigator.push(
@@ -48,12 +49,12 @@ class _SignUpPageState extends State<SignUpPage> {
 
   Widget _buildLastNameField(BuildContext context) {
     return UListContent(
-      "Last name (optionally)",
+      AppLocalizations.of(context).tr('signup.last_name'),
       child: TextField(
         autocorrect: false,
         decoration: InputDesign(
           context,
-          hintText: "Exp. Who",
+          hintText: AppLocalizations.of(context).tr('signup.last_name_example'),
         ),
       ),
     );
@@ -61,12 +62,13 @@ class _SignUpPageState extends State<SignUpPage> {
 
   Widget _buildFirstNameField(BuildContext context) {
     return UListContent(
-      "First name",
+      AppLocalizations.of(context).tr('signup.first_name'),
       child: TextField(
         autocorrect: false,
         decoration: InputDesign(
           context,
-          hintText: "Exp. Povar",
+          hintText:
+              AppLocalizations.of(context).tr('signup.first_name_example'),
         ),
       ),
     );
@@ -74,7 +76,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   Widget _buildProfilePhotoSelect(BuildContext context) {
     return UListContent(
-      "Profile photo",
+      AppLocalizations.of(context).tr('signup.profile_photo'),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
