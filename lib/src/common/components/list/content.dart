@@ -8,6 +8,7 @@ class UListContent extends StatelessWidget {
     this.onPressed,
     this.onLongPress,
     this.child,
+    this.variant = false,
   });
 
   @required
@@ -18,6 +19,7 @@ class UListContent extends StatelessWidget {
   final Function onPressed;
   @required
   final Widget child;
+  final bool variant;
 
   @override
   Widget build(BuildContext context) {
@@ -42,22 +44,28 @@ class UListContent extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 15),
+        padding: const EdgeInsets.symmetric(vertical: 15),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             if (caption != null) _buildCaption(context),
-            const SizedBox(height: 25),
-            child,
+            SizedBox(height: !variant ? 25 : 20),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: variant ? 0 : 22),
+              child: child,
+            ),
           ],
         ),
       );
 
-  Widget _buildCaption(BuildContext context) => Row(
-        children: <Widget>[
-          if (iconData != null) _buildIcon(context),
-          _buildText(context),
-        ],
+  Widget _buildCaption(BuildContext context) => Padding(
+        padding: EdgeInsets.symmetric(horizontal: 22),
+        child: Row(
+          children: <Widget>[
+            if (iconData != null) _buildIcon(context),
+            _buildText(context),
+          ],
+        ),
       );
 
   Widget _buildIcon(BuildContext context) => Row(
@@ -79,7 +87,13 @@ class UListContent extends StatelessWidget {
             Text(
               caption,
               style: Theme.of(context).textTheme.button.copyWith(
-                    color: Theme.of(context).textTheme.button.color,
+                    color: !variant
+                        ? Theme.of(context).textTheme.button.color
+                        : Theme.of(context)
+                            .textTheme
+                            .button
+                            .color
+                            .withAlpha(140),
                   ),
             ),
             if (description != null) _buildDescription(context),
