@@ -76,7 +76,7 @@ class LanguagePage extends StatelessWidget {
     bool enabled = true,
   }) =>
       InkWell(
-        onTap: !enabled
+        onTap: !enabled || checked
             ? null
             : () {
                 var data = EasyLocalizationProvider.of(context).data;
