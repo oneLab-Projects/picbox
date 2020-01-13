@@ -36,12 +36,19 @@
         "title": "Для разработчиков"
     },
     "signin": {
-        "title": "Вход"
+        "title": "Вход",
+        "description": "Авторизуйтесь в oneLab"
     },
     "signup": {
-        "title": "Регистрация"
+        "title": "Регистрация",
+        "profile_photo": "Фото профиля",
+        "first_name": "Имя",
+        "last_name": "Фамилия (необязательно)",
+        "first_name_example": "Напр. Владимир",
+        "last_name_example": "Напр. Путин"
     },
     "confirm": {
-        "title": "Подтверждение"
+        "title": "Подтверждение",
+        "sms": "Введите код из SMS-сообщения"
     }
 }

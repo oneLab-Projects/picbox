@@ -36,12 +36,19 @@
         "title": "For developers"
     },
     "signin": {
-        "title": "Sign In"
+        "title": "Sign In",
+        "description": "Authorize to oneLab"
     },
     "signup": {
-        "title": "Sign Up"
+        "title": "Sign Up",
+        "profile_photo": "Profile photo",
+        "first_name": "First name",
+        "last_name": "Last name (optionally)",
+        "first_name_example": "Exp. Vladimir",
+        "last_name_example": "Exp. Putin"
     },
     "confirm": {
-        "title": "Confirm"
+        "title": "Confirm",
+        "sms": "Enter code from SMS"
     }
 }
