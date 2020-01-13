@@ -81,7 +81,6 @@ class _SignInPageState extends State<SignInPage> {
       decoration: InputDesign(
         context,
         hintText: 'Phone Number',
-        prefixText: '+7 ',
       ),
       keyboardType: TextInputType.phone,
       onChanged: (String value) {

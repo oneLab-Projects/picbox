@@ -5,14 +5,12 @@ class InputDesign extends InputDecoration {
   InputDesign(
     BuildContext context, {
     String hintText,
-    String prefixText,
   }) : super(
-          labelText: hintText,
+          hintText: hintText,
           labelStyle: Theme.of(context).textTheme.subhead.copyWith(
               height: 1.4, color: Theme.of(context).textTheme.caption.color),
           prefixStyle: Theme.of(context).textTheme.subhead.copyWith(
               height: 1.4, color: Theme.of(context).textTheme.caption.color),
-          prefixText: prefixText,
           contentPadding: const EdgeInsets.symmetric(horizontal: 16),
           filled: true,
           fillColor: Theme.of(context).cardColor,
@@ -38,10 +36,8 @@ class RoundInputDesign extends InputDecoration {
   RoundInputDesign(
     BuildContext context, {
     String hintText,
-    String prefixText,
   }) : super(
           hintText: hintText,
-          prefixText: prefixText,
           contentPadding: const EdgeInsets.symmetric(horizontal: 18),
           filled: true,
           hintStyle: Theme.of(context).textTheme.subhead.copyWith(
