@@ -29,14 +29,14 @@
     },
     "profile": {
         "title": "Профиль",
-        "edit_profile": "Редактировать профиль",
+        "storage": "Хранилище",
         "night_theme": "Ночная тема"
     },
     "debug": {
         "title": "Для разработчиков"
     },
     "signin": {
-        "title": "Вход",
+        "title": "Авторизация",
         "description": "Авторизуйтесь в oneLab",
         "phone_number": "Номер телефона"
     },

@@ -45,7 +45,7 @@ class ProfileTab extends StatelessWidget {
   }
 
   Widget _buildProfileViewButton(BuildContext context) => UListContent(
-        "Хранилище",
+        AppLocalizations.of(context).tr('profile.storage'),
         iconData: MdiIcons.archive,
         onPressed: () {},
         child: Row(

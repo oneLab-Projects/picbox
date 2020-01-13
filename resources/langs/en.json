@@ -29,7 +29,7 @@
     },
     "profile": {
         "title": "Profile",
-        "edit_profile": "Edit profile",
+        "storage": "Storage",
         "night_theme": "Night theme"
     },
     "debug": {
