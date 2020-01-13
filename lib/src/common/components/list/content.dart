@@ -46,7 +46,6 @@ class UListContent extends StatelessWidget {
   Widget _buildContent(BuildContext context) => Padding(
         padding: const EdgeInsets.symmetric(vertical: 15),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             if (caption != null) _buildCaption(context),
             SizedBox(height: !variant ? 25 : 20),
