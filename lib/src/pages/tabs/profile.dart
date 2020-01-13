@@ -6,6 +6,7 @@ import 'package:picbox/src/blocs/theme.dart';
 import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/common/widgets.dart';
 import 'package:picbox/src/pages/profile/debug.dart';
+import 'package:picbox/src/pages/profile/settings.dart';
 
 /// Вкладка `Профиль`
 class ProfileTab extends StatelessWidget {
@@ -29,10 +30,12 @@ class ProfileTab extends StatelessWidget {
       children: <Widget>[
         _buildProfileViewButton(context),
         Divider(),
-        UListButton("Предпочтения", iconData: MdiIcons.heart),
-        UListButton("Статистика", iconData: MdiIcons.chartTimelineVariant),
-        Divider(),
         _buildThemeSwitch(),
+        UListButton(AppLocalizations.of(context).tr('settings.title'),
+            iconData: MdiIcons.settings,
+            onPressed: () => Navigator.push(
+                context, UPageRoute(builder: (context) => SettingsPage()))),
+        Divider(),
         UListButton(AppLocalizations.of(context).tr('debug.title'),
             iconData: MdiIcons.bug,
             onPressed: () => Navigator.push(
