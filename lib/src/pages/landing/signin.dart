@@ -82,7 +82,7 @@ class _SignInPageState extends State<SignInPage> {
       autocorrect: false,
       decoration: InputDesign(
         context,
-        hintText: 'Phone Number',
+        hintText: AppLocalizations.of(context).tr('signin.phone_number'),
       ),
       keyboardType: TextInputType.phone,
       onChanged: (String value) {

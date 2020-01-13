@@ -37,7 +37,8 @@
     },
     "signin": {
         "title": "Вход",
-        "description": "Авторизуйтесь в oneLab"
+        "description": "Авторизуйтесь в oneLab",
+        "phone_number": "Номер телефона"
     },
     "signup": {
         "title": "Регистрация",

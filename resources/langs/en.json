@@ -37,7 +37,8 @@
     },
     "signin": {
         "title": "Sign In",
-        "description": "Authorize to oneLab"
+        "description": "Authorize to oneLab",
+        "phone_number": "Phone number"
     },
     "signup": {
         "title": "Sign Up",
