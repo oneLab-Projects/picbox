@@ -5,17 +5,24 @@
         "no": "Нет",
         "continue": "Продолжить",
         "cancel": "Отменить",
+        "done": "Готово",
+        "confirm": "Подтвердить",
         "not_selected": "Не выбрано"
     },
     "settings": {
         "title": "Настройки",
-        "recommended": "Рекомендуемый"
+        "recommended": "Рекомендуемый",
+        "language": {
+            "title": "Язык интерфейса",
+            "all_languages": "Все языки",
+            "recommended": "Рекомендуемые"
+        }
     },
     "home": {
         "title": "Для Вас"
     },
     "search": {
-        "title": "Найти"
+        "title": "Искать"
     },
     "notifications": {
         "title": "Уведомления"
@@ -26,7 +33,15 @@
         "night_theme": "Ночная тема"
     },
     "debug": {
-        "title": "Для разработчиков",
-        "language": "Язык интерфейса"
+        "title": "Для разработчиков"
+    },
+    "signin": {
+        "title": "Вход"
+    },
+    "signup": {
+        "title": "Регистрация"
+    },
+    "confirm": {
+        "title": "Подтверждение"
     }
 }

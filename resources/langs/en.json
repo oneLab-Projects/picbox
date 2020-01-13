@@ -5,11 +5,18 @@
         "no": "No",
         "continue": "Continue",
         "cancel": "Cancel",
+        "done": "Done",
+        "confirm": "Confirm",
         "not_selected": "Not selected"
     },
     "settings": {
         "title": "Settings",
-        "recommended": "Recommended"
+        "recommended": "Recommended",
+        "language": {
+            "title": "Language",
+            "all_languages": "All languages",
+            "recommended": "Recommended"
+        }
     },
     "home": {
         "title": "For You"
@@ -26,7 +33,15 @@
         "night_theme": "Night theme"
     },
     "debug": {
-        "title": "For developers",
-        "language": "Language"
+        "title": "For developers"
+    },
+    "signin": {
+        "title": "Sign In"
+    },
+    "signup": {
+        "title": "Sign Up"
+    },
+    "confirm": {
+        "title": "Confirm"
     }
 }
