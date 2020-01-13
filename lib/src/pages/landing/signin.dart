@@ -22,6 +22,7 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return UScaffold(
+      showBackButton: false,
       body: _buildBody(
         [
           GestureDetector(
@@ -66,7 +67,7 @@ class _SignInPageState extends State<SignInPage> {
     return Center(
       child: ConstrainedBox(
         constraints: BoxConstraints(
-            maxWidth: 300, minHeight: MediaQuery.of(context).size.height / 2),
+            maxWidth: 300, minHeight: MediaQuery.of(context).size.height),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: children,

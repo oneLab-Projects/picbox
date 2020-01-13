@@ -14,10 +14,12 @@ class DebugPage extends StatelessWidget {
       title: AppLocalizations.of(context).tr('debug.title'),
       body: Column(
         children: <Widget>[
-          _buildLanguageSwitch(context),
-          UListButton("Open SignIn page",
-              onPressed: () => Navigator.push(
-                  context, UPageRoute(builder: (context) => SignInPage()))),
+          UListButton(
+            "Open SignIn page",
+            onPressed: () => Navigator.of(context, rootNavigator: true)
+                .pushReplacement(
+                    UPageRoute(builder: (context) => SignInPage())),
+          ),
         ],
       ),
     );
