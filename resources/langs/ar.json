@@ -22,7 +22,8 @@
         "title": "Для Вас"
     },
     "search": {
-        "title": "Искать"
+        "title": "Искать",
+        "popular_topics": "Популярные темы"
     },
     "notifications": {
         "title": "Уведомления"

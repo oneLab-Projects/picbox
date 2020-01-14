@@ -22,7 +22,8 @@
         "title": "For You"
     },
     "search": {
-        "title": "Search"
+        "title": "Search",
+        "popular_topics": "Popular topics"
     },
     "notifications": {
         "title": "Notifications"
