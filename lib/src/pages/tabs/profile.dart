@@ -73,7 +73,7 @@ class ProfileTab extends StatelessWidget {
     return BlocBuilder<ThemeBloc, ThemeData>(
       builder: (context, theme) => UListSwitch(
         AppLocalizations.of(context).tr('profile.night_theme'),
-        iconData: MdiIcons.weatherNight,
+        iconData: MdiIcons.powerSleep,
         value: theme == themeNight,
         onChanged: (bool value) =>
             BlocProvider.of<ThemeBloc>(context).add(ThemeEvent.toggle),
