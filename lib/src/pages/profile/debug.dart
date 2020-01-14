@@ -13,9 +13,10 @@ class DebugPage extends StatelessWidget {
         children: <Widget>[
           UListButton(
             "Open SignIn page",
-            onPressed: () => Navigator.of(context, rootNavigator: true)
-                .pushReplacement(
-                    UPageRoute(builder: (context) => SignInPage())),
+            onPressed: () =>
+                Navigator.of(context, rootNavigator: true).pushReplacement(
+              UPageRoute(builder: (context) => SignInPage()),
+            ),
           ),
         ],
       ),
