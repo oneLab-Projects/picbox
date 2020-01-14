@@ -72,10 +72,12 @@ class UListContent extends StatelessWidget {
         children: <Widget>[
           Icon(
             iconData,
-            size: 20,
-            color: Theme.of(context).textTheme.button.color,
+            size: !variant ? 20 : 16,
+            color: !variant
+                ? Theme.of(context).textTheme.button.color
+                : Theme.of(context).textTheme.button.color.withAlpha(140),
           ),
-          const SizedBox(width: 18),
+          const SizedBox(width: 15),
         ],
       );
 
