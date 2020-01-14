@@ -4,7 +4,21 @@ import 'package:picbox/src/common/localization.dart';
 import 'package:picbox/src/common/widgets.dart';
 
 /// Страница `Язык интерфейса`
-class LanguagePage extends StatelessWidget {
+class LanguagePage extends StatefulWidget {
+  @override
+  _LanguagePageState createState() => _LanguagePageState();
+}
+
+class _LanguagePageState extends State<LanguagePage> {
+  String locale = 'loading';
+
+  @override
+  void initState() {
+    super.initState();
+    Localization.recommendedLocale()
+        .then((value) => setState(() => locale = value));
+  }
+
   @override
   Widget build(BuildContext context) {
     var supportedLanguages = Localization.supportedLanguages;
@@ -32,24 +46,16 @@ class LanguagePage extends StatelessWidget {
     BuildContext context,
     Map<String, String> supportedLanguages,
   ) {
-    return FutureBuilder<String>(
-      future: Localization.recommendedLocale(),
-      builder: (context, snapshot) {
-        String locale = snapshot.connectionState == ConnectionState.done
-            ? snapshot.data
-            : 'loading';
-        return Column(
-          children: <Widget>[
-            if (locale != 'en' && locale != 'loading')
-              _buildWidget(context, supportedLanguages[locale],
-                  Localizations.localeOf(context).languageCode == locale),
-            if (locale == 'loading')
-              _buildWidget(context, "Loading", false, enabled: false),
-            _buildWidget(context, supportedLanguages['en'],
-                Localizations.localeOf(context).languageCode == 'en'),
-          ],
-        );
-      },
+    return Column(
+      children: <Widget>[
+        if (locale != 'en' && locale != 'loading')
+          _buildWidget(context, supportedLanguages[locale],
+              Localizations.localeOf(context).languageCode == locale),
+        if (locale == 'loading')
+          _buildWidget(context, "Loading", false, enabled: false),
+        _buildWidget(context, supportedLanguages['en'],
+            Localizations.localeOf(context).languageCode == 'en'),
+      ],
     );
   }
 

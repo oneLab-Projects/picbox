@@ -88,8 +88,10 @@ class _ConfirmPageState extends State<ConfirmPage> {
     setState(() => _loading = true);
 
     await Future.delayed(Duration(seconds: 1));
-    Navigator.of(context, rootNavigator: true)
-        .pushReplacement(UPageRoute(builder: (context) => RootPage()));
+    Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+      UPageRoute(builder: (context) => RootPage()),
+      ModalRoute.withName('/'),
+    );
     await Future.delayed(Duration(milliseconds: 300));
     setState(() => _loading = false);
   }
