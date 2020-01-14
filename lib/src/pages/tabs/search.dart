@@ -53,7 +53,7 @@ class SearchTab extends StatelessWidget {
               width: _cardSize,
               margin: EdgeInsets.only(right: 10),
               decoration: BoxDecoration(
-                color: Theme.of(context).highlightColor,
+                color: Theme.of(context).cardColor,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
               ),
             ),
