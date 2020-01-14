@@ -15,8 +15,9 @@ class _LanguagePageState extends State<LanguagePage> {
   @override
   void initState() {
     super.initState();
-    Localization.recommendedLocale()
-        .then((value) => setState(() => locale = value));
+    Localization.recommendedLocale().then(
+      (value) => setState(() => locale = value),
+    );
   }
 
   @override
