@@ -1,5 +1,6 @@
 ![Picbox](https://user-images.githubusercontent.com/25152332/71856627-9b5e7100-30f5-11ea-8050-4a883f518222.png)
 #
+[![View board in GitKraken Glo](https://user-images.githubusercontent.com/25152332/72502093-94e49d80-3849-11ea-8ce2-88cd859ccbf2.png)](https://app.gitkraken.com/glo/board/Xh-7vx0LSgAQezqY)
 [![Codemagic build status](https://api.codemagic.io/apps/5e14831e3b8972707f8b2dd9/5e14831e3b8972707f8b2dd8/status_badge.svg)](https://codemagic.io/apps/5e14831e3b8972707f8b2dd9/5e14831e3b8972707f8b2dd8/latest_build)
 
 ### Разворачивание среды
