@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     steps:
-      - name: Clone
+      - name: Cloning
         uses: actions/checkout@v1
       - name: Installing Java
         uses: actions/setup-java@v1
@@ -23,7 +23,7 @@ jobs:
       - name: Building Android
         run: flutter build apk --release --split-per-abi
       - name: Publishing
-        uses: ncipollo/release-action@v1
+        uses: actions/upload-artifact@v1
         with:
-          artifacts: "build/app/outputs/apk/*.apk"
-          token: ${{ secrets.TOKEN }}
+          name: app
+          path: build/app/outputs/apk/*.apk
