@@ -1,8 +1,9 @@
 on: push
-name: Test, Build and Release apk
+if: "contains(github.event.head_commit.message, 'ci build')"
+name: Build Release
 jobs:
   build:
-    name: Build APK
+    name: Android
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -13,9 +14,8 @@ jobs:
       with:
         channel: 'stable'
     - run: flutter pub get
-    #- run: flutter test
     - run: flutter build apk --release --split-per-abi
-    - name: Create a Release APK
+    - name: Upload release
       uses: ncipollo/release-action@v1
       with:
         artifacts: "build/app/outputs/apk/*.apk"
