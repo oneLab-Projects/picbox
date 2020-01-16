@@ -4,7 +4,7 @@ jobs:
   build:
     name: Build and publish
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    if: "contains(github.event.head_commit.message, '[build]')"
     steps:
       - name: Cloning
         uses: actions/checkout@v1
@@ -25,5 +25,6 @@ jobs:
       - name: Publishing
         uses: actions/upload-artifact@v1
         with:
-          name: app
-          path: build/app/outputs/apk
+          title: app-artifacts
+            - name: "Android"
+              files: build/app/outputs/apk/release/*.apk
