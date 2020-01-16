@@ -1,5 +1,5 @@
-name: Push
 on: push
+name: Build current branch
 jobs:
   build:
     name: Build and publish
