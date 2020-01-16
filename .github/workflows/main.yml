@@ -27,4 +27,4 @@ jobs:
         with:
           title: app-artifacts
             - name: "Android"
-              files: build/app/outputs/apk/release/*.apk
+              files: [ build/app/outputs/apk/release/*.apk ]
