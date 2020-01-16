@@ -4,20 +4,26 @@ jobs:
   build:
     name: Build and publish
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[ci build]')"
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-java@v1
-        with:
-          java-version: '12.x'
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: 'stable'
-      - run: flutter pub get
-      - run: flutter analyze
-      - run: flutter build apk --release --split-per-abi
-      - name: Publishing
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "build/app/outputs/apk/*.apk"
-          token: ${{ secrets.TOKEN }}
+    if: "contains(github.event.head_commit.message, '[ci build]')"
+      steps:
+        - name: Clone
+          uses: actions/checkout@v1
+        - name: Installing Java
+          uses: actions/setup-java@v1
+          with:
+            java-version: '12.x'
+        - name: Installing Flutter (stable branch)
+          uses: subosito/flutter-action@v1
+          with:
+            channel: 'stable'
+        - name: Installing dependencies
+          run: flutter pub get
+        - name: Analyzing Dart code
+          run: flutter analyze
+        - name: Building Android
+          run: flutter build apk --release --split-per-abi
+        - name: Publishing
+          uses: ncipollo/release-action@v1
+          with:
+            artifacts: "build/app/outputs/apk/*.apk"
+            token: ${{ secrets.TOKEN }}
