@@ -30,7 +30,7 @@ jobs:
           path: build/app/outputs/apk/release
 
       - if: "contains(github.event.head_commit.message, '[publish]')"
-        name: Publishing build ${{ steps.vars.outputs.tag }}
+        name: Publishing build in release
         uses: ncipollo/release-action@v1
         with:
           artifacts: "build/app/outputs/apk/release/*.apk"
