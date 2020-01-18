@@ -88,6 +88,7 @@ class _UScaffoldState extends State<UScaffold> {
             return false;
           },
           child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             controller: _scrollController,
             child: Padding(
               padding:
@@ -109,7 +110,9 @@ class _UScaffoldState extends State<UScaffold> {
 
   titleBar(context) {
     return Opacity(
-      opacity: _scrollPosition,
+      opacity: _scrollPosition < 1
+          ? _scrollPosition
+          : 1 - (_scrollPosition - 1) / _scrollPosition,
       child: Padding(
         padding: EdgeInsets.only(top: 20 + MediaQuery.of(context).padding.top),
         child: Row(
@@ -118,7 +121,9 @@ class _UScaffoldState extends State<UScaffold> {
             Text(
               widget.title,
               style: Theme.of(context).textTheme.title.copyWith(
-                  fontSize: 15 - -_scrollPosition * 5,
+                  fontSize: _scrollPosition < 1
+                      ? 15 + _scrollPosition * 5
+                      : 20 + (1 - _scrollPosition) / _scrollPosition * 5,
                   fontWeight: FontWeight.w500),
             ),
           ],
