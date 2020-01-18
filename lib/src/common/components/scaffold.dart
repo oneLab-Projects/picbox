@@ -123,7 +123,7 @@ class _UScaffoldState extends State<UScaffold> {
               style: Theme.of(context).textTheme.title.copyWith(
                   fontSize: _scrollPosition < 1
                       ? 15 + _scrollPosition * 5
-                      : 20 + (1 - _scrollPosition) / _scrollPosition * 5,
+                      : 20 + (1 - _scrollPosition) / _scrollPosition * 3,
                   fontWeight: FontWeight.w500),
             ),
           ],
