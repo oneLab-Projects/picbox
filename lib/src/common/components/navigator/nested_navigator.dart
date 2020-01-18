@@ -81,6 +81,7 @@ class _UNestedNavigatorState extends State<UNestedNavigator> {
         body: body,
         onTabSelected: (index) {
           if (widget.onTap != null) widget.onTap(index);
+          FocusScope.of(context).unfocus();
           setState(() => currentIndex = index);
         },
         backgroundColor: widget.backgroundColor,
