@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:picbox/src/common/design/style.dart';
 
 /// Хранит [ThemeData] в стиле ночной темы приложения.
-final ThemeData themeNight = ThemeData(
+final ThemeData nightTheme = ThemeData(
   brightness: Brightness.dark,
   textTheme: Style.textTheme,
   primaryColor: Colors.grey[200],

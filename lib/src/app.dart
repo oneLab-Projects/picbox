@@ -3,12 +3,12 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:picbox/src/blocs/theme.dart';
-import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/common/design/clear_behavior.dart';
 import 'package:picbox/src/common/design/style.dart';
 import 'package:picbox/src/common/localization.dart';
 import 'package:picbox/src/pages/root.dart';
+import 'package:picbox/ui/global/theme/bloc/bloc.dart';
+import 'package:picbox/ui/global/theme/data/night_theme.dart';
 
 /// [App] является основным виджетом приложения. Его цель состоит в том, чтобы
 /// присоединить к приложению BLoC-провайдеры.
@@ -78,7 +78,7 @@ class AppWithBlocs extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         statusBarIconBrightness:
-            theme == themeNight ? Brightness.light : Brightness.dark,
+            theme == nightTheme ? Brightness.light : Brightness.dark,
         systemNavigationBarColor: Style.bottomNavigationBarColor,
         statusBarColor: Colors.transparent,
         statusBarBrightness: Brightness.dark,

@@ -2,11 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:picbox/src/blocs/theme.dart';
-import 'package:picbox/src/blocs/theme/night.dart';
 import 'package:picbox/src/common/widgets.dart';
 import 'package:picbox/src/pages/profile/debug.dart';
 import 'package:picbox/src/pages/profile/settings.dart';
+import 'package:picbox/ui/global/theme/bloc/bloc.dart';
+import 'package:picbox/ui/global/theme/data/night_theme.dart';
 
 /// Вкладка `Профиль`
 class ProfileTab extends StatelessWidget {
@@ -74,7 +74,7 @@ class ProfileTab extends StatelessWidget {
       builder: (context, theme) => UListSwitch(
         AppLocalizations.of(context).tr('profile.night_theme'),
         iconData: MdiIcons.powerSleep,
-        value: theme == themeNight,
+        value: theme == nightTheme,
         onChanged: (bool value) =>
             BlocProvider.of<ThemeBloc>(context).add(ThemeEvent.toggle),
       ),
