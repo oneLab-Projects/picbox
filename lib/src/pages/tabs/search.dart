@@ -47,17 +47,14 @@ class SearchTab extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        children: <Widget>[
-          for (var i = 0; i < 5; i++)
-            Container(
-              width: _cardSize,
-              margin: EdgeInsets.only(right: 10),
-              decoration: BoxDecoration(
-                color: Theme.of(context).cardColor,
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-              ),
-            ),
-        ],
+        children: List.generate(3, (index) {
+          index++;
+          List<String> a = ["Хентай", "Порно", "Геи"];
+          return Padding(
+            padding: EdgeInsets.only(left: index == 1 ? 0 : 15),
+            child: ContentCard(a[index - 1], variant: true),
+          );
+        }),
       ),
     );
   }
