@@ -23,14 +23,14 @@ dependencies:
 
   # db
   shared_preferences: ^0.5.6
-  
+
   # ui
   native_device_orientation: ^0.3.0
   sms_autofill: ^1.1.1
-  
+
   # compare
   equatable: ^1.0.2
-  
+
   # device
   devicelocale: ^0.2.1
 
