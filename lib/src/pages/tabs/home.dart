@@ -23,7 +23,13 @@ class HomeTab extends StatelessWidget {
       crossAxisCount:
           MediaQuery.of(context).orientation == Orientation.landscape ? 3 : 2,
       children: <Widget>[
-        ContentCard("Любимое"),
+        for (int i = 0; i < 13; i++)
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).cardColor,
+              borderRadius: const BorderRadius.all(Radius.circular(15)),
+            ),
+          ),
       ],
     );
   }
