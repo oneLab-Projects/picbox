@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:easy_localization/easy_localization.dart';
+import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

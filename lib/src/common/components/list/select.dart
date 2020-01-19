@@ -1,6 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:picbox/src/common/widgets.dart';
+import 'package:picbox/ui/global/localizations/app_localizations.dart';
 
 /// Создаёт виджет выбора, предназначенный для отображения
 /// в списке.

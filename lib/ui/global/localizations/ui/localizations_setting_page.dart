@@ -1,40 +1,47 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:picbox/src/common/localization.dart';
 import 'package:picbox/src/common/widgets.dart';
+import 'package:picbox/ui/global/localizations/bloc/bloc.dart';
+
+import '../localizations_delegates.dart';
 
 /// Страница `Язык интерфейса`
-class LanguagePage extends StatefulWidget {
+class LocalizationsSettingPage extends StatefulWidget {
   @override
-  _LanguagePageState createState() => _LanguagePageState();
+  _LocalizationsSettingPageState createState() =>
+      _LocalizationsSettingPageState();
 }
 
-class _LanguagePageState extends State<LanguagePage> {
+class _LocalizationsSettingPageState extends State<LocalizationsSettingPage> {
+  LocalizationsDelegates localizations = LocalizationsDelegates.instance;
   String locale = 'loading';
 
   @override
   void initState() {
     super.initState();
-    Localization.recommendedLocale().then(
-      (value) => setState(() => locale = value),
-    );
+    localizations.recommendedLocale().then(
+          (value) => setState(() => locale = value),
+        );
   }
 
   @override
   Widget build(BuildContext context) {
-    var supportedLanguages = Localization.supportedLanguages;
+    var supportedLanguages = localizations.supportedLanguages;
     return UScaffold(
-      title: AppLocalizations.of(context).tr('settings.language.title'),
+      title: AppLocalizations.of(context).tr('settings.localizations.title'),
       body: Column(
         children: <Widget>[
           UListContent(
-            AppLocalizations.of(context).tr('settings.language.recommended'),
+            AppLocalizations.of(context)
+                .tr('settings.localizations.recommended'),
             variant: true,
             child: _getRecommendedLanguages(context, supportedLanguages),
           ),
           Divider(),
           UListContent(
-            AppLocalizations.of(context).tr('settings.language.all_languages'),
+            AppLocalizations.of(context)
+                .tr('settings.localizations.all_languages'),
             variant: true,
             child: _getAllLanguages(context, supportedLanguages),
           ),
@@ -86,12 +93,13 @@ class _LanguagePageState extends State<LanguagePage> {
         onTap: !enabled || checked
             ? null
             : () {
-                var data = EasyLocalizationProvider.of(context).data;
-                var supportedLanguages = Localization.supportedLanguages;
-
+                var supportedLanguages = localizations.supportedLanguages;
                 String result = supportedLanguages.keys
                     .firstWhere((key) => supportedLanguages[key] == title);
-                data.changeLocale(Locale(result));
+
+                BlocProvider.of<LocalizationsBloc>(context).add(
+                  LocaleChanged(locale: Locale(result)),
+                );
               },
         child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: 55),

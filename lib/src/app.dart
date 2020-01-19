@@ -1,12 +1,11 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:picbox/src/common/design/clear_behavior.dart';
 import 'package:picbox/src/common/design/style.dart';
-import 'package:picbox/src/common/localization.dart';
 import 'package:picbox/src/pages/root.dart';
+import 'package:picbox/ui/global/localizations/bloc/bloc.dart';
+import 'package:picbox/ui/global/localizations/localizations_delegates.dart';
 import 'package:picbox/ui/global/theme/bloc/bloc.dart';
 import 'package:picbox/ui/global/theme/data/night_theme.dart';
 
@@ -15,15 +14,16 @@ import 'package:picbox/ui/global/theme/data/night_theme.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return EasyLocalization(
-      child: MultiBlocProvider(
-        providers: [
-          BlocProvider<ThemeBloc>(
-            create: (BuildContext context) => ThemeBloc(),
-          ),
-        ],
-        child: AppWithBlocs(),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ThemeBloc>(
+          create: (BuildContext context) => ThemeBloc(),
+        ),
+        BlocProvider<LocalizationsBloc>(
+          create: (BuildContext context) => LocalizationsBloc(),
+        ),
+      ],
+      child: AppWithBlocs(),
     );
   }
 }
@@ -34,41 +34,33 @@ class App extends StatelessWidget {
 class AppWithBlocs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var data = EasyLocalizationProvider.of(context).data;
-    var supportedLanguages = Localization.supportedLanguages;
-
-    return EasyLocalizationProvider(
-      data: data,
-      child: BlocBuilder<ThemeBloc, ThemeData>(builder: (context, theme) {
-        paintUiOverlay(theme);
-        return MaterialApp(
-          localizationsDelegates: [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            EasylocaLizationDelegate(
-              locale: data.locale,
-              path: 'resources/langs',
-              useOnlyLangCode: true,
-            ),
-          ],
-          supportedLocales: List.generate(supportedLanguages.length,
-              (int index) => Locale(supportedLanguages.keys.toList()[index])),
-          locale: data.savedLocale,
-          builder: (context, child) {
-            return ScrollConfiguration(
-              behavior: ClearBehavior(),
-              child: child,
+    LocalizationsDelegates localizations = LocalizationsDelegates.instance;
+    return BlocBuilder<LocalizationsBloc, Locale>(
+      builder: (context, locale) {
+        return BlocBuilder<ThemeBloc, ThemeData>(
+          builder: (context, theme) {
+            paintUiOverlay(theme);
+            return MaterialApp(
+              localizationsDelegates: localizations.localizationsDelegates,
+              supportedLocales: localizations.supportedLocales,
+              locale: locale,
+              builder: (context, child) {
+                return ScrollConfiguration(
+                  behavior: ClearBehavior(),
+                  child: child,
+                );
+              },
+              title: 'Picbox',
+              debugShowCheckedModeBanner: false,
+              theme: theme,
+              initialRoute: '/',
+              routes: {
+                '/': (context) => RootPage(),
+              },
             );
           },
-          title: 'Picbox',
-          debugShowCheckedModeBanner: false,
-          theme: theme,
-          initialRoute: '/',
-          routes: {
-            '/': (context) => RootPage(),
-          },
         );
-      }),
+      },
     );
   }
 
