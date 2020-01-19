@@ -12,7 +12,7 @@
     "settings": {
         "title": "Настройки",
         "recommended": "Рекомендуемый",
-        "language": {
+        "localizations": {
             "title": "Язык интерфейса",
             "all_languages": "Все языки",
             "recommended": "Рекомендуемые"
@@ -46,8 +46,8 @@
         "profile_photo": "Фото профиля",
         "first_name": "Имя",
         "last_name": "Фамилия (необязательно)",
-        "first_name_example": "Пример. Владимир",
-        "last_name_example": "Пример. Путин"
+        "first_name_example": "Напр. Владимир",
+        "last_name_example": "Напр. Путин"
     },
     "confirm": {
         "title": "Подтверждение",

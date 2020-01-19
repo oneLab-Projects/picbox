@@ -12,7 +12,7 @@
     "settings": {
         "title": "Settings",
         "recommended": "Recommended",
-        "language": {
+        "localizations": {
             "title": "Language",
             "all_languages": "All languages",
             "recommended": "Recommended"
