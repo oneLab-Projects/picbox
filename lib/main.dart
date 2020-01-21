@@ -28,7 +28,7 @@ class App extends StatelessWidget {
           locale: initData.locale,
           supportedLocales: initData.supportedLocales,
           localizationsDelegates: initData.localizationsDelegates,
-          routes: Routes.routes,
+          onGenerateRoute: Routes.onGenerateRoute,
         );
       },
     );

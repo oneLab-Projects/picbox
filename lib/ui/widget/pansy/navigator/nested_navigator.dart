@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:picbox/component/routes.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
 /// Создаёт вкладку, работающую с [UNestedNavigator].
@@ -23,7 +24,6 @@ class UNestedTab {
 class UNestedNavigator extends StatefulWidget {
   final int initTabIndex;
   final List<UNestedTab> tabs;
-  final PageRoute pageRoute;
   final ValueChanged<int> onTap;
   final ValueGetter shouldHandlePop;
 
@@ -38,7 +38,6 @@ class UNestedNavigator extends StatefulWidget {
     this.backgroundColor,
     this.color,
     this.selectedColor,
-    this.pageRoute,
     this.shouldHandlePop = _defaultShouldHandlePop,
   });
 
@@ -74,7 +73,6 @@ class _UNestedNavigatorState extends State<UNestedNavigator> {
   Widget _buildNavigator(UNestedTab tab) => TabPageNavigator(
         navigatorKey: tab._navigatorKey,
         initPageBuilder: tab.initPageBuilder,
-        pageRoute: widget.pageRoute,
       );
 
   Widget _buildBottomBar(Widget body) => UBottomNavigationBar(
@@ -99,25 +97,18 @@ class _UNestedNavigatorState extends State<UNestedNavigator> {
 
 class TabPageNavigator extends StatelessWidget {
   TabPageNavigator(
-      {@required this.navigatorKey,
-      @required this.initPageBuilder,
-      this.pageRoute});
+      {@required this.navigatorKey, @required this.initPageBuilder});
 
   final GlobalKey<NavigatorState> navigatorKey;
   final WidgetBuilder initPageBuilder;
-  final PageRoute pageRoute;
 
   @override
   Widget build(BuildContext context) => Navigator(
         key: navigatorKey,
         observers: [HeroController()],
         onGenerateRoute: (routeSettings) =>
-            pageRoute ??
-            MaterialPageRoute(
-              settings: RouteSettings(isInitialRoute: true),
-              builder: (context) =>
-                  _defaultPageRouteBuilder(routeSettings.name)(context),
-            ),
+            Routes.onGenerateRouteForNestedNavigator(
+                routeSettings, _defaultPageRouteBuilder),
       );
 
   WidgetBuilder _defaultPageRouteBuilder(String routName, {String heroTag}) =>

@@ -1,10 +1,12 @@
-import 'package:picbox/ui/feature/debug/debug.dart';
+import 'package:flutter/widgets.dart';
+import 'package:picbox/ui/feature/debug/debug_page.dart';
 import 'package:picbox/ui/feature/landing/confirm_page.dart';
 import 'package:picbox/ui/feature/landing/signin_page.dart';
 import 'package:picbox/ui/feature/landing/signup_page.dart';
 import 'package:picbox/ui/feature/root.dart';
 import 'package:picbox/ui/feature/settings/settings_page.dart';
 import 'package:picbox/ui/global/localizations/ui/localizations_setting_page.dart';
+import 'package:picbox/ui/widget/pansy.dart';
 
 class Routes {
   static const String ROOT = '/';
@@ -16,12 +18,36 @@ class Routes {
   static const String LANDING_CONFIRM = '/landing/confirm';
 
   static var routes = {
-    ROOT: (context) => RootPage(),
-    DEBUG: (context) => DebugPage(),
-    SETTINGS: (context) => SettingsPage(),
-    SETTINGS_LOCALIZATIONS: (context) => LocalizationsSettingPage(),
-    LANDING_SIGNIN: (context) => SignInPage(),
-    LANDING_SIGNUP: (context) => SignUpPage(),
-    LANDING_CONFIRM: (context) => ConfirmPage(),
+    ROOT: RootPage(),
+    DEBUG: DebugPage(),
+    SETTINGS: SettingsPage(),
+    SETTINGS_LOCALIZATIONS: LocalizationsSettingPage(),
+    LANDING_SIGNIN: SignInPage(),
+    LANDING_SIGNUP: SignUpPage(),
+    LANDING_CONFIRM: ConfirmPage(),
   };
+
+  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
+    for (int i = 0; i < routes.length; i++) {
+      String key = routes.keys.toList()[i];
+      if (settings.name == key)
+        return UPageRoute(
+            builder: (context) => routes[key], settings: settings);
+    }
+    throw UnsupportedError('Unknown route: ${settings.name}');
+  }
+
+  static Route<dynamic> onGenerateRouteForNestedNavigator(
+      RouteSettings settings, dynamic routeBuilder) {
+    for (int i = 0; i < routes.length; i++) {
+      String key = routes.keys.toList()[i];
+      if (settings.name == key)
+        return UPageRoute(
+            builder: (context) => settings.name == Routes.ROOT
+                ? routeBuilder(key)(context)
+                : routes[key],
+            settings: settings);
+    }
+    throw UnsupportedError('Unknown route: ${settings.name}');
+  }
 }
