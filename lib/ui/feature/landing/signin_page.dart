@@ -99,7 +99,7 @@ class _SignInPageState extends State<SignInPage> {
     setState(() => _loading = true);
 
     await Future.delayed(Duration(seconds: 1));
-    Navigator.pushNamed(context, Routes.LANDING_SIGNIN);
+    Navigator.pushNamed(context, Routes.LANDING_SIGNUP);
     await Future.delayed(Duration(milliseconds: 300));
     setState(() => _loading = false);
   }
