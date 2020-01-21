@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:picbox/component/routes.dart';
 import 'package:picbox/src/common/design/clear_behavior.dart';
 import 'package:picbox/src/common/design/style.dart';
 import 'package:picbox/src/pages/root.dart';
@@ -54,9 +55,7 @@ class AppWithBlocs extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: theme,
               initialRoute: '/',
-              routes: {
-                '/': (context) => RootPage(),
-              },
+              routes: Routes.routes,
             );
           },
         );
