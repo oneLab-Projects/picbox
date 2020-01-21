@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:picbox/src/common/widgets.dart';
+import 'package:picbox/ui/widget/pansy.dart';
 
 /// Создает визуальную основу для виджетов.
 class UScaffold extends StatefulWidget {

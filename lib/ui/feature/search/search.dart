@@ -1,8 +1,8 @@
 import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:picbox/src/common/decorations/input.dart';
-import 'package:picbox/src/common/widgets.dart';
+
+import 'package:picbox/ui/widget/pansy.dart';
 
 /// Вкладка `Поиск`
 class SearchTab extends StatelessWidget {

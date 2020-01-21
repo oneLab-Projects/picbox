@@ -1,9 +1,9 @@
+import 'package:picbox/component/routes.dart';
 import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:picbox/src/common/decorations/input.dart';
-import 'package:picbox/src/common/widgets.dart';
-import 'package:picbox/src/pages/landing/confirm.dart';
+
+import 'package:picbox/ui/widget/pansy.dart';
 
 /// Страница `Регистрация`
 class SignUpPage extends StatefulWidget {
@@ -30,8 +30,7 @@ class _SignUpPageState extends State<SignUpPage> {
               AppLocalizations.of(context).tr('default.done'),
               onPressed: !_checkedRules
                   ? null
-                  : () => Navigator.push(
-                      context, UPageRoute(builder: (context) => ConfirmPage())),
+                  : () => Navigator.pushNamed(context, Routes.LANDING_CONFIRM),
             ),
           ),
         ],

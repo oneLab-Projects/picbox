@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:bloc/bloc.dart';
-import 'package:picbox/src/common/design/style.dart';
+import 'package:picbox/ui/widget/design/style.dart';
 import 'package:picbox/ui/global/theme/data/day_theme.dart';
 import 'package:picbox/ui/global/theme/data/night_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';

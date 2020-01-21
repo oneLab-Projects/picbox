@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:picbox/src/common/design/style.dart';
+import 'package:picbox/ui/widget/design/style.dart';
 
 /// Хранит [ThemeData] в стиле ночной темы приложения.
 final ThemeData nightTheme = ThemeData(

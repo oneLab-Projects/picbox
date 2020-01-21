@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:picbox/src/common/widgets.dart';
+import 'package:picbox/ui/widget/pansy.dart';
 
 /// Создаёт вкладку, работающую с [UNestedNavigator].
 class UNestedTab {

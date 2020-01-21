@@ -1,10 +1,9 @@
+import 'package:picbox/component/routes.dart';
 import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:picbox/src/common/widgets.dart';
-import 'package:picbox/src/pages/profile/debug.dart';
-import 'package:picbox/src/pages/profile/settings.dart';
+import 'package:picbox/ui/widget/pansy.dart';
 import 'package:picbox/ui/global/theme/bloc/bloc.dart';
 import 'package:picbox/ui/global/theme/data/night_theme.dart';
 
@@ -33,13 +32,11 @@ class ProfileTab extends StatelessWidget {
         _buildThemeSwitch(),
         UListButton(AppLocalizations.of(context).tr('settings.title'),
             iconData: MdiIcons.settings,
-            onPressed: () => Navigator.push(
-                context, UPageRoute(builder: (context) => SettingsPage()))),
+            onPressed: () => Navigator.pushNamed(context, Routes.SETTINGS)),
         Divider(),
         UListButton(AppLocalizations.of(context).tr('debug.title'),
             iconData: MdiIcons.bug,
-            onPressed: () => Navigator.push(
-                context, UPageRoute(builder: (context) => DebugPage()))),
+            onPressed: () => Navigator.pushNamed(context, Routes.DEBUG)),
       ],
     );
   }

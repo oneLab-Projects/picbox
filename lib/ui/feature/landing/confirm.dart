@@ -1,7 +1,7 @@
+import 'package:picbox/component/routes.dart';
 import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:picbox/src/common/widgets.dart';
-import 'package:picbox/src/pages/root.dart';
+import 'package:picbox/ui/widget/pansy.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
@@ -88,8 +88,8 @@ class _ConfirmPageState extends State<ConfirmPage> {
     setState(() => _loading = true);
 
     await Future.delayed(Duration(seconds: 1));
-    Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
-      UPageRoute(builder: (context) => RootPage()),
+    Navigator.of(context, rootNavigator: true).pushNamedAndRemoveUntil(
+      Routes.ROOT,
       ModalRoute.withName('/'),
     );
     await Future.delayed(Duration(milliseconds: 300));

@@ -1,7 +1,7 @@
+import 'package:picbox/component/routes.dart';
 import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:picbox/src/common/widgets.dart';
-import 'package:picbox/src/pages/landing/signin.dart';
+import 'package:picbox/ui/widget/pansy.dart';
 
 /// Страница `Для разработчиков`
 class DebugPage extends StatelessWidget {
@@ -13,10 +13,8 @@ class DebugPage extends StatelessWidget {
         children: <Widget>[
           UListButton(
             "Open SignIn page",
-            onPressed: () =>
-                Navigator.of(context, rootNavigator: true).pushReplacement(
-              UPageRoute(builder: (context) => SignInPage()),
-            ),
+            onPressed: () => Navigator.of(context, rootNavigator: true)
+                .pushReplacementNamed(Routes.LANDING_SIGNIN),
           ),
         ],
       ),

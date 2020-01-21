@@ -1,13 +1,11 @@
 import 'dart:math';
 
+import 'package:picbox/component/routes.dart';
 import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:picbox/src/common/widgets.dart';
-import 'package:picbox/src/common/decorations/input.dart';
-import 'package:picbox/src/pages/landing/confirm.dart';
-import 'package:picbox/src/pages/landing/signup.dart';
+import 'package:picbox/ui/widget/pansy.dart';
 
 /// Страница `Авторизация`
 class SignInPage extends StatefulWidget {
@@ -101,7 +99,7 @@ class _SignInPageState extends State<SignInPage> {
     setState(() => _loading = true);
 
     await Future.delayed(Duration(seconds: 1));
-    Navigator.push(context, UPageRoute(builder: (context) => SignUpPage()));
+    Navigator.pushNamed(context, Routes.LANDING_SIGNIN);
     await Future.delayed(Duration(milliseconds: 300));
     setState(() => _loading = false);
   }
@@ -110,7 +108,7 @@ class _SignInPageState extends State<SignInPage> {
     setState(() => _loading = true);
 
     await Future.delayed(Duration(seconds: 1));
-    Navigator.push(context, UPageRoute(builder: (context) => ConfirmPage()));
+    Navigator.pushNamed(context, Routes.LANDING_CONFIRM);
     await Future.delayed(Duration(milliseconds: 300));
     setState(() => _loading = false);
   }
