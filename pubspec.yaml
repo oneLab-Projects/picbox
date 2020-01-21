@@ -8,25 +8,36 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
+
+  # design
   material_design_icons_flutter: ^3.4.4795
-  flutter_bloc: ^3.1.0
-  native_device_orientation: ^0.3.0
-  equatable: ^1.0.2
   ubuntu_font_flutter: ^0.0.1
   flare_flutter: ^1.8.3
-  devicelocale: ^0.2.1
-  sms_autofill: ^1.1.1
-  mobx: ^0.4.0+1
-  flutter_mobx: ^0.3.6
-  shared_preferences: ^0.5.6
   transparent_image: ^1.0.0
-  image: ^2.1.12
+
+  # localizations
+  flutter_localizations:
+    sdk: flutter
+
+  # bloc
+  flutter_bloc: ^3.1.0
+
+  # db
+  shared_preferences: ^0.5.6
+
+  # ui
+  native_device_orientation: ^0.3.0
+  sms_autofill: ^1.1.1
+
+  # compare
+  equatable: ^1.0.2
+
+  # device
+  devicelocale: ^0.2.1
 
 dev_dependencies:
-  build_runner: ^1.7.3
-  mobx_codegen: ^0.4.0+1
+  flutter_test:
+    sdk: flutter
 
 flutter:
   uses-material-design: true
