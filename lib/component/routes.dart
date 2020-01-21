@@ -1,9 +1,9 @@
 import 'package:picbox/ui/feature/debug/debug.dart';
-import 'package:picbox/ui/feature/landing/confirm.dart';
-import 'package:picbox/ui/feature/landing/signin.dart';
-import 'package:picbox/ui/feature/landing/signup.dart';
+import 'package:picbox/ui/feature/landing/confirm_page.dart';
+import 'package:picbox/ui/feature/landing/signin_page.dart';
+import 'package:picbox/ui/feature/landing/signup_page.dart';
 import 'package:picbox/ui/feature/root.dart';
-import 'package:picbox/ui/feature/settings/settings.dart';
+import 'package:picbox/ui/feature/settings/settings_page.dart';
 import 'package:picbox/ui/global/localizations/ui/localizations_setting_page.dart';
 
 class Routes {
