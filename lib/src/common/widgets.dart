@@ -5,6 +5,8 @@ export 'components/routes/default.dart';
 export 'components/buttons/default.dart';
 export 'components/buttons/icon.dart';
 
+export 'components/content/card.dart';
+
 export 'components/list/button.dart';
 export 'components/list/content.dart';
 export 'components/list/select.dart';

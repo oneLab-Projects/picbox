@@ -13,6 +13,7 @@ dependencies:
   material_design_icons_flutter: ^3.4.4795
   ubuntu_font_flutter: ^0.0.1
   flare_flutter: ^1.8.3
+  transparent_image: ^1.0.0
 
   # localizations
   flutter_localizations:
