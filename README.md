@@ -14,6 +14,8 @@
 - Awesome Flutter Snippets
 - Pubspec Assist
 - dart-import
+- #region folding for VS Code
+- Todo Tree
 - VSCode Great Icons
 - One Monokai Theme
 
