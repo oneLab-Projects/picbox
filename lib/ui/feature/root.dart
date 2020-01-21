@@ -3,10 +3,10 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:picbox/ui/widget/pansy.dart';
 import 'package:picbox/ui/widget/design/style.dart';
 
-import 'home/home.dart';
-import 'notifications/notifications.dart';
-import 'profile/profile.dart';
-import 'search/search.dart';
+import 'home/home_page.dart';
+import 'notifications/notifications_page.dart';
+import 'profile/profile_page.dart';
+import 'search/search_page.dart';
 
 /// [RootPage] является главной страницей приложения. Она содержит в себе элементы
 /// навигации приложения с помощью [NavigationBar], с использованием [UNestedNavigator]
