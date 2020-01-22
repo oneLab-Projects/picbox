@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
 /// Создаёт переключатель, предназначенный для отображения

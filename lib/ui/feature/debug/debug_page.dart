@@ -1,6 +1,6 @@
 import 'package:picbox/component/routes.dart';
 import 'package:picbox/ui/global/localizations/app_localizations.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
 /// Страница `Для разработчиков`.

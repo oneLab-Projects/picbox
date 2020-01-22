@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 /// [ClearBehavior] является наследованием от [ScrollBehavior], отключающий
 /// эффект столкновения при скроллинге.
