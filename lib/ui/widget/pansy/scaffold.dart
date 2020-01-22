@@ -105,6 +105,7 @@ class _UScaffoldState extends State<UScaffold> {
   /// Создаёт [ScrollView].
   Widget _content(context) {
     return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
       padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       child: widget.body,
     );
@@ -141,7 +142,12 @@ class _UScaffoldState extends State<UScaffold> {
       children: <Widget>[
         SizedBox(height: MediaQuery.of(context).padding.top),
         _titleBarWithBackButton(context),
-        Expanded(child: SingleChildScrollView(child: widget.body)),
+        Expanded(
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: widget.body,
+          ),
+        ),
       ],
     );
   }
