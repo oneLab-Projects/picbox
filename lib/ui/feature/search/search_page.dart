@@ -4,7 +4,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 import 'package:picbox/ui/widget/pansy.dart';
 
-/// Вкладка `Поиск`
+/// Вкладка `Поиск`.
 class SearchTab extends StatelessWidget {
   static const double _cardSize = 150;
 
@@ -26,6 +26,7 @@ class SearchTab extends StatelessWidget {
     );
   }
 
+  /// Создаёт поле ввода для поиска.
   Widget _buildSearchBar(context) {
     return Padding(
       padding: const EdgeInsets.all(15).copyWith(bottom: 10),
@@ -39,6 +40,7 @@ class SearchTab extends StatelessWidget {
     );
   }
 
+  /// Создаёт список популярных тем.
   Widget _buildPopularContent(context) {
     return Container(
       height: _cardSize,

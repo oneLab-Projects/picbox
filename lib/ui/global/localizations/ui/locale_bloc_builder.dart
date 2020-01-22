@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/bloc.dart';
 import '../localizations_delegates.dart';
 
+/// [LocaleBlocBuilder] является виджетом, содержавший в себе Provider и Builder
+/// BLoC, предназначенного для смены локализации приложения.
 class LocaleBlocBuilder extends StatelessWidget {
   final Widget Function(
       BuildContext context,

@@ -72,17 +72,19 @@ class _UBottomNavigationBarState extends State<UBottomNavigationBar> {
         return Stack(
           children: <Widget>[
             Padding(
-              padding: getPadding(orientation),
+              padding: _getPadding(orientation),
               child: widget.body,
             ),
-            _buildNavigationBar(items, orientation),
+            _buildBottomNavigationBar(items, orientation),
           ],
         );
       },
     );
   }
 
-  EdgeInsets getPadding(NativeDeviceOrientation orientation) {
+  /// Возвращает значение отступов, в зависимости от ориентации
+  /// устройства, для корректного отображения `body`.
+  EdgeInsets _getPadding(NativeDeviceOrientation orientation) {
     if (orientation == NativeDeviceOrientation.landscapeLeft)
       return const EdgeInsets.only(
           right: UBottomNavigationBar.weightNavigationBarHorisontal);
@@ -94,22 +96,23 @@ class _UBottomNavigationBarState extends State<UBottomNavigationBar> {
               bottom: UBottomNavigationBar.heightNavigationBarVertical);
   }
 
-  Widget _buildNavigationBar(items, orientation) {
-    double height = getAlignment(orientation) == Alignment.bottomCenter
+  /// Создаёт нижнюю панель навигации.
+  Widget _buildBottomNavigationBar(items, orientation) {
+    double height = _getAlignment(orientation) == Alignment.bottomCenter
         ? UBottomNavigationBar.heightNavigationBarVertical
         : double.infinity;
-    double width = getAlignment(orientation) == Alignment.bottomCenter
+    double width = _getAlignment(orientation) == Alignment.bottomCenter
         ? double.infinity
         : UBottomNavigationBar.weightNavigationBarHorisontal;
-    Axis direction = getAlignment(orientation) == Alignment.bottomCenter
+    Axis direction = _getAlignment(orientation) == Alignment.bottomCenter
         ? Axis.horizontal
         : Axis.vertical;
-    double marginTop = getAlignment(orientation) == Alignment.bottomCenter
+    double marginTop = _getAlignment(orientation) == Alignment.bottomCenter
         ? 0
         : MediaQuery.of(context).padding.top;
 
     return Align(
-      alignment: getAlignment(orientation),
+      alignment: _getAlignment(orientation),
       child: Material(
         color: widget.backgroundColor,
         child: Container(
@@ -127,7 +130,9 @@ class _UBottomNavigationBarState extends State<UBottomNavigationBar> {
     );
   }
 
-  Alignment getAlignment(NativeDeviceOrientation orientation) {
+  /// Возвращает значение выравнивания контента, в зависимости от ориентации
+  /// устройства, для корректного отображения `body`.
+  Alignment _getAlignment(NativeDeviceOrientation orientation) {
     if (orientation == NativeDeviceOrientation.landscapeLeft)
       return Alignment.centerRight;
     else
@@ -136,6 +141,7 @@ class _UBottomNavigationBarState extends State<UBottomNavigationBar> {
           : Alignment.bottomCenter;
   }
 
+  /// Создаёт элемент нижней панели навигации.
   Widget _buildTabItem({
     UBottomNavigationBarItem item,
     int index,

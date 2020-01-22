@@ -5,7 +5,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 
 import 'package:picbox/ui/widget/pansy.dart';
 
-/// Страница `Регистрация`
+/// Страница `Регистрация`.
 class SignUpPage extends StatefulWidget {
   @override
   _SignUpPageState createState() => _SignUpPageState();
@@ -38,6 +38,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
+  /// Создаёт переключатель.
   Widget _buildSwitch() {
     return UListSwitch(
       "I love hentai",
@@ -46,6 +47,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
+  /// Создаёт поле ввода фамилии.
   Widget _buildLastNameField(BuildContext context) {
     return UListContent(
       AppLocalizations.of(context).tr('signup.last_name'),
@@ -59,6 +61,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
+  /// Создаёт поле ввода имени.
   Widget _buildFirstNameField(BuildContext context) {
     return UListContent(
       AppLocalizations.of(context).tr('signup.first_name'),
@@ -73,6 +76,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
+  /// Создаёт виджет выбора фотографии.
   Widget _buildProfilePhotoSelect(BuildContext context) {
     return UListContent(
       AppLocalizations.of(context).tr('signup.profile_photo'),

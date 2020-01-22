@@ -68,6 +68,7 @@ class SelectionDialog extends StatelessWidget {
     );
   }
 
+  /// Создаёт элемент выбора для диалога.
   Widget _buildActionItem(BuildContext context, String title,
       [Color color, returned = true]) {
     return Material(

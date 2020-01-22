@@ -2,7 +2,7 @@ import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
-/// Вкладка `Для Вас`
+/// Вкладка `Для Вас`.
 class HomeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,6 +13,7 @@ class HomeTab extends StatelessWidget {
     );
   }
 
+  /// Заполняет контент-картами.
   Widget _buildCardGrid(BuildContext context) {
     return GridView.count(
       padding: const EdgeInsets.all(15),

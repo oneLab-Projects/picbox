@@ -46,12 +46,14 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeData> {
     }
   }
 
+  /// Загружает настройки темы.
   void _loadSettings() async {
     if (prefs == null) prefs = await SharedPreferences.getInstance();
     bool nightTheme = prefs.getBool(NIGHT_THEME) ?? false;
     if (nightTheme) add(ThemeEvent.toggle);
   }
 
+  /// Сохраняет настройки темы.
   Future _saveSettings(bool nightTheme) async {
     if (prefs == null) prefs = await SharedPreferences.getInstance();
     await prefs.setBool(NIGHT_THEME, nightTheme);

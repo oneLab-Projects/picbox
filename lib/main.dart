@@ -3,16 +3,19 @@ import 'package:flutter/services.dart';
 import 'package:picbox/ui/widget/design/style.dart';
 
 import 'component/routes.dart';
-import 'ui/global/application.dart';
+import 'ui/global/aggregate_data.dart';
 import 'ui/widget/design/clear_behavior.dart';
 
 /// Запускает приложение, инициализирует [App].
 void main() => runApp(App());
 
+/// [App] является основным виджетом приложения. Его цель состоит в том, чтобы
+/// отобразить интерфейс приложения, предварительно сделав стилизацию [SystemChrome],
+/// а также подключив поддержку мультиязычности и смены темы.
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Application(
+    return AggregateData(
       builder: (bCtx, initData) {
         paintUiOverlay(initData.themeData.brightness);
         return MaterialApp(

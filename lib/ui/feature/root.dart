@@ -17,23 +17,23 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
-  /// Вкладки, отображаемые в BottomNavigationBar
-  final List<UNestedTab> _tabs = [
-    UNestedTab(
+  /// Хранит перечисление вкладок, отображаемых в BottomNavigationBar
+  final List<UNestedTabModel> _tabs = [
+    UNestedTabModel(
       initPageBuilder: (context) => HomeTab(),
       iconData: MdiIcons.compassOutline,
       selectedIconData: MdiIcons.compass,
     ),
-    UNestedTab(
+    UNestedTabModel(
       initPageBuilder: (context) => SearchTab(),
       iconData: Icons.search,
     ),
-    UNestedTab(
+    UNestedTabModel(
       initPageBuilder: (context) => NotificationsTab(),
       iconData: Icons.notifications_none,
       selectedIconData: Icons.notifications,
     ),
-    UNestedTab(
+    UNestedTabModel(
       initPageBuilder: (context) => ProfileTab(),
       iconData: MdiIcons.accountCircleOutline,
       selectedIconData: MdiIcons.accountCircle,

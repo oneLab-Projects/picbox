@@ -12,6 +12,7 @@ abstract class LocalizationsEvent extends Equatable {
   List<Object> get props => [locale];
 }
 
+/// Определяет модель события изменения локализации.
 class LocaleChanged extends LocalizationsEvent {
   LocaleChanged({@required Locale locale}) : super(locale);
 

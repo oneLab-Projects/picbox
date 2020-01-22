@@ -5,7 +5,7 @@ import 'package:picbox/ui/widget/pansy.dart';
 import 'package:picbox/ui/global/localizations/localizations_delegates.dart';
 import 'package:picbox/ui/global/localizations/ui/localizations_setting_page.dart';
 
-/// Страница `Настройки`
+/// Страница `Настройки`.
 class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -20,6 +20,7 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
+  /// Создаёт кнопку для перехода на страницу `Язык интерфейса`
   Widget _buildLanguagePageViewButton(
     BuildContext context,
     Map<String, String> supportedLanguages,

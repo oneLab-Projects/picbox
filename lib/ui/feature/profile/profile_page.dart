@@ -7,7 +7,7 @@ import 'package:picbox/ui/widget/pansy.dart';
 import 'package:picbox/ui/global/theme/bloc/bloc.dart';
 import 'package:picbox/ui/global/theme/data/night_theme.dart';
 
-/// Вкладка `Профиль`
+/// Вкладка `Профиль`.
 class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -24,6 +24,7 @@ class ProfileTab extends StatelessWidget {
     );
   }
 
+  /// Основа страницы.
   Widget _buildBody(BuildContext context) {
     return Column(
       children: <Widget>[
@@ -41,6 +42,7 @@ class ProfileTab extends StatelessWidget {
     );
   }
 
+  /// Создаёт контент-кнопку `Хранилище`.
   Widget _buildProfileViewButton(BuildContext context) => UListContent(
         AppLocalizations.of(context).tr('profile.storage'),
         iconData: MdiIcons.archive,
@@ -66,6 +68,7 @@ class ProfileTab extends StatelessWidget {
         ),
       );
 
+  /// Создаёт переключатель ночной темы.
   Widget _buildThemeSwitch() {
     return BlocBuilder<ThemeBloc, ThemeData>(
       builder: (context, theme) => UListSwitch(
@@ -78,6 +81,7 @@ class ProfileTab extends StatelessWidget {
     );
   }
 
+  /// Создаёт виджет, содержавший в себе фотографию пользователя, имя и фамилию пользователя, и его никнейм.
   Widget _buildHead(BuildContext context) {
     return Column(
       children: <Widget>[

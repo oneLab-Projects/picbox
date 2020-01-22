@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
+/// Создаёт карточку, предназначенную для работы с тематическими сборниками.
 class ContentCard extends StatelessWidget {
   ContentCard(
     this.title, {
@@ -45,6 +46,7 @@ class ContentCard extends StatelessWidget {
     );
   }
 
+  /// Создаёт содержимое карточки.
   Widget _buildContent(BuildContext context) {
     return Center(
       child: Column(
@@ -57,6 +59,7 @@ class ContentCard extends StatelessWidget {
     );
   }
 
+  /// Создаёт заголовок карточки.
   Widget _buildCaption(BuildContext context) {
     return Text(
       title,
@@ -68,6 +71,7 @@ class ContentCard extends StatelessWidget {
     );
   }
 
+  /// Создаёт описание карточки.
   Widget _buildDescription(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 4),
@@ -86,6 +90,7 @@ class ContentCard extends StatelessWidget {
     );
   }
 
+  /// Создаёт фон карточки.
   Widget _buildBackgroundImage() {
     return SizedBox.expand(
       child: FadeInImage.memoryNetwork(
@@ -97,6 +102,7 @@ class ContentCard extends StatelessWidget {
     );
   }
 
+  /// Основа карточки.
   Widget _buildBody(BuildContext context, {Widget child}) {
     return SizedBox(
       width: width ?? double.infinity,

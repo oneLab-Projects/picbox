@@ -6,7 +6,7 @@ import 'package:picbox/ui/global/localizations/bloc/bloc.dart';
 
 import '../localizations_delegates.dart';
 
-/// Страница `Язык интерфейса`
+/// Страница `Язык интерфейса`.
 class LocalizationsSettingPage extends StatefulWidget {
   @override
   _LocalizationsSettingPageState createState() =>
@@ -43,13 +43,14 @@ class _LocalizationsSettingPageState extends State<LocalizationsSettingPage> {
             AppLocalizations.of(context)
                 .tr('settings.localizations.all_languages'),
             variant: true,
-            child: _getAllLanguages(context, supportedLanguages),
+            child: _getAllAppLanguages(context, supportedLanguages),
           ),
         ],
       ),
     );
   }
 
+  /// Получает рекомендованные языки.
   Widget _getRecommendedLanguages(
     BuildContext context,
     Map<String, String> supportedLanguages,
@@ -67,7 +68,8 @@ class _LocalizationsSettingPageState extends State<LocalizationsSettingPage> {
     );
   }
 
-  Widget _getAllLanguages(
+  /// Получает все языки, поддерживаемые приложением.
+  Widget _getAllAppLanguages(
     BuildContext context,
     Map<String, String> supportedLanguages,
   ) =>
@@ -90,17 +92,16 @@ class _LocalizationsSettingPageState extends State<LocalizationsSettingPage> {
     bool enabled = true,
   }) =>
       InkWell(
-        onTap: !enabled || checked
-            ? null
-            : () {
-                var supportedLanguages = localizations.supportedLanguages;
-                String result = supportedLanguages.keys
-                    .firstWhere((key) => supportedLanguages[key] == title);
+        onTap: () {
+          if (!enabled || checked) return;
+          var supportedLanguages = localizations.supportedLanguages;
+          String result = supportedLanguages.keys
+              .firstWhere((key) => supportedLanguages[key] == title);
 
-                BlocProvider.of<LocalizationsBloc>(context).add(
-                  LocaleChanged(locale: Locale(result)),
-                );
-              },
+          BlocProvider.of<LocalizationsBloc>(context).add(
+            LocaleChanged(locale: Locale(result)),
+          );
+        },
         child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: 55),
           child: Padding(

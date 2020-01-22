@@ -41,9 +41,9 @@ class _UScaffoldState extends State<UScaffold> {
           child: Stack(children: [
             if (!widget.showBackButton)
               widget.title == null
-                  ? content(context)
-                  : contentWithTitleBar(context),
-            if (widget.showBackButton) contentWithBackButton(context),
+                  ? _content(context)
+                  : _contentWithTitleBar(context),
+            if (widget.showBackButton) _contentWithBackButton(context),
             Container(
               color: Theme.of(context).scaffoldBackgroundColor.withAlpha(150),
               height: MediaQuery.of(context).padding.top,
@@ -54,10 +54,11 @@ class _UScaffoldState extends State<UScaffold> {
     );
   }
 
-  contentWithTitleBar(context) {
+  /// Создаёт [ScrollView], содержавший в себе анимированный заголовок страницы по центру.
+  Widget _contentWithTitleBar(context) {
     return Stack(
       children: <Widget>[
-        titleBar(context),
+        _titleBar(context),
         NotificationListener<ScrollNotification>(
           onNotification: (scrollState) {
             if (scrollState is ScrollUpdateNotification &&
@@ -101,14 +102,16 @@ class _UScaffoldState extends State<UScaffold> {
     );
   }
 
-  content(context) {
+  /// Создаёт [ScrollView].
+  Widget _content(context) {
     return SingleChildScrollView(
       padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       child: widget.body,
     );
   }
 
-  titleBar(context) {
+  /// Создаёт заголовок по центру.
+  Widget _titleBar(context) {
     return Opacity(
       opacity: _scrollPosition < 1
           ? _scrollPosition
@@ -132,17 +135,19 @@ class _UScaffoldState extends State<UScaffold> {
     );
   }
 
-  contentWithBackButton(context) {
+  /// Создаёт [ScrollView], содержавший в себе кнопку возврата на предыдущую страницу, и, если указано, заголовок страницы.
+  Widget _contentWithBackButton(context) {
     return Column(
       children: <Widget>[
         SizedBox(height: MediaQuery.of(context).padding.top),
-        titleBarWithBackButton(context),
+        _titleBarWithBackButton(context),
         Expanded(child: SingleChildScrollView(child: widget.body)),
       ],
     );
   }
 
-  titleBarWithBackButton(context) {
+  /// Создаёт кнопку возврата на предыдущую страницу, и, если указано, заголовок страницы.
+  Widget _titleBarWithBackButton(context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 11),
       child: Row(

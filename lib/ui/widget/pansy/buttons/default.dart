@@ -30,6 +30,7 @@ class URaisedButton extends StatelessWidget {
     );
   }
 
+  /// Создаёт содержимое кнопки.
   Widget _buildContent(BuildContext context) => Padding(
         padding: const EdgeInsets.all(16),
         child: Stack(
@@ -47,6 +48,7 @@ class URaisedButton extends StatelessWidget {
         ),
       );
 
+  /// Создаёт виджет, предоставляющий анимацию загрузки.
   Widget _buildLoader(BuildContext context) => Opacity(
         opacity: loading ? 0.8 : 0,
         child: SizedBox(
@@ -60,6 +62,7 @@ class URaisedButton extends StatelessWidget {
         ),
       );
 
+  /// Создаёт иконку кнопки.
   Widget _buildIcon(BuildContext context) => Icon(
         iconData,
         color: onPressed == null
@@ -67,6 +70,7 @@ class URaisedButton extends StatelessWidget {
             : Theme.of(context).disabledColor,
       );
 
+  /// Создаёт текст кнопки.
   Widget _buildText(BuildContext context) => Padding(
         padding: EdgeInsets.symmetric(horizontal: 12),
         child: Text(

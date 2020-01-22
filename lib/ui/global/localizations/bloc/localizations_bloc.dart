@@ -5,6 +5,7 @@ import 'package:picbox/ui/global/localizations/localizations_delegates.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './bloc.dart';
 
+/// Создаёт BLoC для реализации смены локализации в приложении.
 class LocalizationsBloc extends Bloc<LocalizationsEvent, Locale> {
   static const String LOCALE = "LocalizationsBloc_LOCALE";
   SharedPreferences prefs;
@@ -22,6 +23,7 @@ class LocalizationsBloc extends Bloc<LocalizationsEvent, Locale> {
     await _saveSettings(event.locale);
   }
 
+  /// Загружает настройки локализации.
   void _loadSettings() async {
     if (prefs == null) prefs = await SharedPreferences.getInstance();
     String languageCode = prefs.getString(LOCALE) ??
@@ -29,6 +31,7 @@ class LocalizationsBloc extends Bloc<LocalizationsEvent, Locale> {
     add(LocaleChanged(locale: Locale(languageCode)));
   }
 
+  /// Сохраняет настройки локализации.
   Future _saveSettings(Locale locale) async {
     if (prefs == null) prefs = await SharedPreferences.getInstance();
     await prefs.setString(LOCALE, locale.languageCode);

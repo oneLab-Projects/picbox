@@ -35,6 +35,7 @@ class UListWidget extends StatelessWidget {
     );
   }
 
+  /// Создаёт контент виджета.
   Widget _buildContent(BuildContext context) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 15),
         child: Row(
@@ -52,6 +53,7 @@ class UListWidget extends StatelessWidget {
         ),
       );
 
+  /// Создаёт иконку виджета.
   Widget _buildIcon(BuildContext context) => Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -66,6 +68,7 @@ class UListWidget extends StatelessWidget {
         ],
       );
 
+  /// Создаёт заголовок виджета.
   Widget _buildText(BuildContext context) => Expanded(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,6 +90,7 @@ class UListWidget extends StatelessWidget {
         ),
       );
 
+  /// Создаёт описание виджета.
   Widget _buildDescription(BuildContext context) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[

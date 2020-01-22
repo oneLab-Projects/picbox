@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:picbox/component/routes.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
-/// Создаёт вкладку, работающую с [UNestedNavigator].
-class UNestedTab {
+/// [UNestedTabModel] является моделью для представления вкладки,
+/// работающей с [UNestedNavigator].
+class UNestedTabModel {
   final WidgetBuilder initPageBuilder;
   final IconData iconData;
   final IconData selectedIconData;
   final bool badge;
   final GlobalKey<NavigatorState> _navigatorKey;
 
-  UNestedTab({
+  UNestedTabModel({
     @required this.initPageBuilder,
     @required this.iconData,
     this.selectedIconData,
@@ -23,7 +24,7 @@ class UNestedTab {
 /// Создаёт реализацию мультиоконности.
 class UNestedNavigator extends StatefulWidget {
   final int initTabIndex;
-  final List<UNestedTab> tabs;
+  final List<UNestedTabModel> tabs;
   final ValueChanged<int> onTap;
   final ValueGetter shouldHandlePop;
 
@@ -65,16 +66,19 @@ class _UNestedNavigatorState extends State<UNestedNavigator> {
         ),
       );
 
+  /// Создаёт стек, хранящий в себе все вкладки.
   Widget _buildPageBody() => IndexedStack(
         index: currentIndex,
         children: widget.tabs.map((tab) => _buildNavigator(tab)).toList(),
       );
 
-  Widget _buildNavigator(UNestedTab tab) => TabPageNavigator(
+  /// Создаёт вкладку.
+  Widget _buildNavigator(UNestedTabModel tab) => UNestedTab(
         navigatorKey: tab._navigatorKey,
         initPageBuilder: tab.initPageBuilder,
       );
 
+  /// Создаёт нижнюю панель навигации.
   Widget _buildBottomBar(Widget body) => UBottomNavigationBar(
         body: body,
         onTabSelected: (index) {
@@ -95,9 +99,9 @@ class _UNestedNavigatorState extends State<UNestedNavigator> {
       );
 }
 
-class TabPageNavigator extends StatelessWidget {
-  TabPageNavigator(
-      {@required this.navigatorKey, @required this.initPageBuilder});
+/// Создаёт вкладку, работающую с [UNestedNavigator]
+class UNestedTab extends StatelessWidget {
+  UNestedTab({@required this.navigatorKey, @required this.initPageBuilder});
 
   final GlobalKey<NavigatorState> navigatorKey;
   final WidgetBuilder initPageBuilder;

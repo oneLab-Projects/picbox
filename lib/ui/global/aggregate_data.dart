@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'localizations/ui/locale_bloc_builder.dart';
 import 'theme/ui/theme_bloc_builder.dart';
 
-class Application extends StatelessWidget {
-  final Widget Function(BuildContext context, InitData initData) builder;
+/// [AggregateData] является виджетом, цель которого – предоставить данные
+/// BLoC-билдеров, необходимые для MaterialApp.
+class AggregateData extends StatelessWidget {
+  final Widget Function(BuildContext context, AggregateDataModel initData)
+      builder;
 
-  Application({@required this.builder});
+  AggregateData({@required this.builder});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,7 @@ class Application extends StatelessWidget {
       builder: (lBBContext, locale, supportedLocales, localizationsDelegates) {
         return ThemeBlocBuilder(
           builder: (tBBContext, themeData) {
-            InitData initData = InitData(
+            AggregateDataModel initData = AggregateDataModel(
                 themeData, locale, supportedLocales, localizationsDelegates);
             return builder(tBBContext, initData);
           },
@@ -24,13 +27,14 @@ class Application extends StatelessWidget {
   }
 }
 
-class InitData {
+/// Модель представления данных для [AggregateData].
+class AggregateDataModel {
   ThemeData themeData;
   Locale locale;
   List<Locale> supportedLocales;
   List<LocalizationsDelegate> localizationsDelegates;
   Function localeResolutionCallback;
 
-  InitData(this.themeData, this.locale, this.supportedLocales,
+  AggregateDataModel(this.themeData, this.locale, this.supportedLocales,
       this.localizationsDelegates);
 }

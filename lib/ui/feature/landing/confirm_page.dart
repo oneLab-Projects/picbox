@@ -5,7 +5,7 @@ import 'package:picbox/ui/widget/pansy.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
-/// Страница `Подтверждение`
+/// Страница `Подтверждение`.
 class ConfirmPage extends StatefulWidget {
   @override
   _ConfirmPageState createState() => _ConfirmPageState();
@@ -42,7 +42,8 @@ class _ConfirmPageState extends State<ConfirmPage> {
     );
   }
 
-  Stack _buildCodeFill(BuildContext context) => Stack(
+  /// Создаёт поле ввода для кода подтверждения.
+  Widget _buildCodeFill(BuildContext context) => Stack(
         alignment: Alignment.center,
         children: <Widget>[
           Row(
@@ -75,6 +76,7 @@ class _ConfirmPageState extends State<ConfirmPage> {
         ],
       );
 
+  /// Основа для страницы.
   Widget _buildBody(context, {List<Widget> children}) => ConstrainedBox(
         constraints: BoxConstraints(
             maxWidth: 300, minHeight: MediaQuery.of(context).size.height / 2),
@@ -84,6 +86,7 @@ class _ConfirmPageState extends State<ConfirmPage> {
         ),
       );
 
+  /// Проверяем код подтверждения.
   void _checkCode(String code) async {
     setState(() => _loading = true);
 

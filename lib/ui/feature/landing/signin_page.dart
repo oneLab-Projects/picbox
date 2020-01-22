@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
-/// Страница `Авторизация`
+/// Страница `Авторизация`.
 class SignInPage extends StatefulWidget {
   @override
   _SignInPageState createState() => _SignInPageState();
@@ -62,6 +62,7 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
+  /// Основа для страницы.
   Widget _buildBody(List<Widget> children) {
     return Center(
       child: ConstrainedBox(
@@ -75,7 +76,8 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  TextFormField _buildPhoneNumberTextField(BuildContext context) {
+  /// Создаёт поле ввода номера телефона.
+  Widget _buildPhoneNumberTextField(BuildContext context) {
     return TextFormField(
       autocorrect: false,
       decoration: InputDesign(
@@ -95,6 +97,7 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
+  /// Открытие страницы регистрации, одно короткое нажатие.
   void _continue() async {
     setState(() => _loading = true);
 
@@ -104,6 +107,7 @@ class _SignInPageState extends State<SignInPage> {
     setState(() => _loading = false);
   }
 
+  /// Открытие страницы подтверждение, одно длинное нажатие.
   void _continueVariant() async {
     setState(() => _loading = true);
 
@@ -113,6 +117,7 @@ class _SignInPageState extends State<SignInPage> {
     setState(() => _loading = false);
   }
 
+  /// Парсинг форматированного телефона.
   int _parsePhoneNumber(String value) =>
       int.parse('7' + value.replaceAll(RegExp(r'[^+\d]'), ''));
 
@@ -120,6 +125,8 @@ class _SignInPageState extends State<SignInPage> {
       _UsNumberTextInputFormatter();
 }
 
+// FIXME: система нестабильна, нужно заменить её на сторонний пакет.
+/// Класс для форматирования номера телефона по шаблону (###) ###-#### #..
 class _UsNumberTextInputFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(

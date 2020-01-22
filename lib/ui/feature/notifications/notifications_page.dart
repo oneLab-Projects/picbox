@@ -2,7 +2,7 @@ import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
-/// Вкладка `Уведомления`
+/// Вкладка `Уведомления`.
 class NotificationsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -16,6 +16,7 @@ class NotificationsTab extends StatelessWidget {
     );
   }
 
+  /// Заполняет карточками уведомлений.
   Widget _buildNotifications(BuildContext context) {
     return Column(
       children: <Widget>[

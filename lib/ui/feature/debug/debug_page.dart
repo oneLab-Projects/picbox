@@ -3,7 +3,7 @@ import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
-/// Страница `Для разработчиков`
+/// Страница `Для разработчиков`.
 class DebugPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

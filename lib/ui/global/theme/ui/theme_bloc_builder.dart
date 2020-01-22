@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:picbox/ui/global/theme/bloc/bloc.dart';
 
+/// [ThemeBlocBuilder] является виджетом, содержавший в себе Provider и Builder
+/// BLoC, предназначенного для смены темы приложения.
 class ThemeBlocBuilder extends StatelessWidget {
   final Widget Function(BuildContext context, ThemeData themeData) builder;
 
