@@ -8,7 +8,7 @@ import 'package:picbox/domain/repository/accounts_repository.dart';
 import 'mapper/mapper.dart';
 
 class AccountsRepositoryImpl implements AccountsRepository {
-  AccountsApiService accountsApiService;
+  final AccountsApiService accountsApiService;
   final Mapper mapper;
 
   static const int _TIME_OUT = 10;

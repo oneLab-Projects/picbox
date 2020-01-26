@@ -1,11 +1,12 @@
 import 'package:chopper/chopper.dart';
+import 'package:picbox/component/api_config.dart';
 import 'package:picbox/data/network/model/confirmation_model.dart';
 import 'package:picbox/data/network/model/account_model.dart';
 import 'package:picbox/data/network/model/registration_model.dart';
 
 part 'accounts_api_service.chopper.dart';
 
-@ChopperApi(baseUrl: "https://api.onelab.work/identity/accounts")
+@ChopperApi(baseUrl: ApiConfig.BASE_API_URL + "identity/accounts")
 abstract class AccountsApiService extends ChopperService {
   /// Проверяет существование аккаунта с указанным в `phoneNumber` номером.
   @Head()
