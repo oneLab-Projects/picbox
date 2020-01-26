@@ -10,7 +10,7 @@ import 'package:picbox/domain/repository/sessions_repository.dart';
 import 'mapper/mapper.dart';
 
 class SessionsRepositoryImpl implements SessionsRepository {
-  SessionsApiService sessionsApiService;
+  final SessionsApiService sessionsApiService;
   final Mapper mapper;
 
   static const int _TIME_OUT = 10;
