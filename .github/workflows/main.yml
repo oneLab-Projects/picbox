@@ -18,8 +18,6 @@ jobs:
           channel: 'stable'
       - name: Installing dependencies
         run: flutter pub get
-      - name: Analyzing Dart code
-        run: flutter analyze
       - name: Building Android
         run: flutter build apk --release --split-per-abi
       - if: "!contains(github.event.head_commit.message, '[publish]')"
