@@ -1,4 +1,4 @@
-package com.example.picbox
+package work.onelab.picbox
 
 import android.os.Bundle
 import io.flutter.app.FlutterActivity
