@@ -43,30 +43,32 @@ class ProfileTab extends StatelessWidget {
   }
 
   /// Создаёт контент-кнопку `Хранилище`.
-  Widget _buildProfileViewButton(BuildContext context) => UListContent(
-        AppLocalizations.of(context).tr('profile.storage'),
-        iconData: MdiIcons.archive,
-        onPressed: () {},
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            for (int i = 0;
-                i <
-                    (MediaQuery.of(context).orientation == Orientation.portrait
-                        ? 4
-                        : 8);
-                i++)
-              Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor,
-                  borderRadius: const BorderRadius.all(Radius.circular(15)),
-                ),
-                height: 85,
-                width: 85,
+  Widget _buildProfileViewButton(BuildContext context) {
+    return UListContent(
+      AppLocalizations.of(context).tr('profile.storage'),
+      iconData: MdiIcons.archive,
+      onPressed: () {},
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          for (int i = 0;
+              i <
+                  (MediaQuery.of(context).orientation == Orientation.portrait
+                      ? 4
+                      : 8);
+              i++)
+            Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).cardColor,
+                borderRadius: const BorderRadius.all(Radius.circular(15)),
               ),
-          ],
-        ),
-      );
+              height: 85,
+              width: 85,
+            ),
+        ],
+      ),
+    );
+  }
 
   /// Создаёт переключатель ночной темы.
   Widget _buildThemeSwitch() {

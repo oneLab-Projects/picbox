@@ -53,17 +53,19 @@ class _UNestedNavigatorState extends State<UNestedNavigator> {
   _UNestedNavigatorState(this.currentIndex);
 
   @override
-  Widget build(BuildContext context) => WillPopScope(
-        onWillPop: () async {
-          return widget.shouldHandlePop()
-              ? !await widget.tabs[currentIndex]._navigatorKey.currentState
-                  .maybePop()
-              : false;
-        },
-        child: Scaffold(
-          body: _buildBottomBar(_buildPageBody()),
-        ),
-      );
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () async {
+        return widget.shouldHandlePop()
+            ? !await widget.tabs[currentIndex]._navigatorKey.currentState
+                .maybePop()
+            : false;
+      },
+      child: Scaffold(
+        body: _buildBottomBar(_buildPageBody()),
+      ),
+    );
+  }
 
   /// Создаёт стек, хранящий в себе все вкладки.
   Widget _buildPageBody() => IndexedStack(
