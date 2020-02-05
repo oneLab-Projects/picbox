@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:picbox/component/routes.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
+import 'animated_indexed_stack.dart';
+
 /// [UNestedTabModel] является моделью для представления вкладки,
 /// работающей с [UNestedNavigator].
 class UNestedTabModel {
@@ -68,10 +70,12 @@ class _UNestedNavigatorState extends State<UNestedNavigator> {
   }
 
   /// Создаёт стек, хранящий в себе все вкладки.
-  Widget _buildPageBody() => IndexedStack(
-        index: currentIndex,
-        children: widget.tabs.map((tab) => _buildNavigator(tab)).toList(),
-      );
+  Widget _buildPageBody() {
+    return AnimatedIndexedStack(
+      index: currentIndex,
+      children: widget.tabs.map((tab) => _buildNavigator(tab)).toList(),
+    );
+  }
 
   /// Создаёт вкладку.
   Widget _buildNavigator(UNestedTabModel tab) => UNestedTab(
