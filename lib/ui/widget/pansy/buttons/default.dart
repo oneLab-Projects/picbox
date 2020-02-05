@@ -31,56 +31,64 @@ class URaisedButton extends StatelessWidget {
   }
 
   /// Создаёт содержимое кнопки.
-  Widget _buildContent(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(16),
-        child: Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                if (text != null && !loading) _buildText(context),
-                if (iconData != null && !loading) _buildIcon(context),
-              ],
-            ),
-            _buildLoader(context),
-          ],
-        ),
-      );
+  Widget _buildContent(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              if (text != null && !loading) _buildText(context),
+              if (iconData != null && !loading) _buildIcon(context),
+            ],
+          ),
+          _buildLoader(context),
+        ],
+      ),
+    );
+  }
 
   /// Создаёт виджет, предоставляющий анимацию загрузки.
-  Widget _buildLoader(BuildContext context) => Opacity(
-        opacity: loading ? 0.8 : 0,
-        child: SizedBox(
-          width: 18,
-          height: 18,
-          child: FlareActor(
-            "resources/flare/loader.flr",
-            color: Theme.of(context).disabledColor,
-            animation: "Init",
-          ),
+  Widget _buildLoader(BuildContext context) {
+    return Opacity(
+      opacity: loading ? 0.8 : 0,
+      child: SizedBox(
+        width: 18,
+        height: 18,
+        child: FlareActor(
+          "resources/flare/loader.flr",
+          color: Theme.of(context).disabledColor,
+          animation: "Init",
         ),
-      );
+      ),
+    );
+  }
 
   /// Создаёт иконку кнопки.
-  Widget _buildIcon(BuildContext context) => Icon(
-        iconData,
-        color: onPressed == null
-            ? Theme.of(context).disabledColor.withAlpha(150)
-            : Theme.of(context).disabledColor,
-      );
+  Widget _buildIcon(BuildContext context) {
+    return Icon(
+      iconData,
+      color: onPressed == null
+          ? Theme.of(context).disabledColor.withAlpha(150)
+          : Theme.of(context).disabledColor,
+    );
+  }
 
   /// Создаёт текст кнопки.
-  Widget _buildText(BuildContext context) => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12),
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.button.copyWith(
-                color: onPressed == null
-                    ? Theme.of(context).disabledColor.withAlpha(150)
-                    : Theme.of(context).disabledColor,
-              ),
-        ),
-      );
+  Widget _buildText(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 12),
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.button.copyWith(
+              color: onPressed == null
+                  ? Theme.of(context).disabledColor.withAlpha(150)
+                  : Theme.of(context).disabledColor,
+            ),
+      ),
+    );
+  }
 }
