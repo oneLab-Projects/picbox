@@ -125,13 +125,13 @@ class _UScaffoldState extends State<UScaffold> {
             Transform.scale(
               scale: _scrollPosition < 1
                   ? 1 - (1 - _scrollPosition) * 0.3
-                  : 1 - (1 - _scrollPosition) / _scrollPosition * 0.15,
-              child: Text(
+                  : 1 + (1 - _scrollPosition) / _scrollPosition * 0.15,
                 widget.title,
+              child: Text(
                 style: Theme.of(context)
                     .textTheme
-                    .title
                     .copyWith(fontSize: 20, fontWeight: FontWeight.w500),
+                    .title
               ),
             ),
           ],
