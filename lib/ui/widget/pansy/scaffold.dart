@@ -122,13 +122,17 @@ class _UScaffoldState extends State<UScaffold> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              widget.title,
-              style: Theme.of(context).textTheme.title.copyWith(
-                  fontSize: _scrollPosition < 1
-                      ? 15 + _scrollPosition * 5
-                      : 20 + (1 - _scrollPosition) / _scrollPosition * 3,
-                  fontWeight: FontWeight.w500),
+            Transform.scale(
+              scale: _scrollPosition < 1
+                  ? 1 - (1 - _scrollPosition) * 0.3
+                  : 1 - (1 - _scrollPosition) / _scrollPosition * 0.15,
+              child: Text(
+                widget.title,
+                style: Theme.of(context)
+                    .textTheme
+                    .title
+                    .copyWith(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
             ),
           ],
         ),
