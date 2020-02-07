@@ -1,25 +1,20 @@
-on: push
-name: build
+name: Build for Android
+on: [push]
 jobs:
   build:
     name: Build and publish
     runs-on: macos-latest
     if: "!contains(github.event.head_commit.message, '[ignore]')"
     steps:
-      - name: Cloning
-        uses: actions/checkout@v2
-      - name: Installing Java
-        uses: actions/setup-java@v1
-        with:
-          java-version: '12.x'
-      - name: Installing Flutter (stable branch)
-        uses: subosito/flutter-action@v1
-        with:
-          channel: 'stable'
+      - uses: actions/checkout@v2
       - name: Installing dependencies
-        run: flutter pub get
-      - name: Building Android
-        run: flutter build apk --release --split-per-abi
+        uses: steebchen/flutter@v1.0.0
+        with:
+          args: pub get
+      - name: Building APK
+        uses: steebchen/flutter@v1.0.0
+        with:
+          args: build apk --release --split-per-abi
       - if: "!contains(github.event.head_commit.message, '[publish]')"
         name: Uploading artifacts
         uses: actions/upload-artifact@v1
