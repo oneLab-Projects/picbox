@@ -43,23 +43,18 @@ class Routes {
   };
 
   /// Callback-генератор маршрутов. Используется, когда приложение перемещается по названному маршруту.
-  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
-    String key = _routes.keys.firstWhere((key) => key == settings.name, orElse: () => null);
-    if (key == null) throw UnsupportedError('Unknown route: ${settings.name}');
-
-    return UPageRoute(builder: (context) => _routes[key], settings: settings);
-  }
-
-  /// Callback-генератор маршрутов. Используется, когда приложение перемещается по названному маршруту.
-  /// Модифицированная версия для NestedNavigator.
-  static Route<dynamic> onGenerateRouteForNestedNavigator(RouteSettings settings, dynamic routeBuilder) {
-    String key = _routes.key.firstWhere((key) => key == settings.name, orElse: () => null);
+  static Route<dynamic> onGenerateRoute(
+    RouteSettings settings, [
+    Function routeBuilder,
+  ]) {
+    String key = _routes.keys
+        .firstWhere((key) => key == settings.name, orElse: () => null);
     if (key == null) throw UnsupportedError('Unknown route: ${settings.name}');
 
     return UPageRoute(
-            builder: (context) => settings.name == Routes.ROOT 
-              ? routeBuilder(key)(context) 
-              : _routes[key],
-            settings: settings);
+        builder: (context) => settings.name == ROOT && routeBuilder != null
+            ? routeBuilder(context)
+            : _routes[key],
+        settings: settings);
   }
 }

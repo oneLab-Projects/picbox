@@ -116,10 +116,6 @@ class UNestedTab extends StatelessWidget {
         key: navigatorKey,
         observers: [HeroController()],
         onGenerateRoute: (routeSettings) =>
-            Routes.onGenerateRouteForNestedNavigator(
-                routeSettings, _defaultPageRouteBuilder),
+            Routes.onGenerateRoute(routeSettings, initPageBuilder),
       );
-
-  WidgetBuilder _defaultPageRouteBuilder(String routName, {String heroTag}) =>
-      (context) => initPageBuilder(context);
 }
