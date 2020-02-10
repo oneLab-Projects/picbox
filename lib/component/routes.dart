@@ -44,28 +44,22 @@ class Routes {
 
   /// Callback-генератор маршрутов. Используется, когда приложение перемещается по названному маршруту.
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
-    for (int i = 0; i < _routes.length; i++) {
-      String key = _routes.keys.toList()[i];
-      if (settings.name == key)
-        return UPageRoute(
-            builder: (context) => _routes[key], settings: settings);
-    }
-    throw UnsupportedError('Unknown route: ${settings.name}');
+    String key = _routes.keys.firstWhere((key) => key == settings.name, orElse: () => null);
+    if (key == null) throw UnsupportedError('Unknown route: ${settings.name}');
+
+    return UPageRoute(builder: (context) => _routes[key], settings: settings);
   }
 
   /// Callback-генератор маршрутов. Используется, когда приложение перемещается по названному маршруту.
   /// Модифицированная версия для NestedNavigator.
-  static Route<dynamic> onGenerateRouteForNestedNavigator(
-      RouteSettings settings, dynamic routeBuilder) {
-    for (int i = 0; i < _routes.length; i++) {
-      String key = _routes.keys.toList()[i];
-      if (settings.name == key)
-        return UPageRoute(
-            builder: (context) => settings.name == Routes.ROOT
-                ? routeBuilder(key)(context)
-                : _routes[key],
+  static Route<dynamic> onGenerateRouteForNestedNavigator(RouteSettings settings, dynamic routeBuilder) {
+    String key = _routes.key.firstWhere((key) => key == settings.name, orElse: () => null);
+    if (key == null) throw UnsupportedError('Unknown route: ${settings.name}');
+
+    return UPageRoute(
+            builder: (context) => settings.name == Routes.ROOT 
+              ? routeBuilder(key)(context) 
+              : _routes[key],
             settings: settings);
-    }
-    throw UnsupportedError('Unknown route: ${settings.name}');
   }
 }
