@@ -36,7 +36,7 @@ class ContentCard extends StatelessWidget {
         onTap: () {},
         child: Stack(
           children: <Widget>[
-            if (urlImage != null) _buildBackgroundImage(),
+            if (urlImage != null) _buildBackgroundImage(context),
             if (variant != ContentCardVariant.nano) _buildContent(context),
           ],
         ),
@@ -101,14 +101,21 @@ class ContentCard extends StatelessWidget {
   }
 
   /// Создаёт фон карточки.
-  Widget _buildBackgroundImage() {
-    return Material(
-      child: FadeInImage.memoryNetwork(
-        fadeInDuration: Duration(milliseconds: 150),
-        placeholder: kTransparentImage,
-        image: urlImage,
-        fit: BoxFit.fitHeight,
-      ),
+  Widget _buildBackgroundImage(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        Material(
+          child: FadeInImage.memoryNetwork(
+            fadeInDuration: Duration(milliseconds: 150),
+            placeholder: kTransparentImage,
+            image: urlImage,
+            fit: BoxFit.fitHeight,
+          ),
+        ),
+        Container(
+          color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.4),
+        )
+      ],
     );
   }
 
@@ -120,10 +127,11 @@ class ContentCard extends StatelessWidget {
       child: Opacity(
         opacity: variant != ContentCardVariant.nano ? 1 : 0.4,
         child: Material(
+          type: MaterialType.transparency,
           color: color ?? Theme.of(context).cardColor,
           borderRadius: const BorderRadius.all(Radius.circular(15)),
           clipBehavior: Clip.antiAlias,
-          child: child,
+          child: Transform.scale(scale: 1.001, child: child),
         ),
       ),
     );
