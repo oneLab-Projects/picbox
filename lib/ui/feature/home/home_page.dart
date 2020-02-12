@@ -29,7 +29,7 @@ class HomeTab extends StatelessWidget {
       children: <Widget>[
         for (int i = 0; i < 13; i++)
           ContentCard(
-            "Карточка $i",
+            title: "Карточка $i",
             description: "#тест #${10000 + Random().nextInt(89999)} #хех",
             color: ColorTool.getBrightColor(),
             /*urlImage:

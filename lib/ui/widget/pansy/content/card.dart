@@ -3,16 +3,19 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
+enum ContentCardVariant { mini, nano }
+
 /// Создаёт карточку, предназначенную для работы с тематическими сборниками.
 class ContentCard extends StatelessWidget {
-  ContentCard(
-    this.title, {
+  ContentCard({
+    this.title,
     this.description,
     this.urlImage,
     this.color,
     this.textColor,
     this.height,
     this.width,
+    this.variant,
   });
 
   @required
@@ -23,6 +26,7 @@ class ContentCard extends StatelessWidget {
   final String urlImage;
   final double height;
   final double width;
+  final ContentCardVariant variant;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +37,7 @@ class ContentCard extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             if (urlImage != null) _buildBackgroundImage(),
-            _buildContent(context),
+            if (variant != ContentCardVariant.nano) _buildContent(context),
           ],
         ),
       ),
@@ -55,7 +59,8 @@ class ContentCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  if (description != null) _buildDescription(context),
+                  if (description != null && variant != ContentCardVariant.mini)
+                    _buildDescription(context),
                   _buildCaption(context),
                 ],
               ),
@@ -72,7 +77,7 @@ class ContentCard extends StatelessWidget {
     return Text(
       title,
       style: Theme.of(context).textTheme.title.copyWith(
-          fontSize: 17,
+          fontSize: variant != ContentCardVariant.mini ? 17 : 15,
           fontWeight: FontWeight.w500,
           color: textColor ?? Colors.white),
     );
@@ -112,11 +117,14 @@ class ContentCard extends StatelessWidget {
     return SizedBox(
       width: width ?? double.infinity,
       height: height ?? double.infinity,
-      child: Material(
-        color: color ?? Theme.of(context).cardColor,
-        borderRadius: const BorderRadius.all(Radius.circular(15)),
-        clipBehavior: Clip.antiAlias,
-        child: child,
+      child: Opacity(
+        opacity: variant != ContentCardVariant.nano ? 1 : 0.4,
+        child: Material(
+          color: color ?? Theme.of(context).cardColor,
+          borderRadius: const BorderRadius.all(Radius.circular(15)),
+          clipBehavior: Clip.antiAlias,
+          child: child,
+        ),
       ),
     );
   }
