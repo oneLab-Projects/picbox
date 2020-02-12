@@ -44,9 +44,12 @@ class _UScaffoldState extends State<UScaffold> {
                   ? _content(context)
                   : _contentWithTitleBar(context),
             if (widget.showBackButton) _contentWithBackButton(context),
-            Container(
-              color: Theme.of(context).scaffoldBackgroundColor.withAlpha(150),
-              height: MediaQuery.of(context).padding.top,
+            Opacity(
+              opacity: _scrollPosition < 1 ? 1 - _scrollPosition : 0,
+              child: Container(
+                color: Theme.of(context).scaffoldBackgroundColor.withAlpha(90),
+                height: MediaQuery.of(context).padding.top,
+              ),
             )
           ]),
         ),
@@ -75,7 +78,8 @@ class _UScaffoldState extends State<UScaffold> {
               setState(() => _scrollPosition = 0);
 
             if (scrollState is ScrollEndNotification &&
-                (_animationHeight - scrollState.metrics.pixels) > 0) {
+                (_animationHeight - scrollState.metrics.pixels) > 0 &&
+                _scrollPosition < 1) {
               double step = 0;
               if (_scrollPosition > 0 && _scrollPosition < 0.6)
                 step = _animationHeight;
@@ -91,10 +95,11 @@ class _UScaffoldState extends State<UScaffold> {
           child: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             controller: _scrollController,
-            child: Padding(
-              padding:
-                  EdgeInsets.only(top: 60 + MediaQuery.of(context).padding.top),
-              child: widget.body,
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 60 + MediaQuery.of(context).padding.top),
+                widget.body,
+              ],
             ),
           ),
         ),
@@ -106,8 +111,12 @@ class _UScaffoldState extends State<UScaffold> {
   Widget _content(context) {
     return SingleChildScrollView(
       physics: BouncingScrollPhysics(),
-      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-      child: widget.body,
+      child: Column(
+        children: <Widget>[
+          SizedBox(height: MediaQuery.of(context).padding.top),
+          widget.body,
+        ],
+      ),
     );
   }
 
