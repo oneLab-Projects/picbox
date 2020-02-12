@@ -33,12 +33,6 @@ class ContentCard extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             if (urlImage != null) _buildBackgroundImage(),
-            BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-              child: Container(
-                color: (color ?? Colors.black).withOpacity(0.3),
-              ),
-            ),
             _buildContent(context),
           ],
         ),
@@ -48,13 +42,27 @@ class ContentCard extends StatelessWidget {
 
   /// Создаёт содержимое карточки.
   Widget _buildContent(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          _buildCaption(context),
-          if (description != null) _buildDescription(context),
-        ],
+    return Align(
+      alignment: Alignment.bottomLeft,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 20),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            const SizedBox(width: 20),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  if (description != null) _buildDescription(context),
+                  _buildCaption(context),
+                ],
+              ),
+            ),
+            const SizedBox(width: 20),
+          ],
+        ),
       ),
     );
   }
@@ -64,27 +72,24 @@ class ContentCard extends StatelessWidget {
     return Text(
       title,
       style: Theme.of(context).textTheme.title.copyWith(
-            fontSize: 20,
-            fontWeight: FontWeight.w500,
-            color: textColor ?? Theme.of(context).textTheme.title.color,
-          ),
+          fontSize: 17,
+          fontWeight: FontWeight.w500,
+          color: textColor ?? Colors.white),
     );
   }
 
   /// Создаёт описание карточки.
   Widget _buildDescription(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 4),
+      padding: const EdgeInsets.only(bottom: 1),
       child: Opacity(
         opacity: 0.7,
         child: Text(
           description,
-          textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.title.copyWith(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-                color: textColor ?? Theme.of(context).textTheme.title.color,
-              ),
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+              color: textColor ?? Colors.white),
         ),
       ),
     );
@@ -92,12 +97,12 @@ class ContentCard extends StatelessWidget {
 
   /// Создаёт фон карточки.
   Widget _buildBackgroundImage() {
-    return SizedBox.expand(
+    return Material(
       child: FadeInImage.memoryNetwork(
         fadeInDuration: Duration(milliseconds: 150),
         placeholder: kTransparentImage,
         image: urlImage,
-        fit: BoxFit.fill,
+        fit: BoxFit.fitHeight,
       ),
     );
   }
@@ -108,11 +113,9 @@ class ContentCard extends StatelessWidget {
       width: width ?? double.infinity,
       height: height ?? double.infinity,
       child: Material(
-        color: (color ?? Theme.of(context).cardColor),
+        color: color ?? Theme.of(context).cardColor,
         borderRadius: const BorderRadius.all(Radius.circular(15)),
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        shadowColor: (color ?? Colors.black).withOpacity(0.3),
-        elevation: 3,
+        clipBehavior: Clip.antiAlias,
         child: child,
       ),
     );
