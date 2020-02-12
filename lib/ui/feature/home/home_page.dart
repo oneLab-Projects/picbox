@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +10,35 @@ import 'package:picbox/util/random_color.dart';
 class HomeTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var content = _buildCardGrid(context);
     return UScaffold(
       showBackButton: false,
       title: AppLocalizations.of(context).tr('home.title'),
-      body: _buildCardGrid(context),
+      body: content,
+      backgroundBody: _buildBackground(context, content),
+    );
+  }
+
+  Stack _buildBackground(BuildContext context, Widget content) {
+    return Stack(
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(
+            top: UScaffold.titleHeight + MediaQuery.of(context).padding.top,
+          ),
+          child: content,
+        ),
+        BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
+          child: Container(
+            height: MediaQuery.of(context).size.height * 100,
+            padding: EdgeInsets.only(
+                top: UScaffold.titleHeight + MediaQuery.of(context).padding.top,
+                bottom: UScaffold.titleHeight),
+            color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.5),
+          ),
+        ),
+      ],
     );
   }
 
@@ -32,8 +58,8 @@ class HomeTab extends StatelessWidget {
             title: "Карточка $i",
             description: "#тест #${10000 + Random().nextInt(89999)} #хех",
             color: ColorTool.getBrightColor(),
-            /*urlImage:
-                "https://loremflickr.com/300/300?random=${Random().nextInt(100)}",*/
+            urlImage:
+                "https://loremflickr.com/300/300?random=${Random().nextInt(100)}",
           ),
       ],
     );

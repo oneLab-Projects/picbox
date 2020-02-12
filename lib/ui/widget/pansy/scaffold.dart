@@ -3,27 +3,35 @@ import 'package:picbox/ui/widget/pansy.dart';
 
 /// Создает визуальную основу для виджетов.
 class UScaffold extends StatefulWidget {
-  UScaffold({this.title, this.body, this.showBackButton = true});
+  UScaffold({
+    this.title,
+    this.body,
+    this.backgroundBody,
+    this.showBackButton = true,
+  });
 
   final String title;
   @required
   final Widget body;
+  final Widget backgroundBody;
   final bool showBackButton;
+  static const double titleHeight = 60;
 
   @override
   _UScaffoldState createState() => _UScaffoldState();
 }
 
 class _UScaffoldState extends State<UScaffold> {
-  static const double _animationHeight = 60;
-
-  ScrollController _scrollController;
+  ScrollController _scrollController = ScrollController();
+  ScrollController _backgroundScrollController = ScrollController();
   double _scrollPosition = 1;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
+    if (widget.backgroundBody != null)
+      _scrollController.addListener(
+          () => _backgroundScrollController.jumpTo(_scrollController.offset));
   }
 
   @override
@@ -61,28 +69,34 @@ class _UScaffoldState extends State<UScaffold> {
   Widget _contentWithTitleBar(context) {
     return Stack(
       children: <Widget>[
+        if (widget.backgroundBody != null)
+          SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            controller: _backgroundScrollController,
+            child: widget.backgroundBody,
+          ),
         _titleBar(context),
         NotificationListener<ScrollNotification>(
           onNotification: (scrollState) {
             if (scrollState is ScrollUpdateNotification &&
-                (_animationHeight - scrollState.metrics.pixels) >= 0) {
+                (UScaffold.titleHeight - scrollState.metrics.pixels) >= 0) {
               setState(() {
                 _scrollPosition =
-                    (_animationHeight - scrollState.metrics.pixels) *
+                    (UScaffold.titleHeight - scrollState.metrics.pixels) *
                         100 /
-                        _animationHeight /
+                        UScaffold.titleHeight /
                         100;
               });
             } else if (scrollState is ScrollUpdateNotification &&
-                (_animationHeight - scrollState.metrics.pixels) < 0)
+                (UScaffold.titleHeight - scrollState.metrics.pixels) < 0)
               setState(() => _scrollPosition = 0);
 
             if (scrollState is ScrollEndNotification &&
-                (_animationHeight - scrollState.metrics.pixels) > 0 &&
+                (UScaffold.titleHeight - scrollState.metrics.pixels) > 0 &&
                 _scrollPosition < 1) {
               double step = 0;
               if (_scrollPosition > 0 && _scrollPosition < 0.6)
-                step = _animationHeight;
+                step = UScaffold.titleHeight;
 
               Future.delayed(Duration(milliseconds: 1), () {}).then((s) =>
                   _scrollController.animateTo(step,
@@ -97,7 +111,9 @@ class _UScaffoldState extends State<UScaffold> {
             controller: _scrollController,
             child: Column(
               children: <Widget>[
-                SizedBox(height: 60 + MediaQuery.of(context).padding.top),
+                SizedBox(
+                    height: UScaffold.titleHeight +
+                        MediaQuery.of(context).padding.top),
                 widget.body,
               ],
             ),
