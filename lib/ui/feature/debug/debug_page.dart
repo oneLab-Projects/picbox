@@ -1,7 +1,8 @@
-import 'package:picbox/component/routes.dart';
+import 'package:picbox/ui/feature/splash/phone_input_Sheet.dart';
 import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:flutter/widgets.dart';
 import 'package:picbox/ui/widget/pansy.dart';
+import 'package:picbox/ui/widget/pansy/sheets/scaffold.dart';
 
 /// Страница `Для разработчиков`.
 class DebugPage extends StatelessWidget {
@@ -12,9 +13,9 @@ class DebugPage extends StatelessWidget {
       body: Column(
         children: <Widget>[
           UListButton(
-            "Open SignIn page",
-            onPressed: () => Navigator.of(context, rootNavigator: true)
-                .pushReplacementNamed(Routes.LANDING_SIGNIN),
+            "Open splash",
+            onPressed: () =>
+                showScaffoldSheet(context, child: PhoneInputSheet()),
           ),
         ],
       ),
