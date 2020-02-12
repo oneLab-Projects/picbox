@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:picbox/ui/widget/pansy.dart';
-import 'package:picbox/ui/global/localizations/app_localizations.dart';
 
 /// Создаёт виджет выбора, предназначенный для отображения
 /// в списке.

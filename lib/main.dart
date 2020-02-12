@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:picbox/ui/widget/pansy.dart';
 
 import 'component/routes.dart';
-import 'ui/global/aggregate_data.dart';
 import 'ui/widget/design/clear_behavior.dart';
 
 /// Запускает приложение, инициализирует [App].

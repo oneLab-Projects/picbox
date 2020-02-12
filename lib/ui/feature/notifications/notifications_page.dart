@@ -1,4 +1,3 @@
-import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
@@ -10,7 +9,7 @@ class NotificationsTab extends StatelessWidget {
       showBackButton: false,
       title: AppLocalizations.of(context).tr('notifications.title'),
       body: Padding(
-        padding: const EdgeInsets.all(15).copyWith(bottom: 5),
+        padding: const EdgeInsets.all(18),
         child: _buildNotifications(context),
       ),
     );
@@ -27,7 +26,7 @@ class NotificationsTab extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(15)),
             ),
             height: 85,
-            margin: const EdgeInsets.only(bottom: 15),
+            margin: EdgeInsets.only(top: i == 0 ? 0 : 18),
           ),
       ],
     );

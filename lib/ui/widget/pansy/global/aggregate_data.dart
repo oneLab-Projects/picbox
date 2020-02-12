@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'localizations/ui/locale_bloc_builder.dart';
 import 'theme/ui/theme_bloc_builder.dart';
 

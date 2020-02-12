@@ -1,11 +1,12 @@
 import 'package:picbox/component/routes.dart';
-import 'package:picbox/ui/global/localizations/app_localizations.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:picbox/ui/widget/pansy.dart';
-import 'package:picbox/ui/global/theme/bloc/bloc.dart';
-import 'package:picbox/ui/global/theme/data/night_theme.dart';
+import 'package:picbox/ui/widget/pansy/global/theme/bloc/bloc.dart';
+import 'package:picbox/ui/widget/pansy/global/theme/data/night_theme.dart';
+import 'package:picbox/util/random_color.dart';
 
 /// Вкладка `Профиль`.
 class ProfileTab extends StatelessWidget {
@@ -57,13 +58,11 @@ class ProfileTab extends StatelessWidget {
                       ? 4
                       : 8);
               i++)
-            Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).cardColor,
-                borderRadius: const BorderRadius.all(Radius.circular(15)),
-              ),
+            ContentCard(
               height: 85,
               width: 85,
+              color: ColorTool.getBrightColor(),
+              variant: ContentCardVariant.nano,
             ),
         ],
       ),

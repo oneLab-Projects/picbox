@@ -1,5 +1,4 @@
 import 'package:picbox/component/routes.dart';
-import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';

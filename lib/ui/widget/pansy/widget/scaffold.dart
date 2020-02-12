@@ -1,35 +1,43 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
 /// Создает визуальную основу для виджетов.
 class UScaffold extends StatefulWidget {
-  UScaffold({this.title, this.body, this.showBackButton = true});
+  UScaffold({
+    this.title,
+    this.body,
+    this.blurBackground = false,
+    this.showBackButton = true,
+  });
 
   final String title;
   @required
   final Widget body;
+  final bool blurBackground;
   final bool showBackButton;
+  static const double titleHeight = 60;
 
   @override
   _UScaffoldState createState() => _UScaffoldState();
 }
 
 class _UScaffoldState extends State<UScaffold> {
-  static const double _animationHeight = 60;
-
-  ScrollController _scrollController;
+  ScrollController _scrollController = ScrollController();
+  CustomScrollController _backgroundScrollController = CustomScrollController();
   double _scrollPosition = 1;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
   }
 
   @override
   void dispose() {
     super.dispose();
     _scrollController.dispose();
+    _backgroundScrollController.dispose();
   }
 
   @override
@@ -61,28 +69,62 @@ class _UScaffoldState extends State<UScaffold> {
   Widget _contentWithTitleBar(context) {
     return Stack(
       children: <Widget>[
+        if (widget.blurBackground)
+          SingleChildScrollView(
+            controller: _backgroundScrollController,
+            child: Stack(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: UScaffold.titleHeight +
+                        MediaQuery.of(context).padding.top,
+                  ),
+                  child: widget.body,
+                ),
+                BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 100,
+                    padding: EdgeInsets.only(
+                        top: UScaffold.titleHeight +
+                            MediaQuery.of(context).padding.top,
+                        bottom: UScaffold.titleHeight),
+                    color: Theme.of(context)
+                        .scaffoldBackgroundColor
+                        .withOpacity(0.5),
+                  ),
+                ),
+              ],
+            ),
+          ),
         _titleBar(context),
         NotificationListener<ScrollNotification>(
           onNotification: (scrollState) {
+            if ((scrollState is ScrollUpdateNotification ||
+                    scrollState is ScrollEndNotification) &&
+                widget.blurBackground)
+              _backgroundScrollController
+                  .jumpToWithoutGoingIdleAndKeepingBallistic(
+                      scrollState.metrics.pixels);
             if (scrollState is ScrollUpdateNotification &&
-                (_animationHeight - scrollState.metrics.pixels) >= 0) {
+                (UScaffold.titleHeight - scrollState.metrics.pixels) >= 0) {
               setState(() {
                 _scrollPosition =
-                    (_animationHeight - scrollState.metrics.pixels) *
+                    (UScaffold.titleHeight - scrollState.metrics.pixels) *
                         100 /
-                        _animationHeight /
+                        UScaffold.titleHeight /
                         100;
               });
             } else if (scrollState is ScrollUpdateNotification &&
-                (_animationHeight - scrollState.metrics.pixels) < 0)
+                (UScaffold.titleHeight - scrollState.metrics.pixels) < 0)
               setState(() => _scrollPosition = 0);
 
             if (scrollState is ScrollEndNotification &&
-                (_animationHeight - scrollState.metrics.pixels) > 0 &&
+                (UScaffold.titleHeight - scrollState.metrics.pixels) > 0 &&
                 _scrollPosition < 1) {
               double step = 0;
               if (_scrollPosition > 0 && _scrollPosition < 0.6)
-                step = _animationHeight;
+                step = UScaffold.titleHeight;
 
               Future.delayed(Duration(milliseconds: 1), () {}).then((s) =>
                   _scrollController.animateTo(step,
@@ -97,7 +139,9 @@ class _UScaffoldState extends State<UScaffold> {
             controller: _scrollController,
             child: Column(
               children: <Widget>[
-                SizedBox(height: 60 + MediaQuery.of(context).padding.top),
+                SizedBox(
+                    height: UScaffold.titleHeight +
+                        MediaQuery.of(context).padding.top),
                 widget.body,
               ],
             ),
@@ -185,5 +229,57 @@ class _UScaffoldState extends State<UScaffold> {
         ],
       ),
     );
+  }
+}
+
+class CustomScrollController extends ScrollController {
+  CustomScrollController({
+    double initialScrollOffset = 0.0,
+    keepScrollOffset = true,
+    debugLabel,
+  }) : super(
+            initialScrollOffset: initialScrollOffset,
+            keepScrollOffset: keepScrollOffset,
+            debugLabel: debugLabel);
+
+  @override
+  _SilentScrollPosition createScrollPosition(
+    ScrollPhysics physics,
+    ScrollContext context,
+    ScrollPosition oldPosition,
+  ) {
+    return _SilentScrollPosition(
+      physics: physics,
+      context: context,
+      oldPosition: oldPosition,
+      initialPixels: initialScrollOffset,
+    );
+  }
+
+  void jumpToWithoutGoingIdleAndKeepingBallistic(double value) {
+    assert(positions.isNotEmpty, 'ScrollController not attached.');
+    for (_SilentScrollPosition position
+        in new List<ScrollPosition>.from(positions))
+      position.jumpToWithoutGoingIdleAndKeepingBallistic(value);
+  }
+}
+
+class _SilentScrollPosition extends ScrollPositionWithSingleContext {
+  _SilentScrollPosition({
+    ScrollPhysics physics,
+    ScrollContext context,
+    ScrollPosition oldPosition,
+    double initialPixels,
+  }) : super(
+          physics: physics,
+          context: context,
+          oldPosition: oldPosition,
+          initialPixels: initialPixels,
+        );
+
+  void jumpToWithoutGoingIdleAndKeepingBallistic(double value) {
+    if (pixels != value) {
+      forcePixels(value);
+    }
   }
 }

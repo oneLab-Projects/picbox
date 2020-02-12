@@ -1,8 +1,10 @@
-import 'package:picbox/ui/global/localizations/app_localizations.dart';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'package:picbox/ui/widget/pansy.dart';
+import 'package:picbox/util/random_color.dart';
 
 /// Вкладка `Поиск`.
 class SearchTab extends StatelessWidget {
@@ -48,15 +50,19 @@ class SearchTab extends StatelessWidget {
       child: ListView(
         physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 18),
         children: <Widget>[
-          for (var i = 0; i < 5; i++)
-            Container(
-              width: _cardSize,
-              margin: EdgeInsets.only(right: 10),
-              decoration: BoxDecoration(
-                color: Theme.of(context).cardColor,
-                borderRadius: BorderRadius.all(Radius.circular(15)),
+          for (int i = 0; i < 13; i++)
+            Padding(
+              padding: EdgeInsets.only(left: i == 0 ? 0 : 10),
+              child: ContentCard(
+                title: "Карточка $i",
+                width: _cardSize,
+                description: "#тест #${10000 + Random().nextInt(89999)} #хех",
+                color: ColorTool.getBrightColor(),
+                variant: ContentCardVariant.mini,
+                /*urlImage:
+                  "https://loremflickr.com/300/300?random=${Random().nextInt(100)}",*/
               ),
             ),
         ],
