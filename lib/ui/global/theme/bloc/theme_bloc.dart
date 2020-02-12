@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:bloc/bloc.dart';
-import 'package:picbox/ui/widget/design/style.dart';
 import 'package:picbox/ui/global/theme/data/day_theme.dart';
 import 'package:picbox/ui/global/theme/data/night_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,6 +19,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeData> {
   @override
   ThemeData get initialState => dayTheme;
 
+  /// Стилизирует StatusBar и SystemNavigationBar с помощью [SystemChrome]
   @override
   void onTransition(Transition<ThemeEvent, ThemeData> transition) {
     super.onTransition(transition);
@@ -28,7 +28,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeData> {
         statusBarIconBrightness: transition.nextState == nightTheme
             ? Brightness.light
             : Brightness.dark,
-        systemNavigationBarColor: Style.bottomNavigationBarColor,
+        systemNavigationBarColor: transition.nextState.scaffoldBackgroundColor,
         statusBarColor: Colors.transparent,
         statusBarBrightness: Brightness.dark,
         systemNavigationBarIconBrightness: Brightness.light,
@@ -43,6 +43,16 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeData> {
         yield state == nightTheme ? dayTheme : nightTheme;
         await _saveSettings(state == nightTheme);
         break;
+
+      case ThemeEvent.night:
+        yield nightTheme;
+        await _saveSettings(true);
+        break;
+
+      case ThemeEvent.day:
+        yield dayTheme;
+        await _saveSettings(false);
+        break;
     }
   }
 
@@ -50,7 +60,9 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeData> {
   void _loadSettings() async {
     if (prefs == null) prefs = await SharedPreferences.getInstance();
     bool nightTheme = prefs.getBool(NIGHT_THEME) ?? false;
-    if (nightTheme) add(ThemeEvent.toggle);
+    if (nightTheme)
+      add(ThemeEvent.night);
+    else if (!nightTheme) add(ThemeEvent.day);
   }
 
   /// Сохраняет настройки темы.

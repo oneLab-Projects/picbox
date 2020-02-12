@@ -22,7 +22,4 @@ class Style {
       fontSize: 13.4,
     ),
   );
-
-  /// Хранит цвет для [BottomNavigationBar]
-  static final bottomNavigationBarColor = Color(0xFF2E2E2E);
 }
