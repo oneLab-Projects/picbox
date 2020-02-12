@@ -114,8 +114,8 @@ class _UBottomNavigationBarState extends State<UBottomNavigationBar> {
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
                 child: Container(
-                  height: height,
-                  width: width,
+                  constraints:
+                      BoxConstraints.expand(height: height, width: width),
                   decoration: BoxDecoration(
                     border: _alignmentToBorder(
                       UBottomNavigationBar.getAlignment(orientation),
@@ -128,16 +128,20 @@ class _UBottomNavigationBarState extends State<UBottomNavigationBar> {
                 ),
               ),
             ),
-            Container(
-              constraints: BoxConstraints.expand(height: height, width: width),
-              margin: EdgeInsets.only(
-                top: marginTop,
-              ),
-              child: Center(
-                child: Flex(
-                  direction: direction,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: items,
+            Material(
+              type: MaterialType.transparency,
+              child: Container(
+                constraints:
+                    BoxConstraints.expand(height: height, width: width),
+                margin: EdgeInsets.only(
+                  top: marginTop,
+                ),
+                child: Center(
+                  child: Flex(
+                    direction: direction,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: items,
+                  ),
                 ),
               ),
             ),
