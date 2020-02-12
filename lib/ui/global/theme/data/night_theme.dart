@@ -12,4 +12,5 @@ final ThemeData nightTheme = ThemeData(
   cardColor: Color(0xFF272727),
   splashColor: Colors.black.withAlpha(25),
   highlightColor: Colors.black.withAlpha(25),
+  dividerColor: Colors.black.withAlpha(75),
 );
