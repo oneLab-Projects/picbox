@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:picbox/ui/global/localizations/app_localizations.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
 class PhoneInputSheet extends StatelessWidget {
