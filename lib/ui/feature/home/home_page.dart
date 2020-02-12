@@ -29,11 +29,12 @@ class HomeTab extends StatelessWidget {
           MediaQuery.of(context).orientation == Orientation.landscape ? 4 : 2,
       children: <Widget>[
         for (int i = 0; i < 13; i++)
-          Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).cardColor,
-              borderRadius: const BorderRadius.all(Radius.circular(15)),
-            ),
+          ContentCard(
+            "Карточка $i",
+            description: "#тест #${10000 + Random().nextInt(89999)} #хех",
+            color: ColorTool.getBrightColor(),
+            /*urlImage:
+                "https://loremflickr.com/300/300?random=${Random().nextInt(100)}",*/
           ),
       ],
     );
