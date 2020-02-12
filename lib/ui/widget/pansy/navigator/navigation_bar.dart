@@ -117,6 +117,9 @@ class _UBottomNavigationBarState extends State<UBottomNavigationBar> {
                   constraints:
                       BoxConstraints.expand(height: height, width: width),
                   decoration: BoxDecoration(
+                    color: Theme.of(context)
+                        .scaffoldBackgroundColor
+                        .withOpacity(0.5),
                     border: _alignmentToBorder(
                       UBottomNavigationBar.getAlignment(orientation),
                       BorderSide(
