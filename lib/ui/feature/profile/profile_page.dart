@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:picbox/ui/widget/pansy.dart';
-import 'package:picbox/ui/global/theme/bloc/bloc.dart';
-import 'package:picbox/ui/global/theme/data/night_theme.dart';
+import 'package:picbox/ui/widget/pansy/global/theme/bloc/bloc.dart';
+import 'package:picbox/ui/widget/pansy/global/theme/data/night_theme.dart';
 import 'package:picbox/util/random_color.dart';
 
 /// Вкладка `Профиль`.
