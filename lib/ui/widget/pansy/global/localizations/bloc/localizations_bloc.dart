@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:ui';
 import 'package:bloc/bloc.dart';
-import 'package:picbox/ui/global/localizations/localizations_delegates.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../localizations_delegates.dart';
 import './bloc.dart';
 
 /// Создаёт BLoC для реализации смены локализации в приложении.

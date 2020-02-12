@@ -5,7 +5,6 @@ import 'package:picbox/ui/feature/landing/signin_page.dart';
 import 'package:picbox/ui/feature/landing/signup_page.dart';
 import 'package:picbox/ui/feature/root.dart';
 import 'package:picbox/ui/feature/settings/settings_page.dart';
-import 'package:picbox/ui/global/localizations/ui/localizations_setting_page.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
 /// Класс для работы с маршрутами.

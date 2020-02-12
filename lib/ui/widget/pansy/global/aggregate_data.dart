@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:picbox/ui/widget/pansy.dart';
-
 import 'localizations/ui/locale_bloc_builder.dart';
+import 'theme/ui/theme_bloc_builder.dart';
 
 /// [AggregateData] является виджетом, цель которого – предоставить данные
 /// BLoC-билдеров, необходимые для MaterialApp.
