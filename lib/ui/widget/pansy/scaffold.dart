@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
@@ -6,14 +8,14 @@ class UScaffold extends StatefulWidget {
   UScaffold({
     this.title,
     this.body,
-    this.backgroundBody,
+    this.blurBackground = false,
     this.showBackButton = true,
   });
 
   final String title;
   @required
   final Widget body;
-  final Widget backgroundBody;
+  final bool blurBackground;
   final bool showBackButton;
   static const double titleHeight = 60;
 
@@ -23,21 +25,19 @@ class UScaffold extends StatefulWidget {
 
 class _UScaffoldState extends State<UScaffold> {
   ScrollController _scrollController = ScrollController();
-  ScrollController _backgroundScrollController = ScrollController();
+  CustomScrollController _backgroundScrollController = CustomScrollController();
   double _scrollPosition = 1;
 
   @override
   void initState() {
     super.initState();
-    if (widget.backgroundBody != null)
-      _scrollController.addListener(
-          () => _backgroundScrollController.jumpTo(_scrollController.offset));
   }
 
   @override
   void dispose() {
     super.dispose();
     _scrollController.dispose();
+    _backgroundScrollController.dispose();
   }
 
   @override
@@ -69,15 +69,43 @@ class _UScaffoldState extends State<UScaffold> {
   Widget _contentWithTitleBar(context) {
     return Stack(
       children: <Widget>[
-        if (widget.backgroundBody != null)
+        if (widget.blurBackground)
           SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
             controller: _backgroundScrollController,
-            child: widget.backgroundBody,
+            child: Stack(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: UScaffold.titleHeight +
+                        MediaQuery.of(context).padding.top,
+                  ),
+                  child: widget.body,
+                ),
+                BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 100,
+                    padding: EdgeInsets.only(
+                        top: UScaffold.titleHeight +
+                            MediaQuery.of(context).padding.top,
+                        bottom: UScaffold.titleHeight),
+                    color: Theme.of(context)
+                        .scaffoldBackgroundColor
+                        .withOpacity(0.5),
+                  ),
+                ),
+              ],
+            ),
           ),
         _titleBar(context),
         NotificationListener<ScrollNotification>(
           onNotification: (scrollState) {
+            if ((scrollState is ScrollUpdateNotification ||
+                    scrollState is ScrollEndNotification) &&
+                widget.blurBackground)
+              _backgroundScrollController
+                  .jumpToWithoutGoingIdleAndKeepingBallistic(
+                      scrollState.metrics.pixels);
             if (scrollState is ScrollUpdateNotification &&
                 (UScaffold.titleHeight - scrollState.metrics.pixels) >= 0) {
               setState(() {
@@ -201,5 +229,57 @@ class _UScaffoldState extends State<UScaffold> {
         ],
       ),
     );
+  }
+}
+
+class CustomScrollController extends ScrollController {
+  CustomScrollController({
+    double initialScrollOffset = 0.0,
+    keepScrollOffset = true,
+    debugLabel,
+  }) : super(
+            initialScrollOffset: initialScrollOffset,
+            keepScrollOffset: keepScrollOffset,
+            debugLabel: debugLabel);
+
+  @override
+  _SilentScrollPosition createScrollPosition(
+    ScrollPhysics physics,
+    ScrollContext context,
+    ScrollPosition oldPosition,
+  ) {
+    return _SilentScrollPosition(
+      physics: physics,
+      context: context,
+      oldPosition: oldPosition,
+      initialPixels: initialScrollOffset,
+    );
+  }
+
+  void jumpToWithoutGoingIdleAndKeepingBallistic(double value) {
+    assert(positions.isNotEmpty, 'ScrollController not attached.');
+    for (_SilentScrollPosition position
+        in new List<ScrollPosition>.from(positions))
+      position.jumpToWithoutGoingIdleAndKeepingBallistic(value);
+  }
+}
+
+class _SilentScrollPosition extends ScrollPositionWithSingleContext {
+  _SilentScrollPosition({
+    ScrollPhysics physics,
+    ScrollContext context,
+    ScrollPosition oldPosition,
+    double initialPixels,
+  }) : super(
+          physics: physics,
+          context: context,
+          oldPosition: oldPosition,
+          initialPixels: initialPixels,
+        );
+
+  void jumpToWithoutGoingIdleAndKeepingBallistic(double value) {
+    if (pixels != value) {
+      forcePixels(value);
+    }
   }
 }
