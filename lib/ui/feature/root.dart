@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:picbox/ui/widget/pansy.dart';
-import 'package:picbox/ui/widget/design/style.dart';
 
 import 'home/home_page.dart';
 import 'notifications/notifications_page.dart';
@@ -43,7 +42,6 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) => UNestedNavigator(
         tabs: _tabs,
-        backgroundColor: Style.bottomNavigationBarColor,
         color: Colors.white54,
         selectedColor: Colors.white,
       );
