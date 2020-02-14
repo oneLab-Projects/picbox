@@ -1,6 +1,6 @@
 ![Picbox](https://user-images.githubusercontent.com/25152332/71856627-9b5e7100-30f5-11ea-8050-4a883f518222.png)
 #
-![android](https://github.com/oneLab-Projects/picbox/workflows/android/badge.svg)
+[![android](https://github.com/oneLab-Projects/picbox/workflows/android/badge.svg)](https://github.com/oneLab-Projects/picbox/actions)
 [![CodeFactor](https://www.codefactor.io/repository/github/onelab-projects/picbox/badge)](https://www.codefactor.io/repository/github/onelab-projects/picbox)
 
 ### Разворачивание среды
