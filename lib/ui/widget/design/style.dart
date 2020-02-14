@@ -9,9 +9,9 @@ class Style {
       fontFamily: 'Ubuntu',
       fontSize: 19,
     ),
-    subhead: TextStyle(
+    subtitle: TextStyle(
       fontFamily: 'Ubuntu',
-      fontSize: 15,
+      fontSize: 13.4,
     ),
     button: TextStyle(
       fontFamily: 'Ubuntu',
