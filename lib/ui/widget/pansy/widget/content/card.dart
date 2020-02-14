@@ -11,7 +11,6 @@ class ContentCard extends StatelessWidget {
     this.title,
     this.description,
     this.urlImage,
-    this.color,
     this.textColor,
     this.height,
     this.width,
@@ -21,7 +20,6 @@ class ContentCard extends StatelessWidget {
   @required
   final String title;
   final String description;
-  final Color color;
   final Color textColor;
   final String urlImage;
   final double height;
@@ -104,7 +102,8 @@ class ContentCard extends StatelessWidget {
   Widget _buildBackgroundImage(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Material(
+        Transform.scale(
+          scale: 1.001,
           child: FadeInImage.memoryNetwork(
             fadeInDuration: Duration(milliseconds: 150),
             placeholder: kTransparentImage,
@@ -113,7 +112,7 @@ class ContentCard extends StatelessWidget {
           ),
         ),
         Container(
-          color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.4),
+          color: Colors.grey.withOpacity(0.4),
         )
       ],
     );
@@ -127,11 +126,10 @@ class ContentCard extends StatelessWidget {
       child: Opacity(
         opacity: variant != ContentCardVariant.nano ? 1 : 0.4,
         child: Material(
-          type: MaterialType.transparency,
-          color: color ?? Theme.of(context).cardColor,
+          color: Theme.of(context).cardColor,
           borderRadius: const BorderRadius.all(Radius.circular(15)),
           clipBehavior: Clip.antiAlias,
-          child: Transform.scale(scale: 1.001, child: child),
+          child: child,
         ),
       ),
     );

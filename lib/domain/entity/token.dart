@@ -5,5 +5,5 @@ class Token {
   Token({
     this.accessToken,
     this.refreshToken,
-  });
+  }) : assert(accessToken != null || refreshToken != null);
 }

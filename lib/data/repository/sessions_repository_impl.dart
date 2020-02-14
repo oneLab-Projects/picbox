@@ -18,7 +18,7 @@ class SessionsRepositoryImpl implements SessionsRepository {
   SessionsRepositoryImpl({
     this.sessionsApiService,
     this.mapper = const Mapper(),
-  });
+  }) : assert(sessionsApiService != null);
 
   @override
   Future<void> persistToken(Token token) async {

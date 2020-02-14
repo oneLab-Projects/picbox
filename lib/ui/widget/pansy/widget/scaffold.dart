@@ -7,13 +7,12 @@ import 'package:picbox/ui/widget/pansy.dart';
 class UScaffold extends StatefulWidget {
   UScaffold({
     this.title,
-    this.body,
+    @required this.body,
     this.blurBackground = false,
     this.showBackButton = true,
-  });
+  }) : assert(body != null);
 
   final String title;
-  @required
   final Widget body;
   final bool blurBackground;
   final bool showBackButton;
@@ -69,34 +68,7 @@ class _UScaffoldState extends State<UScaffold> {
   Widget _contentWithTitleBar(context) {
     return Stack(
       children: <Widget>[
-        if (widget.blurBackground)
-          SingleChildScrollView(
-            controller: _backgroundScrollController,
-            child: Stack(
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: UScaffold.titleHeight +
-                        MediaQuery.of(context).padding.top,
-                  ),
-                  child: widget.body,
-                ),
-                BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 100,
-                    padding: EdgeInsets.only(
-                        top: UScaffold.titleHeight +
-                            MediaQuery.of(context).padding.top,
-                        bottom: UScaffold.titleHeight),
-                    color: Theme.of(context)
-                        .scaffoldBackgroundColor
-                        .withOpacity(0.5),
-                  ),
-                ),
-              ],
-            ),
-          ),
+        if (widget.blurBackground) _buildBlurBackground(context),
         _titleBar(context),
         NotificationListener<ScrollNotification>(
           onNotification: (scrollState) {
@@ -145,6 +117,38 @@ class _UScaffoldState extends State<UScaffold> {
                 widget.body,
               ],
             ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// Создаёт размытое отражение `body`.
+  Widget _buildBlurBackground(context) {
+    return Stack(
+      children: <Widget>[
+        SingleChildScrollView(
+          controller: _backgroundScrollController,
+          child: Stack(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                  top: UScaffold.titleHeight +
+                      MediaQuery.of(context).padding.top,
+                ),
+                child: widget.body,
+              ),
+            ],
+          ),
+        ),
+        BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
+          child: Container(
+            height: double.maxFinite,
+            padding: EdgeInsets.only(
+                top: UScaffold.titleHeight + MediaQuery.of(context).padding.top,
+                bottom: UScaffold.titleHeight),
+            color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.5),
           ),
         ),
       ],

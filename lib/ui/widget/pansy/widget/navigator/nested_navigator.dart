@@ -20,7 +20,8 @@ class UNestedTabModel {
     this.selectedIconData,
     this.badge = false,
     GlobalKey<NavigatorState> navigatorKey,
-  }) : _navigatorKey = navigatorKey ?? GlobalKey<NavigatorState>();
+  })  : _navigatorKey = navigatorKey ?? GlobalKey<NavigatorState>(),
+        assert(initPageBuilder != null || iconData != null);
 }
 
 /// Создаёт реализацию мультиоконности.
@@ -42,7 +43,7 @@ class UNestedNavigator extends StatefulWidget {
     this.color,
     this.selectedColor,
     this.shouldHandlePop = _defaultShouldHandlePop,
-  });
+  }) : assert(tabs != null);
 
   static bool _defaultShouldHandlePop() => true;
 

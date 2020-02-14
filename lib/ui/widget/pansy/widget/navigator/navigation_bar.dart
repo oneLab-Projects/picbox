@@ -6,9 +6,11 @@ import 'package:native_device_orientation/native_device_orientation.dart';
 /// Создаёт элемент нижней панели навигации. Так же принимает
 /// `badge` для отображения статуса непрочитанной информации.
 class UBottomNavigationBarItem {
-  UBottomNavigationBarItem(
-      {this.iconData, this.selectedIconData, this.badge = false});
-  @required
+  UBottomNavigationBarItem({
+    @required this.iconData,
+    this.selectedIconData,
+    this.badge = false,
+  }) : assert(iconData != null);
   IconData iconData;
   IconData selectedIconData;
   bool badge;
@@ -18,10 +20,10 @@ class UBottomNavigationBarItem {
 /// правильной координации при изменении ориентации устройства.
 class UBottomNavigationBar extends StatefulWidget {
   UBottomNavigationBar({
-    this.items,
+    @required this.items,
     this.iconSize: 24,
     this.onTabSelected,
-  });
+  }) : assert(items != null);
 
   @required
   final List<UBottomNavigationBarItem> items;

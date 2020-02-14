@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Анимированный вариант IndexedStack.
 class AnimatedIndexedStack extends StatefulWidget {
   final int index;
   final List<Widget> children;

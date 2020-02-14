@@ -16,7 +16,7 @@ class AccountsRepositoryImpl implements AccountsRepository {
   AccountsRepositoryImpl({
     this.accountsApiService,
     this.mapper = const Mapper(),
-  });
+  }) : assert(accountsApiService != null);
 
   @override
   Future<DataResource<bool>> checkAccount({
