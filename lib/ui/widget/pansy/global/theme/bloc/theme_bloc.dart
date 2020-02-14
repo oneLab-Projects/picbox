@@ -21,14 +21,14 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeData> {
 
   /// Стилизирует StatusBar и SystemNavigationBar с помощью [SystemChrome]
   @override
-  void onTransition(Transition<ThemeEvent, ThemeData> transition) {
-    super.onTransition(transition);
+  void onEvent(ThemeEvent event) {
+    super.onEvent(event);
+    ThemeData theme = eventToTheme(event);
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        statusBarIconBrightness: transition.nextState == nightTheme
-            ? Brightness.light
-            : Brightness.dark,
-        systemNavigationBarColor: transition.nextState.scaffoldBackgroundColor,
+        statusBarIconBrightness:
+            isNightTheme(theme) ? Brightness.light : Brightness.dark,
+        systemNavigationBarColor: theme.scaffoldBackgroundColor,
         statusBarColor: Colors.transparent,
         statusBarBrightness: Brightness.dark,
         systemNavigationBarIconBrightness: Brightness.light,
@@ -38,23 +38,28 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeData> {
 
   @override
   Stream<ThemeData> mapEventToState(ThemeEvent event) async* {
+    yield eventToTheme(event);
+    await _saveSettings(isNightTheme(state));
+  }
+
+  /// Возвращает [ThemeData], основываясь на [ThemeEvent]
+  ThemeData eventToTheme(ThemeEvent event) {
     switch (event) {
       case ThemeEvent.toggle:
-        yield state == nightTheme ? dayTheme : nightTheme;
-        await _saveSettings(state == nightTheme);
-        break;
+        return isNightTheme(state) ? dayTheme : nightTheme;
 
       case ThemeEvent.night:
-        yield nightTheme;
-        await _saveSettings(true);
-        break;
+        return nightTheme;
 
       case ThemeEvent.day:
-        yield dayTheme;
-        await _saveSettings(false);
-        break;
+        return dayTheme;
+
+      default:
+        return null;
     }
   }
+
+  bool isNightTheme(ThemeData theme) => theme == nightTheme;
 
   /// Загружает настройки темы.
   void _loadSettings() async {
