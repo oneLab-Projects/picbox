@@ -129,16 +129,11 @@ class _UScaffoldState extends State<UScaffold> {
       children: <Widget>[
         SingleChildScrollView(
           controller: _backgroundScrollController,
-          child: Stack(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(
-                  top: UScaffold.titleHeight +
-                      MediaQuery.of(context).padding.top,
-                ),
-                child: widget.body,
-              ),
-            ],
+          child: Padding(
+            padding: EdgeInsets.only(
+              top: UScaffold.titleHeight + MediaQuery.of(context).padding.top,
+            ),
+            child: widget.body,
           ),
         ),
         BackdropFilter(
@@ -148,7 +143,7 @@ class _UScaffoldState extends State<UScaffold> {
             padding: EdgeInsets.only(
                 top: UScaffold.titleHeight + MediaQuery.of(context).padding.top,
                 bottom: UScaffold.titleHeight),
-            color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.5),
+            color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.7),
           ),
         ),
       ],
