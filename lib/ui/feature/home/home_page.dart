@@ -12,7 +12,7 @@ class HomeTab extends StatelessWidget {
       showBackButton: false,
       title: AppLocalizations.of(context).tr('home.title'),
       body: content,
-      blurBackground: true,
+      blurBackground: false,
     );
   }
 
