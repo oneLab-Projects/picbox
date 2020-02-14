@@ -1,8 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:picbox/ui/feature/debug/debug_page.dart';
-import 'package:picbox/ui/feature/landing/confirm_page.dart';
-import 'package:picbox/ui/feature/landing/signin_page.dart';
-import 'package:picbox/ui/feature/landing/signup_page.dart';
 import 'package:picbox/ui/feature/root.dart';
 import 'package:picbox/ui/feature/settings/settings_page.dart';
 import 'package:picbox/ui/widget/pansy.dart';
@@ -36,9 +33,6 @@ class Routes {
     DEBUG: DebugPage(),
     SETTINGS: SettingsPage(),
     SETTINGS_LOCALIZATIONS: LocalizationsSettingPage(),
-    LANDING_SIGNIN: SignInPage(),
-    LANDING_SIGNUP: SignUpPage(),
-    LANDING_CONFIRM: ConfirmPage(),
   };
 
   /// Callback-генератор маршрутов. Используется, когда приложение перемещается по названному маршруту.

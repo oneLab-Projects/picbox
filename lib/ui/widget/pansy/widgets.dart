@@ -18,6 +18,8 @@ export 'widget/navigator/nested_navigator.dart';
 
 export 'widget/routes/default.dart';
 
+export 'widget/sheets/scaffold.dart';
+
 export 'widget/visual/switch.dart';
 
 export 'widget/scaffold.dart';
