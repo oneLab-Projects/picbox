@@ -11,5 +11,5 @@ class Account {
     this.firstName,
     this.lastName,
     this.phoneNumber,
-  });
+  }) : assert(id != null || username != null || firstName != null);
 }

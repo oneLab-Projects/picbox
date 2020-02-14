@@ -9,15 +9,13 @@ class UListSwitch extends StatefulWidget {
     this.description,
     this.iconData,
     this.onChanged,
-    this.value,
+    @required this.value,
   });
 
-  @required
   final String caption;
   final String description;
   final IconData iconData;
   final Function(bool) onChanged;
-  @required
   final bool value;
 
   @override

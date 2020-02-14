@@ -12,7 +12,6 @@ class UListWidget extends StatelessWidget {
     this.control,
   });
 
-  @required
   final String caption;
   final String description;
   final IconData iconData;
@@ -22,8 +21,7 @@ class UListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      type: MaterialType.transparency,
+    return Ink(
       child: ConstrainedBox(
         constraints: BoxConstraints(minHeight: 70),
         child: InkWell(

@@ -8,7 +8,7 @@ class AggregateData extends StatelessWidget {
   final Widget Function(BuildContext context, AggregateDataModel initData)
       builder;
 
-  AggregateData({@required this.builder});
+  AggregateData({@required this.builder}) : assert(builder != null);
 
   @override
   Widget build(BuildContext context) {

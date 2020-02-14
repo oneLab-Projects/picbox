@@ -7,7 +7,7 @@ import 'package:picbox/ui/widget/pansy/global/theme/bloc/bloc.dart';
 class ThemeBlocBuilder extends StatelessWidget {
   final Widget Function(BuildContext context, ThemeData themeData) builder;
 
-  ThemeBlocBuilder({@required this.builder});
+  ThemeBlocBuilder({@required this.builder}) : assert(builder != null);
 
   @override
   Widget build(BuildContext context) {

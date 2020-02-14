@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 
 /// Создаёт приподнятую кнопку.
 class URaisedButton extends StatelessWidget {
-  URaisedButton(this.text,
-      {this.iconData, this.onPressed, this.onLongPress, this.loading = false});
+  URaisedButton(
+    this.text, {
+    this.iconData,
+    this.onPressed,
+    this.onLongPress,
+    this.loading = false,
+  });
 
   final IconData iconData;
   final bool loading;

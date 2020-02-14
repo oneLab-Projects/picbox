@@ -33,8 +33,7 @@ class UListContent extends StatelessWidget {
           _buildContent(context),
           if (onPressed != null)
             Positioned.fill(
-              child: Material(
-                type: MaterialType.transparency,
+              child: Ink(
                 child: InkWell(
                   onTap: onPressed,
                   onLongPress: onLongPress,

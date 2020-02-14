@@ -13,7 +13,7 @@ class LocaleBlocBuilder extends StatelessWidget {
       List<Locale> supportedLocales,
       List<LocalizationsDelegate> localizationsDelegates) builder;
 
-  LocaleBlocBuilder({@required this.builder});
+  LocaleBlocBuilder({@required this.builder}) : assert(builder != null);
 
   @override
   Widget build(BuildContext context) {
