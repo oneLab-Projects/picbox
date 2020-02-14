@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:picbox/ui/widget/pansy.dart';
-import 'package:picbox/util/random_color.dart';
 
 /// Вкладка `Для Вас`.
 class HomeTab extends StatelessWidget {
@@ -32,7 +31,6 @@ class HomeTab extends StatelessWidget {
           ContentCard(
             title: "Карточка $i",
             description: "#тест #${10000 + Random().nextInt(89999)} #хех",
-            color: ColorTool.getBrightColor(),
             urlImage:
                 "https://loremflickr.com/300/300?random=${Random().nextInt(100)}",
           ),

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'package:picbox/ui/widget/pansy.dart';
-import 'package:picbox/util/random_color.dart';
 
 /// Вкладка `Поиск`.
 class SearchTab extends StatelessWidget {
@@ -59,7 +58,6 @@ class SearchTab extends StatelessWidget {
                 title: "Карточка $i",
                 width: _cardSize,
                 description: "#тест #${10000 + Random().nextInt(89999)} #хех",
-                color: ColorTool.getBrightColor(),
                 variant: ContentCardVariant.mini,
                 /*urlImage:
                   "https://loremflickr.com/300/300?random=${Random().nextInt(100)}",*/

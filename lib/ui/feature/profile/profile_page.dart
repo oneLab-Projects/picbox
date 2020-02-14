@@ -6,7 +6,6 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:picbox/ui/widget/pansy.dart';
 import 'package:picbox/ui/widget/pansy/global/theme/bloc/bloc.dart';
 import 'package:picbox/ui/widget/pansy/global/theme/data/night_theme.dart';
-import 'package:picbox/util/random_color.dart';
 
 /// Вкладка `Профиль`.
 class ProfileTab extends StatelessWidget {
@@ -61,7 +60,6 @@ class ProfileTab extends StatelessWidget {
             ContentCard(
               height: 85,
               width: 85,
-              color: ColorTool.getBrightColor(),
               variant: ContentCardVariant.nano,
             ),
         ],
