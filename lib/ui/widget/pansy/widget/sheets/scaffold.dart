@@ -26,7 +26,7 @@ class ScaffoldSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
         color: Theme.of(context).scaffoldBackgroundColor,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20).copyWith(
@@ -37,7 +37,8 @@ class ScaffoldSheet extends StatelessWidget {
             children: <Widget>[
               if (title != null) _buildTitle(context),
               if (description != null) _buildDescription(context),
-              if (title != null) const SizedBox(height: 10),
+              if (title != null || description != null)
+                const SizedBox(height: 23),
               child,
             ],
           ),
@@ -46,18 +47,24 @@ class ScaffoldSheet extends StatelessWidget {
 
   Widget _buildTitle(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: Text(title, style: Theme.of(context).textTheme.title),
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Text(
+        title,
+        style: Theme.of(context).textTheme.title,
+      ),
     );
   }
 
   Widget _buildDescription(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Text(
         description,
         textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.subtitle,
+        style: Theme.of(context)
+            .textTheme
+            .subtitle
+            .copyWith(color: Theme.of(context).hintColor),
       ),
     );
   }
