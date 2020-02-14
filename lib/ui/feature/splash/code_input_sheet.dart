@@ -2,23 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
-class PhoneInputSheet extends StatelessWidget {
+class CodeInputSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+    return ScaffoldSheet(
+      title: "Введите код подтверждения",
+      description:
+          "На указанный номер позвонит наш робот, введите последние четыре цифры звонящего номера.",
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          const SizedBox(height: 20),
-          Text("Введите номер телефона",
-              style: Theme.of(context).textTheme.title),
-          const SizedBox(height: 40),
           _buildPhoneNumberTextField(context),
-          const SizedBox(height: 10),
-          URaisedButton(
-            AppLocalizations.of(context).tr('default.continue'),
-          ),
         ],
       ),
     );

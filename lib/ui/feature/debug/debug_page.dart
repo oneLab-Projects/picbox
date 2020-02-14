@@ -1,5 +1,5 @@
-import 'package:picbox/ui/feature/splash/phone_input_Sheet.dart';
 import 'package:flutter/widgets.dart';
+import 'package:picbox/ui/feature/splash/code_input_sheet.dart';
 import 'package:picbox/ui/widget/pansy.dart';
 
 /// Страница `Для разработчиков`.
@@ -13,7 +13,7 @@ class DebugPage extends StatelessWidget {
           UListButton(
             "Open splash",
             onPressed: () =>
-                showScaffoldSheet(context, child: PhoneInputSheet()),
+                showScaffoldSheet(context, child: CodeInputSheet()),
           ),
         ],
       ),

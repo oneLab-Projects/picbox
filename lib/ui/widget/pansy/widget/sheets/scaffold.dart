@@ -12,27 +12,53 @@ import 'package:flutter/material.dart';
 /// ```
 Future<void> showScaffoldSheet(BuildContext context, {Widget child}) {
   return showCupertinoModalPopup<void>(
-          context: context,
-          builder: (BuildContext context) => ScaffoldSheet(child: child))
-      .then((v) {});
+      context: context, builder: (BuildContext context) => child).then((v) {});
 }
 
 /// Диалог выбора. Вызывается методом `showSelectionDialog`
 class ScaffoldSheet extends StatelessWidget {
+  ScaffoldSheet({this.child, this.title, this.description});
   final Widget child;
-  ScaffoldSheet({this.child});
+  final String title;
+  final String description;
 
   @override
   Widget build(BuildContext context) {
+    return Material(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20).copyWith(
+            bottom: MediaQuery.of(context).viewInsets.bottom + 10,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              if (title != null) _buildTitle(context),
+              if (description != null) _buildDescription(context),
+              if (title != null) const SizedBox(height: 10),
+              child,
+            ],
+          ),
+        ));
+  }
+
+  Widget _buildTitle(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(
-        bottom: MediaQuery.of(context).viewInsets.bottom,
+      padding: const EdgeInsets.only(top: 10),
+      child: Text(title, style: Theme.of(context).textTheme.title),
+    );
+  }
+
+  Widget _buildDescription(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Text(
+        description,
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.subtitle,
       ),
-      child: Material(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          child: child),
     );
   }
 }
