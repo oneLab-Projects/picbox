@@ -420,7 +420,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: d2a46cb930b2d8a3120137fef84a0841a7f050b5
+      resolved-ref: "15b57b2facdc6bfef9983884533efd73f2c168a6"
       url: "git://github.com/oneLab-Projects/pansy_ui.git"
     source: git
     version: "1.0.0"
