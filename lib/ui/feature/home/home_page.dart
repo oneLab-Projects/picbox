@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:picbox/ui/widget/pansy.dart';
+import 'package:pansy_ui/pansy_ui.dart';
 
 /// Вкладка `Для Вас`.
 class HomeTab extends StatelessWidget {

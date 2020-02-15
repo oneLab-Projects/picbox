@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:picbox/ui/feature/splash/code_input_sheet.dart';
-import 'package:picbox/ui/widget/pansy.dart';
+import 'package:pansy_ui/pansy_ui.dart';
 
 /// Страница `Для разработчиков`.
 class DebugPage extends StatefulWidget {

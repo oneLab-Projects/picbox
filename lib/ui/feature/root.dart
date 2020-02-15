@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:picbox/ui/widget/pansy.dart';
+import 'package:pansy_ui/pansy_ui.dart';
 
 import 'home/home_page.dart';
 import 'notifications/notifications_page.dart';

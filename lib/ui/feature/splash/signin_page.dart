@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:picbox/component/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:picbox/ui/widget/pansy.dart';
+import 'package:pansy_ui/pansy_ui.dart';
 
 /// Страница `Авторизация`.
 class SignInPage extends StatefulWidget {

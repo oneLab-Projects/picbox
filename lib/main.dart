@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:picbox/ui/widget/pansy.dart';
+import 'package:pansy_ui/pansy_ui.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'component/routes.dart';
-import 'ui/widget/design/clear_behavior.dart';
 
 /// Запускает приложение, инициализирует [App].
 void main() => runApp(App());

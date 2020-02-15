@@ -14,6 +14,8 @@ dependencies:
   ubuntu_font_flutter: ^0.0.1
   flare_flutter: ^1.8.3
   transparent_image: ^1.0.0
+  pansy_ui:
+    git: git://github.com/oneLab-Projects/pansy_ui.git
 
   # localizations
   flutter_localizations:
