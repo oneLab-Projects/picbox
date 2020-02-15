@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< Updated upstream
-import 'package:picbox/ui/widget/pansy.dart';
-=======
 import 'package:pansy_ui/pansy_ui.dart';
->>>>>>> Stashed changes
 
 /// Вкладка `Уведомления`.
 class NotificationsTab extends StatelessWidget {
