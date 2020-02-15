@@ -1,56 +1,56 @@
 {
-    "default": {
-        "okay": "ОК",
-        "yes": "Да",
-        "no": "Нет",
-        "continue": "Продолжить",
-        "cancel": "Отменить",
-        "done": "Готово",
-        "confirm": "Подтвердить",
-        "not_selected": "Не выбрано"
-    },
-    "settings": {
-        "title": "Настройки",
-        "recommended": "Рекомендуемый",
-        "localizations": {
-            "title": "Язык интерфейса",
-            "all_languages": "Все языки",
-            "recommended": "Рекомендуемые"
-        }
-    },
-    "home": {
-        "title": "Для Вас"
-    },
-    "search": {
-        "title": "Искать",
-        "popular_topics": "Популярные темы"
-    },
-    "notifications": {
-        "title": "Уведомления"
-    },
-    "profile": {
-        "title": "Профиль",
-        "storage": "Хранилище",
-        "night_theme": "Ночная тема"
-    },
-    "debug": {
-        "title": "Для разработчиков"
-    },
-    "signin": {
-        "title": "Авторизация",
-        "description": "Авторизуйтесь в oneLab",
-        "phone_number": "Номер телефона"
-    },
-    "signup": {
-        "title": "Регистрация",
-        "profile_photo": "Фото профиля",
-        "first_name": "Имя",
-        "last_name": "Фамилия (необязательно)",
-        "first_name_example": "Напр. Владимир",
-        "last_name_example": "Напр. Путин"
-    },
-    "confirm": {
-        "title": "Подтверждение",
-        "sms": "Введите код из SMS-сообщения"
+  "default": {
+    "okay": "ОК",
+    "yes": "Да",
+    "no": "Нет",
+    "continue": "Продолжить",
+    "cancel": "Отменить",
+    "done": "Готово",
+    "confirm": "Подтвердить",
+    "not_selected": "Не выбрано"
+  },
+  "settings": {
+    "title": "Настройки",
+    "recommended": "Рекомендуемый",
+    "localizations": {
+      "title": "Язык интерфейса",
+      "all_languages": "Все языки",
+      "recommended": "Рекомендуемые"
     }
+  },
+  "home": {
+    "title": "Для Вас"
+  },
+  "search": {
+    "title": "Искать",
+    "popular_topics": "Популярные темы"
+  },
+  "notifications": {
+    "title": "Уведомления"
+  },
+  "profile": {
+    "title": "Профиль",
+    "storage": "Хранилище",
+    "night_theme": "Ночная тема"
+  },
+  "debug": {
+    "title": "Отладка"
+  },
+  "signin": {
+    "title": "Авторизация",
+    "description": "Авторизуйтесь в oneLab",
+    "phone_number": "Номер телефона"
+  },
+  "signup": {
+    "title": "Регистрация",
+    "profile_photo": "Фото профиля",
+    "first_name": "Имя",
+    "last_name": "Фамилия (необязательно)",
+    "first_name_example": "Напр. Владимир",
+    "last_name_example": "Напр. Путин"
+  },
+  "confirm": {
+    "title": "Введите последние 4 цифры номера",
+    "description": "Для подтверждения действия мы совершим звонок с уникального номера."
+  }
 }

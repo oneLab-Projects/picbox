@@ -16,9 +16,8 @@ class _CodeInputSheetState extends State<CodeInputSheet> {
   @override
   Widget build(BuildContext context) {
     return ScaffoldSheet(
-      title: "Введите последние 4 цифры номера",
-      description:
-          "Для подтверждения действия мы совершим звонок с уникального номера.",
+      title: AppLocalizations.of(context).tr('confirm.title'),
+      description: AppLocalizations.of(context).tr('confirm.description'),
       child: Padding(
         padding:
             const EdgeInsets.symmetric(horizontal: 50).copyWith(bottom: 15),

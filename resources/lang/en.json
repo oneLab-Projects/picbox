@@ -1,56 +1,56 @@
 {
-    "default": {
-        "okay": "OK",
-        "yes": "Yes",
-        "no": "No",
-        "continue": "Continue",
-        "cancel": "Cancel",
-        "done": "Done",
-        "confirm": "Confirm",
-        "not_selected": "Not selected"
-    },
-    "settings": {
-        "title": "Settings",
-        "recommended": "Recommended",
-        "localizations": {
-            "title": "Language",
-            "all_languages": "All languages",
-            "recommended": "Recommended"
-        }
-    },
-    "home": {
-        "title": "For You"
-    },
-    "search": {
-        "title": "Search",
-        "popular_topics": "Popular topics"
-    },
-    "notifications": {
-        "title": "Notifications"
-    },
-    "profile": {
-        "title": "Profile",
-        "storage": "Storage",
-        "night_theme": "Night theme"
-    },
-    "debug": {
-        "title": "For developers"
-    },
-    "signin": {
-        "title": "Sign In",
-        "description": "Authorize to oneLab",
-        "phone_number": "Phone number"
-    },
-    "signup": {
-        "title": "Sign Up",
-        "profile_photo": "Profile photo",
-        "first_name": "First name",
-        "last_name": "Last name (optionally)",
-        "first_name_example": "Exp. Vladimir",
-        "last_name_example": "Exp. Putin"
-    },
-    "confirm": {
-        "title": "Confirm",
-        "sms": "Enter code from SMS"
+  "default": {
+    "okay": "OK",
+    "yes": "Yes",
+    "no": "No",
+    "continue": "Continue",
+    "cancel": "Cancel",
+    "done": "Done",
+    "confirm": "Confirm",
+    "not_selected": "Not selected"
+  },
+  "settings": {
+    "title": "Settings",
+    "recommended": "Recommended",
+    "localizations": {
+      "title": "Language",
+      "all_languages": "All languages",
+      "recommended": "Recommended"
     }
+  },
+  "home": {
+    "title": "For You"
+  },
+  "search": {
+    "title": "Search",
+    "popular_topics": "Popular topics"
+  },
+  "notifications": {
+    "title": "Notifications"
+  },
+  "profile": {
+    "title": "Profile",
+    "storage": "Storage",
+    "night_theme": "Night theme"
+  },
+  "debug": {
+    "title": "For developers"
+  },
+  "signin": {
+    "title": "Sign In",
+    "description": "Authorize to oneLab",
+    "phone_number": "Phone number"
+  },
+  "signup": {
+    "title": "Sign Up",
+    "profile_photo": "Profile photo",
+    "first_name": "First name",
+    "last_name": "Last name (optionally)",
+    "first_name_example": "Exp. Vladimir",
+    "last_name_example": "Exp. Putin"
+  },
+  "confirm": {
+    "title": "Enter the last 4 digits of the number",
+    "description": "To confirm the action, we will make a call from a unique number."
+  }
 }
