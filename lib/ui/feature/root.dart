@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:pansy_ui/pansy_ui.dart';
+import 'package:picbox/component/routes.dart';
 
 import 'home/home_page.dart';
 import 'notifications/notifications_page.dart';
@@ -44,5 +45,6 @@ class _RootPageState extends State<RootPage> {
         tabs: _tabs,
         color: Colors.white54,
         selectedColor: Colors.white,
+        onGenerateRoute: Routes.onGenerateRoute,
       );
 }
