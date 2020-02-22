@@ -41,10 +41,12 @@ class _RootPageState extends State<RootPage> {
   ];
 
   @override
-  Widget build(BuildContext context) => UNestedNavigator(
-        tabs: _tabs,
-        color: Colors.white54,
-        selectedColor: Colors.white,
-        onGenerateRoute: Routes.onGenerateRoute,
-      );
+  Widget build(BuildContext context) {
+    return UNestedNavigator(
+      tabs: _tabs,
+      color: Colors.white54,
+      selectedColor: Colors.white,
+      onGenerateRoute: Routes.onGenerateRoute,
+    );
+  }
 }

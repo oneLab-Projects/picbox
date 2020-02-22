@@ -26,29 +26,30 @@ class _DebugPageState extends State<DebugPage> {
           UListSwitch(
             "Test transparent system navbar",
             value: _value,
-            onChanged: (value) {
-              setState(() => _value = value);
-              if (value) {
-                SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
-                SystemChrome.setSystemUIOverlayStyle(
-                  SystemUiOverlayStyle(
-                    systemNavigationBarColor: Colors.transparent,
-                  ),
-                );
-              } else {
-                SystemChrome.setEnabledSystemUIOverlays(
-                    [SystemUiOverlay.top, SystemUiOverlay.bottom]);
-                SystemChrome.setSystemUIOverlayStyle(
-                  SystemUiOverlayStyle(
-                    systemNavigationBarColor:
-                        Theme.of(context).scaffoldBackgroundColor,
-                  ),
-                );
-              }
-            },
+            onChanged: testingTransparentSystemNavbar,
           ),
         ],
       ),
     );
+  }
+
+  void testingTransparentSystemNavbar(bool value) {
+    setState(() => _value = value);
+    if (value) {
+      SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          systemNavigationBarColor: Colors.transparent,
+        ),
+      );
+    } else {
+      SystemChrome.setEnabledSystemUIOverlays(
+          [SystemUiOverlay.top, SystemUiOverlay.bottom]);
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          systemNavigationBarColor: Theme.of(context).scaffoldBackgroundColor,
+        ),
+      );
+    }
   }
 }

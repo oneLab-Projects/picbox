@@ -5,10 +5,9 @@ part 'confirmation_model.g.dart';
 
 @JsonSerializable()
 class ConfirmationModel {
-  @required
   final String confirmationId;
 
-  ConfirmationModel({this.confirmationId});
+  ConfirmationModel({@required this.confirmationId});
 
   factory ConfirmationModel.fromJson(Map<String, dynamic> json) =>
       _$ConfirmationModelFromJson(json);
@@ -18,12 +17,13 @@ class ConfirmationModel {
 
 @JsonSerializable()
 class RequestConfirmationModel {
-  @required
   final String confirmationId;
-  @required
   final String confirmationCode;
 
-  RequestConfirmationModel({this.confirmationId, this.confirmationCode});
+  RequestConfirmationModel({
+    @required this.confirmationId,
+    @required this.confirmationCode,
+  });
 
   factory RequestConfirmationModel.fromJson(Map<String, dynamic> json) =>
       _$RequestConfirmationModelFromJson(json);

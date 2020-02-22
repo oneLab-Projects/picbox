@@ -5,12 +5,13 @@ part 'authentication_model.g.dart';
 
 @JsonSerializable()
 class RequestAuthenticationModel {
-  @required
   final String appId;
-  @required
   final String phoneNumber;
 
-  RequestAuthenticationModel({this.appId, this.phoneNumber});
+  RequestAuthenticationModel({
+    @required this.appId,
+    @required this.phoneNumber,
+  });
 
   factory RequestAuthenticationModel.fromJson(Map<String, dynamic> json) =>
       _$RequestAuthenticationModelFromJson(json);

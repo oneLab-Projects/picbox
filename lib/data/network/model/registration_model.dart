@@ -5,14 +5,15 @@ part 'registration_model.g.dart';
 
 @JsonSerializable()
 class RequestRegistrationModel {
-  @required
   final String firstName;
-  @required
   final String lastName;
-  @required
   final String phoneNumber;
 
-  RequestRegistrationModel({this.firstName, this.lastName, this.phoneNumber});
+  RequestRegistrationModel({
+    @required this.firstName,
+    @required this.lastName,
+    @required this.phoneNumber,
+  });
 
   factory RequestRegistrationModel.fromJson(Map<String, dynamic> json) =>
       _$RequestRegistrationModelFromJson(json);

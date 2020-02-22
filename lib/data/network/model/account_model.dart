@@ -5,21 +5,17 @@ part 'account_model.g.dart';
 
 @JsonSerializable()
 class AccountModel {
-  @required
   final String id;
-  @required
   final String username;
-  @required
   final String firstName;
-  @required
   final String lastName;
   final String phoneNumber;
 
   AccountModel({
-    this.id,
-    this.username,
-    this.firstName,
-    this.lastName,
+    @required this.id,
+    @required this.username,
+    @required this.firstName,
+    @required this.lastName,
     this.phoneNumber,
   });
 

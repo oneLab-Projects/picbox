@@ -45,9 +45,11 @@ class Routes {
     if (key == null) throw UnsupportedError('Unknown route: ${settings.name}');
 
     return UPageRoute(
-        builder: (context) => settings.name == ROOT && routeBuilder != null
-            ? routeBuilder(context)
-            : _routes[key],
+        builder: (context) {
+          return settings.name == ROOT && routeBuilder != null
+              ? routeBuilder(context)
+              : _routes[key];
+        },
         settings: settings);
   }
 }
