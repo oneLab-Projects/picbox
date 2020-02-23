@@ -27,38 +27,40 @@ class _CodeInputSheetState extends State<CodeInputSheet> {
   }
 
   /// Создаёт поле ввода для кода подтверждения.
-  Widget _buildCodeFill(BuildContext context) => Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              for (int i = 0; i < 4; i++)
-                Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).cardColor,
-                    borderRadius: const BorderRadius.all(Radius.circular(5)),
-                  ),
-                  height: 45,
-                  width: 55,
+  Widget _buildCodeFill(BuildContext context) {
+    return Stack(
+      alignment: Alignment.center,
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            for (int i = 0; i < 4; i++)
+              Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).cardColor,
+                  borderRadius: const BorderRadius.all(Radius.circular(5)),
                 ),
-            ],
-          ),
-          PinFieldAutoFill(
-              decoration: UnderlineDecoration(
-                  lineHeight: 0,
-                  color: Colors.transparent,
-                  textStyle: TextStyle(
-                      fontSize: 18,
-                      color: Theme.of(context).textTheme.body1.color)),
-              currentCode: _code,
-              codeLength: 4,
-              onCodeChanged: (value) {
-                if (_loading) return;
-                if (value.length == 4) _checkCode(value);
-              }),
-        ],
-      );
+                height: 45,
+                width: 55,
+              ),
+          ],
+        ),
+        PinFieldAutoFill(
+            decoration: UnderlineDecoration(
+                lineHeight: 0,
+                color: Colors.transparent,
+                textStyle: TextStyle(
+                    fontSize: 18,
+                    color: Theme.of(context).textTheme.body1.color)),
+            currentCode: _code,
+            codeLength: 4,
+            onCodeChanged: (value) {
+              if (_loading) return;
+              if (value.length == 4) _checkCode(value);
+            }),
+      ],
+    );
+  }
 
   /// Проверяем код подтверждения.
   void _checkCode(String code) async {
