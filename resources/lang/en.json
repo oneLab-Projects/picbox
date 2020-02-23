@@ -1,53 +1,53 @@
 {
   "default": {
-    "okay": "ОК",
-    "yes": "Да",
-    "no": "Нет",
-    "continue": "Продолжить",
-    "cancel": "Отменить",
-    "done": "Готово",
-    "confirm": "Подтвердить",
-    "not_selected": "Не выбрано"
+    "okay": "OK",
+    "yes": "Yes",
+    "no": "No",
+    "continue": "Continue",
+    "cancel": "Cancel",
+    "done": "Done",
+    "confirm": "Confirm",
+    "not_selected": "Not selected"
   },
   "settings": {
-    "title": "Настройки",
-    "recommended": "Рекомендуемый",
+    "title": "Settings",
+    "recommended": "Recommended",
     "localizations": {
-      "title": "Язык интерфейса",
-      "all_languages": "Все языки",
-      "recommended": "Рекомендуемые"
+      "title": "Language",
+      "all_languages": "All languages",
+      "recommended": "Recommended"
     }
   },
   "home": {
-    "title": "Для Вас"
+    "title": "For You"
   },
   "search": {
-    "title": "Искать",
-    "popular_topics": "Популярные темы"
+    "title": "Search",
+    "popular_topics": "Popular topics"
   },
   "notifications": {
-    "title": "Уведомления"
+    "title": "Notifications"
   },
   "profile": {
-    "title": "Профиль",
-    "storage": "Хранилище",
-    "night_theme": "Ночная тема"
+    "title": "Profile",
+    "storage": "Storage",
+    "night_theme": "Night theme"
   },
   "debug": {
-    "title": "Отладка"
+    "title": "For developers"
   },
   "signin": {
-    "title": "Авторизация",
-    "description": "Авторизуйтесь в oneLab",
-    "phone_number": "Номер телефона"
+    "title": "Sign In",
+    "description": "Authorize to oneLab",
+    "phone_number": "Phone number"
   },
   "signup": {
-    "title": "Регистрация",
-    "profile_photo": "Фото профиля",
-    "first_name": "Имя",
-    "last_name": "Фамилия (необязательно)",
-    "first_name_example": "Напр. Владимир",
-    "last_name_example": "Напр. Путин"
+    "title": "Sign Up",
+    "profile_photo": "Profile photo",
+    "first_name": "First name",
+    "last_name": "Last name (optionally)",
+    "first_name_example": "Exp. Vladimir",
+    "last_name_example": "Exp. Putin"
   },
   "confirm": {
     "title": "We called your number",
