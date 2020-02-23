@@ -1,56 +1,56 @@
 {
   "default": {
-    "okay": "OK",
-    "yes": "Yes",
-    "no": "No",
-    "continue": "Continue",
-    "cancel": "Cancel",
-    "done": "Done",
-    "confirm": "Confirm",
-    "not_selected": "Not selected"
+    "okay": "ОК",
+    "yes": "Да",
+    "no": "Нет",
+    "continue": "Продолжить",
+    "cancel": "Отменить",
+    "done": "Готово",
+    "confirm": "Подтвердить",
+    "not_selected": "Не выбрано"
   },
   "settings": {
-    "title": "Settings",
-    "recommended": "Recommended",
+    "title": "Настройки",
+    "recommended": "Рекомендуемый",
     "localizations": {
-      "title": "Language",
-      "all_languages": "All languages",
-      "recommended": "Recommended"
+      "title": "Язык интерфейса",
+      "all_languages": "Все языки",
+      "recommended": "Рекомендуемые"
     }
   },
   "home": {
-    "title": "For You"
+    "title": "Для Вас"
   },
   "search": {
-    "title": "Search",
-    "popular_topics": "Popular topics"
+    "title": "Искать",
+    "popular_topics": "Популярные темы"
   },
   "notifications": {
-    "title": "Notifications"
+    "title": "Уведомления"
   },
   "profile": {
-    "title": "Profile",
-    "storage": "Storage",
-    "night_theme": "Night theme"
+    "title": "Профиль",
+    "storage": "Хранилище",
+    "night_theme": "Ночная тема"
   },
   "debug": {
-    "title": "For developers"
+    "title": "Отладка"
   },
   "signin": {
-    "title": "Sign In",
-    "description": "Authorize to oneLab",
-    "phone_number": "Phone number"
+    "title": "Авторизация",
+    "description": "Авторизуйтесь в oneLab",
+    "phone_number": "Номер телефона"
   },
   "signup": {
-    "title": "Sign Up",
-    "profile_photo": "Profile photo",
-    "first_name": "First name",
-    "last_name": "Last name (optionally)",
-    "first_name_example": "Exp. Vladimir",
-    "last_name_example": "Exp. Putin"
+    "title": "Регистрация",
+    "profile_photo": "Фото профиля",
+    "first_name": "Имя",
+    "last_name": "Фамилия (необязательно)",
+    "first_name_example": "Напр. Владимир",
+    "last_name_example": "Напр. Путин"
   },
   "confirm": {
-    "title": "Enter the last 4 digits of the number",
-    "description": "To confirm the action, we will make a call from a unique number."
+    "title": "We called your number",
+    "description": "Enter the last 4 digits of the incoming number"
   }
 }
