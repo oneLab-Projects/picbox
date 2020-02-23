@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:pansy_ui/pansy_ui.dart';
 import 'package:picbox/ui/feature/debug/debug_page.dart';
 import 'package:picbox/ui/feature/root.dart';
@@ -28,28 +27,10 @@ class Routes {
   static const String LANDING_CONFIRM = '/landing/confirm';
 
   /// Хранит алиасы маршрутов.
-  static var _routes = {
+  static var aliases = {
     ROOT: RootPage(),
     DEBUG: DebugPage(),
     SETTINGS: SettingsPage(),
     SETTINGS_LOCALIZATIONS: LocalizationsSettingPage(),
   };
-
-  /// Callback-генератор маршрутов. Используется, когда приложение перемещается по названному маршруту.
-  static Route<dynamic> onGenerateRoute(
-    RouteSettings settings, [
-    Function routeBuilder,
-  ]) {
-    String key = _routes.keys
-        .firstWhere((key) => key == settings.name, orElse: () => null);
-    if (key == null) throw UnsupportedError('Unknown route: ${settings.name}');
-
-    return UPageRoute(
-        builder: (context) {
-          return settings.name == ROOT && routeBuilder != null
-              ? routeBuilder(context)
-              : _routes[key];
-        },
-        settings: settings);
-  }
 }

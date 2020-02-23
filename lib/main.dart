@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pansy_ui/pansy_ui.dart';
+import 'package:pansy_ui/pansy_ui/widget/navigator/routes.dart';
 
 import 'component/routes.dart';
 
@@ -14,20 +15,20 @@ class App extends StatelessWidget {
     return AggregateData(
       builder: (bCtx, initData) {
         return MaterialApp(
-          builder: (context, child) {
-            return ScrollConfiguration(
-              behavior: ClearBehavior(),
-              child: child,
-            );
-          },
-          title: 'Picbox',
-          debugShowCheckedModeBanner: false,
-          theme: initData.themeData,
-          locale: initData.locale,
-          supportedLocales: initData.supportedLocales,
-          localizationsDelegates: initData.localizationsDelegates,
-          onGenerateRoute: Routes.onGenerateRoute,
-        );
+            builder: (context, child) {
+              return ScrollConfiguration(
+                behavior: ClearBehavior(),
+                child: child,
+              );
+            },
+            title: 'Picbox',
+            debugShowCheckedModeBanner: false,
+            theme: initData.themeData,
+            locale: initData.locale,
+            supportedLocales: initData.supportedLocales,
+            localizationsDelegates: initData.localizationsDelegates,
+            onGenerateRoute: (RouteSettings routeSettings) =>
+                RouteNavigator.onGenerateRoute(routeSettings, Routes.aliases));
       },
     );
   }

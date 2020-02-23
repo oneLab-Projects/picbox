@@ -46,7 +46,7 @@ class _RootPageState extends State<RootPage> {
       tabs: _tabs,
       color: Colors.white54,
       selectedColor: Colors.white,
-      onGenerateRoute: Routes.onGenerateRoute,
+      routes: Routes.aliases,
     );
   }
 }
