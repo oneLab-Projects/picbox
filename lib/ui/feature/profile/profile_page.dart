@@ -94,13 +94,13 @@ class ProfileTab extends StatelessWidget {
         ),
         Column(
           children: <Widget>[
-            Text("Oleg Tinkoff", style: Theme.of(context).textTheme.title),
+            Text("Oleg Tinkoff", style: Theme.of(context).textTheme.headline6),
             const SizedBox(height: 4),
             Text(
               "@tinkoffoleg",
               style: Theme.of(context)
                   .textTheme
-                  .subhead
+                  .subtitle1
                   .copyWith(color: Theme.of(context).hintColor),
             )
           ],
