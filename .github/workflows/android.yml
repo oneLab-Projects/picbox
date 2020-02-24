@@ -11,11 +11,11 @@ jobs:
       - name: Installing Java
         uses: actions/setup-java@v1
         with:
-          java-version: '12.x'
-      - name: Installing Flutter (stable branch)
+          java-version: "12.x"
+      - name: Installing Flutter (master branch)
         uses: subosito/flutter-action@v1
         with:
-          channel: 'stable'
+          channel: "master"
       - name: Installing dependencies
         run: flutter pub get
       - name: Building Android
