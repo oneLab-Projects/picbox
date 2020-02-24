@@ -420,7 +420,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "7e3edaf787e5903cddbdbdafc999a8344546d218"
+      resolved-ref: "6bbb70b5b34b12390b3eed3f0bb54f020b173400"
       url: "git://github.com/oneLab-Projects/pansy_ui.git"
     source: git
     version: "1.0.0"
@@ -437,7 +437,7 @@ packages:
       name: pedantic
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.0+1"
+    version: "1.9.0"
   petitparser:
     dependency: transitive
     description:

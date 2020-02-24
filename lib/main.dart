@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pansy_ui/pansy_ui.dart';
-import 'package:pansy_ui/pansy_ui/widget/navigator/routes.dart';
+import 'package:pansy_ui/pansy_ui/widget/navigator/route_navigator.dart';
 
 import 'component/routes.dart';
 
