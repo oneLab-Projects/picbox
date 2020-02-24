@@ -51,7 +51,7 @@ class _CodeInputSheetState extends State<CodeInputSheet> {
                 color: Colors.transparent,
                 textStyle: TextStyle(
                     fontSize: 18,
-                    color: Theme.of(context).textTheme.body1.color)),
+                    color: Theme.of(context).textTheme.bodyText1.color)),
             currentCode: _code,
             codeLength: 4,
             onCodeChanged: (value) {

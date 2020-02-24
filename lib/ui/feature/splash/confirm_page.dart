@@ -25,7 +25,7 @@ class _ConfirmPageState extends State<ConfirmPage> {
             AppLocalizations.of(context).tr('confirm.sms'),
             style: Theme.of(context)
                 .textTheme
-                .subhead
+                .subtitle1
                 .copyWith(color: Theme.of(context).hintColor),
           ),
           const SizedBox(height: 20),
@@ -65,7 +65,7 @@ class _ConfirmPageState extends State<ConfirmPage> {
                   color: Colors.transparent,
                   textStyle: TextStyle(
                       fontSize: 18,
-                      color: Theme.of(context).textTheme.body1.color)),
+                      color: Theme.of(context).textTheme.bodyText1.color)),
               currentCode: _code,
               codeLength: 4,
               onCodeChanged: (value) {

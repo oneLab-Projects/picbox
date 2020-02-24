@@ -40,7 +40,7 @@ class _SignInPageState extends State<SignInPage> {
             AppLocalizations.of(context).tr('signin.description'),
             style: Theme.of(context)
                 .textTheme
-                .subtitle
+                .subtitle2
                 .copyWith(color: Theme.of(context).hintColor),
           ),
           const SizedBox(height: 100),
