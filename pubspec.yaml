@@ -10,9 +10,9 @@ dependencies:
     sdk: flutter
 
   # design
-  material_design_icons_flutter: ^3.4.4795
+  material_design_icons_flutter: ^3.4.4995
   ubuntu_font_flutter: ^0.0.1
-  flare_flutter: ^1.8.3
+  flare_flutter: ^2.0.1
   transparent_image: ^1.0.0
   pansy_ui:
     git: git://github.com/oneLab-Projects/pansy_ui.git
@@ -23,26 +23,27 @@ dependencies:
   devicelocale: ^0.2.1
 
   # bloc
-  flutter_bloc: ^3.1.0
+  flutter_bloc: ^3.2.0
+  rxdart: ^0.23.1
 
   # network
   chopper: ^3.0.1+1
   json_annotation: ^3.0.1
 
   # db
-  shared_preferences: ^0.5.6
+  shared_preferences: ^0.5.6+2
   flutter_secure_storage: ^3.3.1+1
 
   # ui
   native_device_orientation: ^0.3.0
-  sms_autofill: ^1.1.1
+  sms_autofill: ^1.2.0
 
   # convert
-  built_value: ^7.0.8
+  built_value: ^7.0.9
   built_collection: ^4.3.2
 
   # compare
-  equatable: ^1.0.2
+  equatable: ^1.1.0
 
   # data
   logger: ^0.8.3
@@ -50,7 +51,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^1.7.3
+  build_runner: ^1.7.4
   chopper_generator:
     git:
       url: git://github.com/windrunner414/chopper.git

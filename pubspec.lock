@@ -212,7 +212,7 @@ packages:
       name: flare_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.3"
+    version: "2.0.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -420,7 +420,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "6bbb70b5b34b12390b3eed3f0bb54f020b173400"
+      resolved-ref: "8620fb000f885b3b86ea51a79ea8a52373410115"
       url: "git://github.com/oneLab-Projects/pansy_ui.git"
     source: git
     version: "1.0.0"
@@ -488,7 +488,7 @@ packages:
     source: hosted
     version: "2.0.5"
   rxdart:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: rxdart
       url: "https://pub.dartlang.org"
@@ -554,7 +554,7 @@ packages:
       name: source_gen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.9.4+7"
+    version: "0.9.5"
   source_span:
     dependency: transitive
     description:
