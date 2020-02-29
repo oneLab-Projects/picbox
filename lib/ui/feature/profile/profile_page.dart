@@ -1,9 +1,9 @@
 import 'package:picbox/component/routes.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:pansy_ui/pansy_ui.dart';
+import 'package:provider/provider.dart';
 
 /// Вкладка `Профиль`.
 class ProfileTab extends StatelessWidget {
@@ -28,7 +28,7 @@ class ProfileTab extends StatelessWidget {
       children: <Widget>[
         _buildProfileViewButton(context),
         Divider(),
-        _buildThemeSwitch(),
+        _buildThemeSwitch(context),
         UListButton(AppLocalizations.of(context).tr('settings.title'),
             iconData: MdiIcons.settings,
             onPressed: () => Navigator.pushNamed(context, Routes.SETTINGS)),
@@ -66,15 +66,18 @@ class ProfileTab extends StatelessWidget {
   }
 
   /// Создаёт переключатель ночной темы.
-  Widget _buildThemeSwitch() {
-    return BlocBuilder<ThemeBloc, ThemeData>(
-      builder: (context, theme) => UListSwitch(
-        AppLocalizations.of(context).tr('profile.night_theme'),
-        iconData: MdiIcons.powerSleep,
-        value: theme == nightTheme,
-        onChanged: (bool value) =>
-            BlocProvider.of<ThemeBloc>(context).add(ThemeEvent.toggle),
-      ),
+  Widget _buildThemeSwitch(BuildContext context) {
+    var bloc = Provider.of<ThemeBloc>(context);
+    return StreamBuilder(
+      stream: bloc.theme,
+      builder: (context, AsyncSnapshot<ThemeData> snapshot) {
+        return UListSwitch(
+          AppLocalizations.of(context).tr('profile.night_theme'),
+          iconData: MdiIcons.powerSleep,
+          value: bloc.isNightTheme(),
+          onChanged: (bool value) => bloc.setNightTheme(value),
+        );
+      },
     );
   }
 
