@@ -9,7 +9,6 @@ class TestProvider extends InheritedWidget {
   TestProvider({Key key, Widget child}) : super(key: key, child: child);
 
   static TestBloc of(BuildContext context) {
-    return (context.inheritFromWidgetOfExactType(TestProvider) as TestProvider)
-        .bloc;
+    return (context.dependOnInheritedWidgetOfExactType<TestProvider>()).bloc;
   }
 }
