@@ -1,34 +1,34 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:pansy_ui/pansy_ui.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 /// Страница `Настройки`.
 class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var supportedLanguages = LocalizationsDelegates.instance.supportedLanguages;
     return UScaffold(
-      title: AppLocalizations.of(context).tr('settings.title'),
+      title: 'settings.title'.tr(),
       body: Column(
         children: <Widget>[
-          _buildLanguagePageViewButton(context, supportedLanguages),
+          //_buildLanguagePageViewButton(context),
         ],
       ),
     );
   }
-
+/*
   /// Создаёт кнопку для перехода на страницу `Язык интерфейса`
-  Widget _buildLanguagePageViewButton(
-    BuildContext context,
-    Map<String, String> supportedLanguages,
-  ) {
+  Widget _buildLanguagePageViewButton(BuildContext context) {
+    var supportedLocales =
+        Provider.of<LocalizationsBloc>(context).supportedLocales;
+    String localeName = supportedLocales[Localizations.localeOf(context)];
+
     return UListSelect(
-      AppLocalizations.of(context).tr('settings.localizations.title'),
+      'settings.localizations.title'.tr(),
+      iconData: MdiIcons.earth,
+      value: supportedLocales[localeName],
       onPressed: () => Navigator.push(context,
           UPageRoute(builder: (context) => LocalizationsSettingPage())),
-      value:
-          supportedLanguages[AppLocalizations.of(context).locale.languageCode],
-      iconData: MdiIcons.earth,
     );
-  }
+  }*/
 }

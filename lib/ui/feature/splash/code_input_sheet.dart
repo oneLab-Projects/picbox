@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:picbox/component/routes.dart';
 import 'package:pansy_ui/pansy_ui.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';
@@ -16,8 +17,8 @@ class _CodeInputSheetState extends State<CodeInputSheet> {
   @override
   Widget build(BuildContext context) {
     return ScaffoldSheet(
-      title: AppLocalizations.of(context).tr('confirm.title'),
-      description: AppLocalizations.of(context).tr('confirm.description'),
+      title: 'confirm.title'.tr(),
+      description: 'confirm.description'.tr(),
       child: Padding(
         padding:
             const EdgeInsets.symmetric(horizontal: 50).copyWith(bottom: 15),

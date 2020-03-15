@@ -1,6 +1,6 @@
-import 'package:pansy_ui/pansy_ui.dart';
 import 'package:picbox/ui/feature/debug/debug_page.dart';
 import 'package:picbox/ui/feature/root.dart';
+import 'package:picbox/ui/feature/settings/localizations_settings_page.dart';
 import 'package:picbox/ui/feature/settings/settings_page.dart';
 
 /// Класс для работы с маршрутами.

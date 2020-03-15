@@ -1,6 +1,7 @@
 import 'package:picbox/component/routes.dart';
 
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'package:pansy_ui/pansy_ui.dart';
@@ -17,7 +18,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return UScaffold(
-      title: AppLocalizations.of(context).tr('signup.title'),
+      title: 'signup.title'.tr(),
       body: Column(
         children: <Widget>[
           _buildProfilePhotoSelect(context),
@@ -27,7 +28,7 @@ class _SignUpPageState extends State<SignUpPage> {
           Padding(
             padding: const EdgeInsets.all(20),
             child: URaisedButton(
-              AppLocalizations.of(context).tr('default.done'),
+              'default.done'.tr(),
               onPressed: !_checkedRules
                   ? null
                   : () => Navigator.pushNamed(context, Routes.LANDING_CONFIRM),
@@ -50,12 +51,12 @@ class _SignUpPageState extends State<SignUpPage> {
   /// Создаёт поле ввода фамилии.
   Widget _buildLastNameField(BuildContext context) {
     return UListContent(
-      AppLocalizations.of(context).tr('signup.last_name'),
+      'signup.last_name'.tr(),
       child: TextField(
         autocorrect: false,
         decoration: InputDesign(
           context,
-          hintText: AppLocalizations.of(context).tr('signup.last_name_example'),
+          hintText: 'signup.last_name_example'.tr(),
         ),
       ),
     );
@@ -64,13 +65,12 @@ class _SignUpPageState extends State<SignUpPage> {
   /// Создаёт поле ввода имени.
   Widget _buildFirstNameField(BuildContext context) {
     return UListContent(
-      AppLocalizations.of(context).tr('signup.first_name'),
+      'signup.first_name'.tr(),
       child: TextField(
         autocorrect: false,
         decoration: InputDesign(
           context,
-          hintText:
-              AppLocalizations.of(context).tr('signup.first_name_example'),
+          hintText: 'signup.first_name_example'.tr(),
         ),
       ),
     );
@@ -79,7 +79,7 @@ class _SignUpPageState extends State<SignUpPage> {
   /// Создаёт виджет выбора фотографии.
   Widget _buildProfilePhotoSelect(BuildContext context) {
     return UListContent(
-      AppLocalizations.of(context).tr('signup.profile_photo'),
+      'signup.profile_photo'.tr(),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[

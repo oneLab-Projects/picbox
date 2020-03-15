@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:picbox/component/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/services.dart';
 import 'package:pansy_ui/pansy_ui.dart';
 
@@ -37,7 +38,7 @@ class _SignInPageState extends State<SignInPage> {
           ),
           const SizedBox(height: 25),
           Text(
-            AppLocalizations.of(context).tr('signin.description'),
+            'signin.description'.tr(),
             style: Theme.of(context)
                 .textTheme
                 .subtitle2
@@ -47,7 +48,7 @@ class _SignInPageState extends State<SignInPage> {
           _buildPhoneNumberTextField(context),
           const SizedBox(height: 10),
           URaisedButton(
-            AppLocalizations.of(context).tr('default.continue'),
+            'default.continue'.tr(),
             loading: _loading,
             onPressed:
                 _phoneNumber.toString().length >= 11 ? () => _continue() : null,
@@ -80,7 +81,7 @@ class _SignInPageState extends State<SignInPage> {
       autocorrect: false,
       decoration: InputDesign(
         context,
-        hintText: AppLocalizations.of(context).tr('signin.phone_number'),
+        hintText: 'signin.phone_number'.tr(),
       ),
       keyboardType: TextInputType.phone,
       onChanged: (String value) {

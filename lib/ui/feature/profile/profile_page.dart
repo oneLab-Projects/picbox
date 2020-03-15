@@ -1,6 +1,7 @@
 import 'package:picbox/component/routes.dart';
 
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:pansy_ui/pansy_ui.dart';
 import 'package:provider/provider.dart';
@@ -29,11 +30,11 @@ class ProfileTab extends StatelessWidget {
         _buildProfileViewButton(context),
         Divider(),
         _buildThemeSwitch(context),
-        UListButton(AppLocalizations.of(context).tr('settings.title'),
-            iconData: MdiIcons.settings,
+        UListButton('settings.title'.tr(),
+            iconData: MdiIcons.cog,
             onPressed: () => Navigator.pushNamed(context, Routes.SETTINGS)),
         Divider(),
-        UListButton(AppLocalizations.of(context).tr('debug.title'),
+        UListButton('debug.title'.tr(),
             iconData: MdiIcons.bug,
             onPressed: () => Navigator.pushNamed(context, Routes.DEBUG)),
       ],
@@ -43,7 +44,7 @@ class ProfileTab extends StatelessWidget {
   /// Создаёт контент-кнопку `Хранилище`.
   Widget _buildProfileViewButton(BuildContext context) {
     return UListContent(
-      AppLocalizations.of(context).tr('profile.storage'),
+      'profile.storage'.tr(),
       iconData: MdiIcons.archive,
       onPressed: () {},
       child: Row(
@@ -72,10 +73,10 @@ class ProfileTab extends StatelessWidget {
       stream: bloc.theme,
       builder: (context, AsyncSnapshot<ThemeData> snapshot) {
         return UListSwitch(
-          AppLocalizations.of(context).tr('profile.night_theme'),
+          'profile.night_theme'.tr(),
           iconData: MdiIcons.powerSleep,
-          value: bloc.isNightTheme(),
-          onChanged: (bool value) => bloc.setNightTheme(value),
+          value: bloc.isNightTheme,
+          onChanged: (bool value) => bloc.activatedNightTheme = value,
         );
       },
     );

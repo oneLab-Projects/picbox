@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'package:pansy_ui/pansy_ui.dart';
@@ -17,7 +18,7 @@ class SearchTab extends StatelessWidget {
         children: <Widget>[
           _buildSearchBar(context),
           UListContent(
-            AppLocalizations.of(context).tr('search.popular_topics'),
+            'search.popular_topics'.tr(),
             iconData: MdiIcons.starFourPoints,
             variant: true,
             child: _buildPopularContent(context),
@@ -35,7 +36,7 @@ class SearchTab extends StatelessWidget {
         autocorrect: false,
         decoration: RoundInputDesign(
           context,
-          hintText: AppLocalizations.of(context).tr('search.title'),
+          hintText: 'search.title'.tr(),
         ),
       ),
     );
