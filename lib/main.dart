@@ -7,42 +7,46 @@ import 'component/routes.dart';
 import 'ui/global/aggregate_data.dart';
 
 /// Запускает приложение, инициализирует [App].
-void main() async => runApp(App());
+void main() {
+  runApp(
+    AggregateData(
+      pathToLanguages: 'resources/lang/',
+      builder: (context, initData) {
+        return App(initData);
+      },
+    ),
+  );
+}
 
 /// [App] является основным виджетом приложения. Его цель состоит в том, чтобы
 /// отобразить интерфейс приложения, предварительно подключив BLoC провайдеры
 /// и поддержку мультиязычности.
-class App extends StatefulWidget {
-  @override
-  _AppState createState() => _AppState();
-}
+class App extends StatelessWidget {
+  final AggregateDataModel initData;
+  App(this.initData);
 
-class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    return AggregateData(
-      pathToLanguages: 'resources/lang/',
-      builder: (context, initData) {
-        return MaterialApp(
-          builder: (context, child) {
-            return ScrollConfiguration(
-              behavior: ClearBehavior(),
-              child: child,
-            );
-          },
-          title: 'Picbox',
-          debugShowCheckedModeBanner: false,
-          supportedLocales: EasyLocalization.of(context).supportedLocales,
-          locale: EasyLocalization.of(context).locale,
-          localizationsDelegates: [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            EasyLocalization.of(context).delegate,
-          ],
-          onGenerateRoute: (RouteSettings routeSettings) =>
-              RouteNavigator.onGenerateRoute(routeSettings, Routes.aliases),
+    print(EasyLocalization.of(context).delegate);
+    return MaterialApp(
+      builder: (context, child) {
+        return ScrollConfiguration(
+          behavior: ClearBehavior(),
+          child: child,
         );
       },
+      title: 'Picbox',
+      debugShowCheckedModeBanner: false,
+      theme: initData.themeData,
+      supportedLocales: EasyLocalization.of(context).supportedLocales,
+      locale: EasyLocalization.of(context).locale,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        EasyLocalization.of(context).delegate,
+      ],
+      onGenerateRoute: (RouteSettings routeSettings) =>
+          RouteNavigator.onGenerateRoute(routeSettings, Routes.aliases),
     );
   }
 }

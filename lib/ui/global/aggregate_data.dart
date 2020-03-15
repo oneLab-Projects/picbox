@@ -21,6 +21,7 @@ class AggregateData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(context.toString());
     var localizationsBloc = LocalizationsBloc(context, pathToLanguages);
     var themeBloc = ThemeBloc(dayTheme: dayTheme, nightTheme: nightTheme);
 
