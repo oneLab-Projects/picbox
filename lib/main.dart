@@ -23,11 +23,10 @@ void main() {
 /// и поддержку мультиязычности.
 class App extends StatelessWidget {
   final AggregateDataModel initData;
-  App(this.initData);
+  App(this.initData) : assert(initData != null);
 
   @override
   Widget build(BuildContext context) {
-    print(EasyLocalization.of(context).delegate);
     return MaterialApp(
       builder: (context, child) {
         return ScrollConfiguration(
