@@ -51,6 +51,7 @@ class AggregateData extends StatelessWidget {
                 if (theme != null && theme.hasData && theme?.data != null) {
                   AggregateDataModel initData = AggregateDataModel(theme.data);
                   return EasyLocalization(
+                    useOnlyLangCode: true,
                     supportedLocales:
                         localizationsBloc.supportedLocales.keys.toList(),
                     fallbackLocale: localizationsBloc.recommendedLocale,
