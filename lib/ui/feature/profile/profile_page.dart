@@ -76,7 +76,7 @@ class ProfileTab extends StatelessWidget {
           'profile.night_theme'.tr(),
           iconData: MdiIcons.powerSleep,
           value: bloc.isNightTheme,
-          onChanged: (bool value) => bloc.activatedNightTheme = value,
+          onChanged: (bool value) => bloc.activatedNightTheme = !value,
         );
       },
     );
