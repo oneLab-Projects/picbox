@@ -418,7 +418,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "522d9140f71fad2096fa0e6b81407ea4218bc694"
+      resolved-ref: "50cb3088cbe2779f904f9cbb564e7fa980cb8b5f"
       url: "git://github.com/oneLab-Projects/pansy_ui.git"
     source: git
     version: "1.0.0"
@@ -470,7 +470,7 @@ packages:
       name: pub_semver
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.4.3"
+    version: "1.4.4"
   pubspec_parse:
     dependency: transitive
     description:
