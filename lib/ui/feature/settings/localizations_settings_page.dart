@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pansy_ui/pansy_ui.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:picbox/ui/global/localizations/bloc/bloc.dart';
+import 'package:provider/provider.dart';
 
 /// Страница `Язык интерфейса`.
 class LocalizationsSettingPage extends StatefulWidget {
@@ -10,12 +12,12 @@ class LocalizationsSettingPage extends StatefulWidget {
 }
 
 class _LocalizationsSettingPageState extends State<LocalizationsSettingPage> {
-  Map<Locale, String> _supportedLocales;
-  Locale _locale = Locale(null);
+  LocalizationsBloc bloc;
 
   @override
   Widget build(BuildContext context) {
-    var supportedLocalesWithName = _supportedLocales;
+    bloc = Provider.of<LocalizationsBloc>(context);
+
     return UScaffold(
       title: 'settings.localizations.title'.tr(),
       body: Column(
@@ -23,13 +25,13 @@ class _LocalizationsSettingPageState extends State<LocalizationsSettingPage> {
           UListContent(
             'settings.localizations.recommended'.tr(),
             variant: true,
-            child: _getRecommendedLanguages(context, supportedLocalesWithName),
+            child: _getRecommendedLanguages(context, bloc.supportedLocales),
           ),
           Divider(),
           UListContent(
             'settings.localizations.all_languages'.tr(),
             variant: true,
-            child: _getAllAppLanguages(context, supportedLocalesWithName),
+            child: _getAllAppLanguages(context, bloc.supportedLocales),
           ),
         ],
       ),
@@ -43,14 +45,12 @@ class _LocalizationsSettingPageState extends State<LocalizationsSettingPage> {
   ) {
     return Column(
       children: <Widget>[
-        if (_locale != Locale('en') && _locale != Locale(null))
+        if (bloc.recommendedLocale != Locale('en'))
           _buildWidget(
             context,
-            supportedLocalesWithName[_locale],
-            Localizations.localeOf(context) == _locale,
+            supportedLocalesWithName[bloc.recommendedLocale],
+            Localizations.localeOf(context) == bloc.recommendedLocale,
           ),
-        if (_locale == Locale(null))
-          _buildWidget(context, "Loading", false, enabled: false),
         _buildWidget(
           context,
           supportedLocalesWithName[Locale('en')],
@@ -87,9 +87,8 @@ class _LocalizationsSettingPageState extends State<LocalizationsSettingPage> {
     return InkWell(
       onTap: () {
         if (!enabled || checked) return;
-        var supportedLocalesWithName = _supportedLocales;
-        Locale result = supportedLocalesWithName.keys
-            .firstWhere((key) => supportedLocalesWithName[key] == title);
+        Locale result = bloc.supportedLocales.keys
+            .firstWhere((key) => bloc.supportedLocales[key] == title);
 
         EasyLocalization.of(context).locale = result;
       },
