@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pansy_ui/pansy_ui.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:picbox/ui/global/localizations/bloc/bloc.dart';
 import 'package:provider/provider.dart';
 
 /// Страница `Язык интерфейса`.

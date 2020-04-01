@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:pansy_ui/pansy_ui.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:picbox/ui/global/localizations/bloc/bloc.dart';
 import 'package:provider/provider.dart';
 
 import 'localizations_settings_page.dart';

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:pansy_ui/pansy_ui.dart';
 import 'package:provider/provider.dart';
 
-import 'localizations/bloc/bloc.dart';
 import 'rxdart_test/bloc/bloc.dart';
 
 /// [AggregateData] является виджетом, цель которого – предоставить данные
