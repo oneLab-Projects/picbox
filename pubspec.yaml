@@ -10,7 +10,7 @@ dependencies:
     sdk: flutter
 
   # design
-  material_design_icons_flutter: ^3.4.5045
+  material_design_icons_flutter: ^4.0.5045
   ubuntu_font_flutter: ^0.0.1
   flare_flutter: ^2.0.1
   transparent_image: ^1.0.0
@@ -51,9 +51,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^1.8.0
+  build_runner: ^1.8.1
   chopper_generator: ^3.0.4
-  json_serializable: ^3.2.5
+  json_serializable: ^3.3.0
 
 flutter:
   uses-material-design: true

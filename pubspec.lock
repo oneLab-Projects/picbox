@@ -363,7 +363,7 @@ packages:
       name: material_design_icons_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.4.5045+1"
+    version: "4.0.5045"
   meta:
     dependency: transitive
     description:
@@ -425,7 +425,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: d47e3065caff568fb8638c0c2565daf16a724b62
+      resolved-ref: "6a9f47f07bb8be2156d2ae74b5429d4bfdd30b48"
       url: "git://github.com/oneLab-Projects/pansy_ui.git"
     source: git
     version: "1.0.0"
