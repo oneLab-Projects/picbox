@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/services.dart';
+import 'package:pansy_ui/pansy_ui/util/device.dart';
 import 'package:picbox/ui/feature/splash/code_input_sheet.dart';
 import 'package:pansy_ui/pansy_ui.dart';
 import 'package:picbox/ui/global/rxdart_test/bloc/bloc.dart';
@@ -23,6 +24,11 @@ class _DebugPageState extends State<DebugPage> {
       title: 'debug.title'.tr(),
       body: Column(
         children: <Widget>[
+          UListContent(
+            "State",
+            variant: true,
+            child: _buildStateApp(),
+          ),
           UListContent(
             "RxDart",
             variant: true,
@@ -49,6 +55,18 @@ class _DebugPageState extends State<DebugPage> {
           "Test transparent system navbar",
           value: _testedTransparentSystemNavbar,
           onChanged: testingTransparentSystemNavbar,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildStateApp() {
+    return Column(
+      children: <Widget>[
+        UListWidget(
+          "isPhone",
+          description: Device.isPhone ? "true" : "false",
+          onPressed: () {},
         ),
       ],
     );
