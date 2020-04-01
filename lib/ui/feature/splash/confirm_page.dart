@@ -1,5 +1,6 @@
 import 'package:picbox/component/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:pansy_ui/pansy_ui.dart';
 import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:sms_autofill/sms_autofill.dart';
@@ -17,12 +18,12 @@ class _ConfirmPageState extends State<ConfirmPage> {
   @override
   Widget build(BuildContext context) {
     return UScaffold(
-      title: AppLocalizations.of(context).tr('confirm.title'),
+      title: 'confirm.title'.tr(),
       body: _buildBody(
         context,
         children: <Widget>[
           Text(
-            AppLocalizations.of(context).tr('confirm.sms'),
+            'confirm.sms'.tr(),
             style: Theme.of(context)
                 .textTheme
                 .subtitle1
@@ -32,7 +33,7 @@ class _ConfirmPageState extends State<ConfirmPage> {
           _buildCodeFill(context),
           const SizedBox(height: 20),
           URaisedButton(
-            AppLocalizations.of(context).tr('default.confirm'),
+            'default.confirm'.tr(),
             loading: _loading,
             onPressed: null,
           ),

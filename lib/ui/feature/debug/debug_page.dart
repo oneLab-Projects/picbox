@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/services.dart';
 import 'package:picbox/ui/feature/splash/code_input_sheet.dart';
 import 'package:pansy_ui/pansy_ui.dart';
 import 'package:picbox/ui/global/rxdart_test/bloc/bloc.dart';
+import 'package:provider/provider.dart';
 
 /// Страница `Для разработчиков`.
 class DebugPage extends StatefulWidget {
@@ -16,9 +18,9 @@ class _DebugPageState extends State<DebugPage> {
 
   @override
   Widget build(BuildContext context) {
-    _counterBloc = TestProvider.of(context);
+    _counterBloc = Provider.of<TestBloc>(context);
     return UScaffold(
-      title: AppLocalizations.of(context).tr('debug.title'),
+      title: 'debug.title'.tr(),
       body: Column(
         children: <Widget>[
           UListContent(

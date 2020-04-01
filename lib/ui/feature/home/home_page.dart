@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:pansy_ui/pansy_ui.dart';
 
 /// Вкладка `Для Вас`.
@@ -10,7 +11,7 @@ class HomeTab extends StatelessWidget {
     var content = _buildCardGrid(context);
     return UScaffold(
       showBackButton: false,
-      title: AppLocalizations.of(context).tr('home.title'),
+      title: 'home.title'.tr(),
       body: content,
       blurBackground: false,
     );
