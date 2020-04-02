@@ -25,8 +25,9 @@ class HomeTab extends StatelessWidget {
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       mainAxisSpacing: 17,
-      crossAxisCount:
-          MediaQuery.of(context).orientation == Orientation.landscape ? 4 : 2,
+      crossAxisCount: Device.isPhone
+          ? MediaQuery.of(context).orientation == Orientation.landscape ? 4 : 2
+          : MediaQuery.of(context).orientation == Orientation.landscape ? 4 : 3,
       children: <Widget>[
         for (int i = 0; i < 13; i++)
           ContentCard(
