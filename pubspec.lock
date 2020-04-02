@@ -378,13 +378,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.6+3"
-  native_device_orientation:
-    dependency: transitive
-    description:
-      name: native_device_orientation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.0"
   nested:
     dependency: transitive
     description:
@@ -425,7 +418,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "6a9f47f07bb8be2156d2ae74b5429d4bfdd30b48"
+      resolved-ref: f6c0d9d050b4454a5529f3cc937835aaa5d7b938
       url: "git://github.com/oneLab-Projects/pansy_ui.git"
     source: git
     version: "1.0.0"
