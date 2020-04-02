@@ -76,7 +76,7 @@ class _DebugPageState extends State<DebugPage> {
     return Column(
       children: <Widget>[
         UListWidget(
-          "Type event",
+          "Event type",
           description: _counterBloc.isIncrement ? "Increment" : "Decrement",
           control: USwitchVisual(_counterBloc.isIncrement),
           onPressed: testRxDartSwitch,
