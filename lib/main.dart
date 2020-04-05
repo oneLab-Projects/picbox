@@ -10,7 +10,7 @@ import 'ui/global/aggregate_data.dart';
 void main() {
   runApp(
     AggregateData(
-      pathToLanguages: 'resources/lang/',
+      pathToLanguages: 'resources/lang',
       builder: (context, initData) {
         return App(initData);
       },

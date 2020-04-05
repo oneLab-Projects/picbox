@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pansy_ui/pansy_ui.dart';
-import 'package:picbox/component/languages.dart';
 import 'package:provider/provider.dart';
 
 import 'rxdart_test/bloc/bloc.dart';
@@ -22,7 +21,7 @@ class AggregateData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print(context.toString());
-    var localizationsBloc = LocalizationsBloc(Languages.all);
+    var localizationsBloc = LocalizationsBloc(context, pathToLanguages);
     var themeBloc = ThemeBloc(dayTheme: dayTheme, nightTheme: nightTheme);
 
     return MultiProvider(
