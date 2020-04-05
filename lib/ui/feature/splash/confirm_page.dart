@@ -2,8 +2,6 @@ import 'package:picbox/component/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:pansy_ui/pansy_ui.dart';
-import 'package:pin_input_text_field/pin_input_text_field.dart';
-import 'package:sms_autofill/sms_autofill.dart';
 
 /// Страница `Подтверждение`.
 class ConfirmPage extends StatefulWidget {
@@ -59,7 +57,7 @@ class _ConfirmPageState extends State<ConfirmPage> {
                   width: 65,
                 ),
             ],
-          ),
+          ), /*
           PinFieldAutoFill(
               decoration: UnderlineDecoration(
                   lineHeight: 0,
@@ -72,7 +70,7 @@ class _ConfirmPageState extends State<ConfirmPage> {
               onCodeChanged: (value) {
                 if (_loading) return;
                 if (value.length == 4) _checkCode(value);
-              }),
+              }),*/
         ],
       );
 
