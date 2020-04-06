@@ -35,7 +35,7 @@ class SessionsRepositoryImpl implements SessionsRepository {
   }
 
   Future<bool> hasToken() async {
-    final storage = new FlutterSecureStorage();
+    final storage = FlutterSecureStorage();
     return (await storage.read(key: 'refreshToken')) != null;
   }
 

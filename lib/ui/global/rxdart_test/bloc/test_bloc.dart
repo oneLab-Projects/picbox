@@ -6,7 +6,7 @@ class TestBloc {
   BehaviorSubject<int> subjectCounter;
 
   TestBloc() {
-    subjectCounter = new BehaviorSubject<int>.seeded(this._count);
+    subjectCounter = BehaviorSubject<int>.seeded(this._count);
   }
 
   Stream<int> get counter => subjectCounter.stream;

@@ -3,7 +3,7 @@ import 'dart:ui';
 
 /// Вспомогательный касс, предназначенный для работы с цветом.
 class ColorTool {
-  static Random random = new Random();
+  static Random random = Random();
 
   /// Возвращает случайный, яркий цвет.
   static Color getBrightColor() {
