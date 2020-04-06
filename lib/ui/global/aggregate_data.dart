@@ -42,24 +42,25 @@ class AggregateData extends StatelessWidget {
           //
           // если localizationsBloc не готов – выводим пурпурный экран
           if (status != null && status.hasData && status?.data == true)
-            return StreamBuilder(
-              stream: themeBloc.theme,
-              builder: (context, AsyncSnapshot<ThemeData> theme) {
-                //
-                // если themeBloc не готов – выводим оранжевый экран
-                if (theme != null && theme.hasData && theme?.data != null) {
-                  AggregateDataModel initData = AggregateDataModel(theme.data);
-                  return EasyLocalization(
-                    useOnlyLangCode: true,
-                    supportedLocales:
-                        localizationsBloc.supportedLocales.keys.toList(),
-                    path: pathToLanguages,
-                    child: builder(context, initData),
-                  );
-                } else {
-                  return Container(color: Colors.orange);
-                }
-              },
+            return EasyLocalization(
+              useOnlyLangCode: true,
+              supportedLocales:
+                  localizationsBloc.supportedLocales.keys.toList(),
+              path: pathToLanguages,
+              child: StreamBuilder(
+                stream: themeBloc.theme,
+                builder: (context, AsyncSnapshot<ThemeData> theme) {
+                  //
+                  // если themeBloc не готов – выводим оранжевый экран
+                  if (theme != null && theme.hasData && theme?.data != null) {
+                    AggregateDataModel initData =
+                        AggregateDataModel(theme.data);
+                    return builder(context, initData);
+                  } else {
+                    return Container(color: Colors.orange);
+                  }
+                },
+              ),
             );
           else
             return Container(color: Colors.purple);
