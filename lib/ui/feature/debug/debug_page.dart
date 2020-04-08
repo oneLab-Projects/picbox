@@ -56,6 +56,11 @@ class _DebugPageState extends State<DebugPage> {
           value: _testedTransparentSystemNavbar,
           onChanged: testingTransparentSystemNavbar,
         ),
+        UListWidget(
+          "Enable background blur",
+          control: USwitchVisual(_testBloc.backgroundBlur),
+          onPressed: backgroundBlurSwitch,
+        ),
       ],
     );
   }
@@ -77,20 +82,20 @@ class _DebugPageState extends State<DebugPage> {
       children: <Widget>[
         UListWidget(
           "Event type",
-          description: _counterBloc.isIncrement ? "Increment" : "Decrement",
-          control: USwitchVisual(_counterBloc.isIncrement),
+          description: _testBloc.isIncrement ? "Increment" : "Decrement",
+          control: USwitchVisual(_testBloc.isIncrement),
           onPressed: testRxDartSwitch,
         ),
         UListWidget(
           "Send event",
           onPressed: () {
-            if (_counterBloc.isIncrement)
-              _counterBloc.increment();
+            if (_testBloc.isIncrement)
+              _testBloc.increment();
             else
-              _counterBloc.decrement();
+              _testBloc.decrement();
           },
           control: StreamBuilder(
-            stream: _counterBloc.subjectCounter,
+            stream: _testBloc.subjectCounter,
             builder: (context, snapshot) {
               return Text(snapshot.data.toString());
             },
@@ -101,7 +106,10 @@ class _DebugPageState extends State<DebugPage> {
   }
 
   void testRxDartSwitch() =>
-      setState(() => _counterBloc.isIncrement = !_counterBloc.isIncrement);
+      setState(() => _testBloc.isIncrement = !_testBloc.isIncrement);
+
+  void backgroundBlurSwitch() =>
+      setState(() => _testBloc.backgroundBlur = !_testBloc.backgroundBlur);
 
   void testingTransparentSystemNavbar(bool value) {
     setState(() => _testedTransparentSystemNavbar = value);

@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:pansy_ui/pansy_ui.dart';
+import 'package:picbox/ui/global/rxdart_test/bloc/bloc.dart';
+import 'package:provider/provider.dart';
 
 /// Вкладка `Для Вас`.
 class HomeTab extends StatelessWidget {
@@ -13,7 +15,7 @@ class HomeTab extends StatelessWidget {
       showBackButton: false,
       title: 'home.title'.tr(),
       body: content,
-      blurBackground: false,
+      blurBackground: Provider.of<TestBloc>(context).backgroundBlur,
     );
   }
 

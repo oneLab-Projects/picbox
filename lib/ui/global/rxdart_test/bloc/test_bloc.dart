@@ -3,6 +3,7 @@ import 'package:rxdart/rxdart.dart';
 class TestBloc {
   int _count = 0;
   bool isIncrement = true;
+  bool backgroundBlur = false;
   BehaviorSubject<int> subjectCounter;
 
   TestBloc() {
