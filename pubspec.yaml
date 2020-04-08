@@ -20,7 +20,7 @@ dependencies:
   # localizations
   flutter_localizations:
     sdk: flutter
-  easy_localization: ^2.1.0+0
+  easy_localization: ^2.1.0+1
 
   # bloc
   flutter_bloc: ^3.2.0
