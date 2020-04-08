@@ -39,8 +39,6 @@ class AggregateData extends StatelessWidget {
       child: StreamBuilder(
         stream: localizationsBloc.isLoaded,
         builder: (context, AsyncSnapshot<bool> status) {
-          //
-          // если localizationsBloc не готов – выводим пурпурный экран
           if (status != null && status.hasData && status?.data == true) {
             return EasyLocalization(
               useOnlyLangCode: true,
@@ -51,8 +49,6 @@ class AggregateData extends StatelessWidget {
               child: StreamBuilder(
                 stream: themeBloc.theme,
                 builder: (context, AsyncSnapshot<ThemeData> theme) {
-                  //
-                  // если themeBloc не готов – выводим оранжевый экран
                   if (theme != null && theme.hasData && theme?.data != null) {
                     AggregateDataModel initData =
                         AggregateDataModel(theme.data);
