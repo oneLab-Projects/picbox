@@ -41,9 +41,10 @@ class AggregateData extends StatelessWidget {
         builder: (context, AsyncSnapshot<bool> status) {
           //
           // если localizationsBloc не готов – выводим пурпурный экран
-          if (status != null && status.hasData && status?.data == true)
+          if (status != null && status.hasData && status?.data == true) {
             return EasyLocalization(
               useOnlyLangCode: true,
+              fallbackLocale: localizationsBloc.recommendedLocale,
               supportedLocales:
                   localizationsBloc.supportedLocales.keys.toList(),
               path: pathToLanguages,
@@ -56,13 +57,12 @@ class AggregateData extends StatelessWidget {
                     AggregateDataModel initData =
                         AggregateDataModel(theme.data);
                     return builder(context, initData);
-                  } else {
+                  } else
                     return Container(color: Colors.orange);
-                  }
                 },
               ),
             );
-          else
+          } else
             return Container(color: Colors.purple);
         },
       ),

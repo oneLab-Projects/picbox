@@ -14,12 +14,12 @@ class DebugPage extends StatefulWidget {
 }
 
 class _DebugPageState extends State<DebugPage> {
-  TestBloc _counterBloc;
+  TestBloc _testBloc;
   bool _testedTransparentSystemNavbar = false;
 
   @override
   Widget build(BuildContext context) {
-    _counterBloc = Provider.of<TestBloc>(context);
+    _testBloc = Provider.of<TestBloc>(context);
     return UScaffold(
       title: 'debug.title'.tr(),
       body: Column(
