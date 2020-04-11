@@ -46,7 +46,7 @@ flutter build --release
 > We have CI! And when you make a commit, you should continue to use it.
 > When you add these tags to the commit description, you can control the further build process.
 
-#### Теги
+#### Tags
 
 - `[ignore]` – don't perform the integration process
 - `[publish]` – publish as a release (you must put a tag with the version, as well as describe the latest changes in the commit description)
