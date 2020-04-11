@@ -70,7 +70,7 @@ class _DebugPageState extends State<DebugPage> {
       children: <Widget>[
         UListWidget(
           "isPhone",
-          control: Text(Device.isPhone ? "true" : "false"),
+          control: Text(Device.isPhone(context) ? "true" : "false"),
           onPressed: () {},
         ),
       ],
