@@ -4,7 +4,6 @@
 ###### Language: [English](https://github.com/oneLab-Projects/picbox/blob/master/README.md) • [Русский](https://github.com/oneLab-Projects/picbox/blob/master/README-ru.md)
 [![android](https://github.com/oneLab-Projects/picbox/workflows/android/badge.svg)](https://github.com/oneLab-Projects/picbox/actions)
 [![CodeFactor](https://www.codefactor.io/repository/github/onelab-projects/picbox/badge)](https://www.codefactor.io/repository/github/onelab-projects/picbox)
-
 [![Package for beautiful interface](https://img.shields.io/badge/powered_by-pansy__ui-orange)](https://github.com/oneLab-Projects/pansy_ui)
 
 ### Deploying environment
